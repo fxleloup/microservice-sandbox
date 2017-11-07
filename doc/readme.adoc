@@ -1,0 +1,67 @@
+= Microservice Sandbox
+
+== Architecture Diagram
+Those diagrams are freely inspired from the C4 model from Simons.
+
+=== Systems
+[plantuml]
+....
+skinparam node {
+    BackgroundColor light
+    ArrowColor blue
+}
+skinparam note {
+    BackgroundColor light
+    BorderColor blue
+}
+node "Business Number" as bn
+node "Partner" as pdv
+node "Prestations" as main
+node "Tasks" as tasks
+node "Input Management" as im
+
+main -up-> bn
+main -left-> pdv
+main -down-> tasks
+main -> im
+....
+
+=== Components
+[plantuml]
+....
+skinparam componentStyle uml2
+skinparam component {
+    ArrowColor black
+    BorderColor blue
+}
+node "Business Number" as bn {
+    [Business Number Service] as bns
+}
+node "Partner" as pdv {
+    [Person Service] as ps
+    [Links Service] as ls
+
+    ps -> ls
+}
+node "Tasks" as tasks {
+    [Tasks Service] as ts
+}
+node "Input Management" as im {
+    [Input Service] as is
+}
+node "Prestations" as main {
+    [Announce] as a
+    [Case] as c
+    [Link Partner] as lp
+
+    a -> c
+    a -> bns
+    a -> ps
+    a -> ts
+    c -> lp
+    a -> lp
+    lp <- ls
+    a -> is
+}
+
+....
