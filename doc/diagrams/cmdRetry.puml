@@ -1,0 +1,11 @@
+@startuml
+hide footbox
+control "Component 1" as c1
+control "Component 2" as c2
+
+c1 -X c2 : call()
+c1 -> c1 : makeDegradatedAction()
+c1 -> c2 : retryCall()
+c1 <- c2 : retrieveInfo()
+c1 -> c1 : upgradeDataWithInfo()
+@enduml

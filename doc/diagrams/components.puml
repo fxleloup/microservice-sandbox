@@ -1,0 +1,39 @@
+@startuml
+skinparam componentStyle uml2
+skinparam component {
+    ArrowColor black
+    BorderColor blue
+}
+node "Business Number" as bn {
+    [Business Number Service] as bns
+}
+node "Partner" as pdv {
+    [Person Service] as ps
+    [Links Service] as ls
+
+    ps -> ls
+}
+node "Tasks" as tasks {
+    [Tasks Service] as ts
+}
+node "Input Management" as im {
+    [Input Service] as is
+}
+node "Prestations" as main {
+    [Announce] as a
+    [Case] as c
+    [Link Partner] as lp
+
+    a -> c
+    a -up-> bns
+    a -left-> ps
+    a -down-> ts
+    c -> lp
+    a -> lp
+    lp <- ls
+    a -down-> is
+    c -> ts
+    c -> bns
+    c -> ps
+}
+@enduml

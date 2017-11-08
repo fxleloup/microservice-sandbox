@@ -1,0 +1,20 @@
+@startuml
+skinparam node {
+    BackgroundColor light
+    ArrowColor blue
+}
+skinparam note {
+    BackgroundColor light
+    BorderColor blue
+}
+node "Business Number" as bn
+node "Partner" as pdv
+node "Prestations" as main
+node "Tasks" as tasks
+node "Input Management" as im
+
+main -up-> bn
+main -left-> pdv
+main -down-> tasks
+main -> im
+@enduml

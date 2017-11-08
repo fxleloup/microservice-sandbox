@@ -4,96 +4,27 @@
 Those diagrams are freely inspired from the C4 model from Simons.
 
 ### Systems
-[plantuml]
-....
-skinparam node {
-    BackgroundColor light
-    ArrowColor blue
-}
-skinparam note {
-    BackgroundColor light
-    BorderColor blue
-}
-node "Business Number" as bn
-node "Partner" as pdv
-node "Prestations" as main
-node "Tasks" as tasks
-node "Input Management" as im
 
-main -up-> bn
-main -left-> pdv
-main -down-> tasks
-main -> im
-....
+![Systems Doagram](./doc/images/systems.png)
 
 ### Components
-[plantuml]
-....
-skinparam componentStyle uml2
-skinparam component {
-    ArrowColor black
-    BorderColor blue
-}
-node "Business Number" as bn {
-    [Business Number Service] as bns
-}
-node "Partner" as pdv {
-    [Person Service] as ps
-    [Links Service] as ls
 
-    ps -> ls
-}
-node "Tasks" as tasks {
-    [Tasks Service] as ts
-}
-node "Input Management" as im {
-    [Input Service] as is
-}
-node "Prestations" as main {
-    [Announce] as a
-    [Case] as c
-    [Link Partner] as lp
-
-    a -> c
-    a -> bns
-    a -> ps
-    a -> ts
-    c -> lp
-    a -> lp
-    lp <- ls
-    a -> is
-    c -> ts
-    c -> bns
-    c -> ps
-}
-....
+![Components Doagram](./doc/images/components.png)
 
 ## Use Cases
 I want to show precises use cases through those projects
 
 * Synchronous call with gentle degradation
 
-[plantuml]
-....
-hide footbox
-control "Component 1" as c1
-control "Component 2" as c2
-
-c1 -X c2 : call()
-c1 -> c1 : makeDegradatedAction()
-c1 -> c2 : retryCall()
-c1 <- c2 : retrieveInfo()
-c1 -> c1 : upgradeDataWithInfo()
-....
+![Command and Retry](./doc/images/cmdRetry.png)
 
 * Long business transaction through multiple microservices enduring failure
 
-![sagas](./doc/images/saga.png)
-
+![Sagas](./doc/images/saga.png)
 
 ## TODO's
-* Service discovery
-* Security
+* Service discovery with Spring Cloud Eureka
+* Security with Spring Security
   * JWT
 * Distributed Configuration
   * Spring-Cloud-Config
