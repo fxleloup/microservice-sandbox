@@ -1,0 +1,16 @@
+@startuml
+hide footbox
+control "Component 1" as c1
+control "Component 2" as c2
+control "Component 3" as c3
+
+c1 -> c1 : saveData1InDb()
+c1 -> c2 : call()
+c2 -> c2 : saveData2InDb()
+c2 -> c3 : call()
+c3 -X c3 : failingSave
+c3 -> c2 : sendBackFailure
+c2 -> c2 : compensateData2()
+c2 -> c1 : sendBackRevert
+c1 -> c1 : compensateData1()
+@enduml
