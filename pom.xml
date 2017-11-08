@@ -18,12 +18,12 @@
     </properties>
     <build>
         <plugins>
-            <plugin>
+            <!-- <plugin>
                 <groupId>org.asciidoctor</groupId>
                 <artifactId>asciidoctor-maven-plugin</artifactId>
                 <version>${asciidoctor.maven.plugin.version}</version>
                 <configuration>
-                    <sourceDirectory>doc</sourceDirectory>
+                    <sourceDirectory>.</sourceDirectory>
                     <backend>html5</backend>
                     <requires>
                         <require>asciidoctor-diagram</require>
@@ -53,7 +53,7 @@
                         <version>${asciidoctorj.diagram.version}</version>
                     </dependency>
                 </dependencies>
-            </plugin>
+            </plugin> -->
         </plugins>
     </build>
 </project>

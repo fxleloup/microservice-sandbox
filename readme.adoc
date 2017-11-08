@@ -106,7 +106,28 @@ c2 -> c1 : sendBackRevert
 c1 -> c1 : compensateData1()
 ....
 
+== TODO's
 * Service discovery
 * Security
 ** JWT
 * Distributed Configuration
+** Spring-Cloud-Config
+* Use Kubernetes to deploy all the components
+** Use Secret in Kubernetes
+** Use Secret in Spring-Cloud-Config
+** Use Helm ?
+* Use Flyway and Liquibase to migrate database
+* Use different types of database
+* Migrate to Kotlin
+* Migrate to Spring-Boot 2
+** Use Async Webflux
+* Testing
+** Pact
+** HoverFly or Wiremock
+* Monitor
+** Metrics
+** JHispter Console
+* Deployment
+** Use DockerHub to deploy Container
+** Use Minikub in local to Deploy
+** Jenkins pipeline as Code
