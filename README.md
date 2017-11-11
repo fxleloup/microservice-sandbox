@@ -47,3 +47,4 @@ I want to show precises use cases through those projects
   * Use DockerHub to deploy Container
   * Use Minikub in local to Deploy
   * Jenkins pipeline as Code
+* Use Hibernate Search in Partner to find partner by name or forname

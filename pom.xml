@@ -11,48 +11,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <asciidoctor.maven.plugin.version>1.5.6</asciidoctor.maven.plugin.version>
-        <asciidoctorj.version>1.5.6</asciidoctorj.version>
-        <asciidoctorj.diagram.version>1.5.4.1</asciidoctorj.diagram.version>
     </properties>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.asciidoctor</groupId>
-                <artifactId>asciidoctor-maven-plugin</artifactId>
-                <version>${asciidoctor.maven.plugin.version}</version>
-                <configuration>
-                    <sourceDirectory>doc</sourceDirectory>
-                    <backend>html5</backend>
-                    <requires>
-                        <require>asciidoctor-diagram</require>
-                    </requires>
-                    <attributes>
-                        <imagesdir>doc/images</imagesdir>
-                        <toc>left</toc>
-                        <icons>font</icons>
-                        <sectanchors>true</sectanchors>
-                        <idprefix/>
-                        <idseparator>-</idseparator>
-                    </attributes>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>output-html</id>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>process-asciidoc</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.asciidoctor</groupId>
-                        <artifactId>asciidoctorj-diagram</artifactId>
-                        <version>${asciidoctorj.diagram.version}</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-        </plugins>
-    </build>
+    <modules>
+        <module>announce</module>
+        <module>business-number</module>
+    </modules>
 </project>

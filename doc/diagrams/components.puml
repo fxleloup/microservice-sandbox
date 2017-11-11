@@ -19,7 +19,7 @@ node "Tasks" as tasks {
 node "Input Management" as im {
     [Input Service] as is
 }
-node "Prestations" as main {
+node "Claim" as main {
     [Announce] as a
     [Case] as c
     [Link Partner] as lp

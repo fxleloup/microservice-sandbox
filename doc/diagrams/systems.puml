@@ -9,7 +9,7 @@ skinparam note {
 }
 node "Business Number" as bn
 node "Partner" as pdv
-node "Prestations" as main
+node "Claim" as main
 node "Tasks" as tasks
 node "Input Management" as im
 
