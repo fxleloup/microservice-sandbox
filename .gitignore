@@ -2,4 +2,5 @@
 **/**.iml
 **/target/**
 .asciidoctor/**
-
+**/node_modules/**
+**/src/main/resources/static
