@@ -1,6 +1,6 @@
 # Microservice Sandbox 
 
-This Sandboy use a simplified version of an Insurance Claim System.
+This Sandbox use a simplified version of an Insurance Claim System.
 
 ## Architecture Diagram
 Those diagrams are freely inspired from the C4 model from Simons.
