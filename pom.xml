@@ -15,7 +15,7 @@
     <modules>
         <module>announce</module>
         <module>business-number</module>
-        <module>case</module>
+        <module>case-domain</module>
     </modules>
     <dependencies>
         <dependency>

@@ -1,8 +1,8 @@
-package net.bakaar.sandbox.casemgmt;
+package net.bakaar.sandbox.cas.domain;
 
-import net.bakaar.sandbox.casemgmt.aggregate.Case;
-import net.bakaar.sandbox.casemgmt.event.Event;
-import net.bakaar.sandbox.casemgmt.event.EventEmitter;
+import net.bakaar.sandbox.cas.domain.aggregate.Case;
+import net.bakaar.sandbox.cas.domain.event.Event;
+import net.bakaar.sandbox.cas.domain.event.EventEmitter;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

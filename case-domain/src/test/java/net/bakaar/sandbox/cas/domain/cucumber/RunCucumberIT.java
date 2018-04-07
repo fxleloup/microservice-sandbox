@@ -1,4 +1,4 @@
-package net.bakaar.sandbox.casemgmt.cucumber;
+package net.bakaar.sandbox.cas.domain.cucumber;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;

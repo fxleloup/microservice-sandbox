@@ -1,7 +1,7 @@
-package net.bakaar.sandbox.casemgmt.cucumber.util;
+package net.bakaar.sandbox.cas.domain.cucumber.util;
 
-import net.bakaar.sandbox.casemgmt.event.Event;
-import net.bakaar.sandbox.casemgmt.event.EventEmitter;
+import net.bakaar.sandbox.cas.domain.event.Event;
+import net.bakaar.sandbox.cas.domain.event.EventEmitter;
 
 public class DummyEventEmmitter implements EventEmitter {
 

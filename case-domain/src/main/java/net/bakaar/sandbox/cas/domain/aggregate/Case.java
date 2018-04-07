@@ -1,4 +1,4 @@
-package net.bakaar.sandbox.casemgmt.aggregate;
+package net.bakaar.sandbox.cas.domain.aggregate;
 
 import java.util.UUID;
 

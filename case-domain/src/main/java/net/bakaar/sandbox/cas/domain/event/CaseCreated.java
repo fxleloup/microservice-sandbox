@@ -1,4 +1,4 @@
-package net.bakaar.sandbox.casemgmt.event;
+package net.bakaar.sandbox.cas.domain.event;
 
 public class CaseCreated implements Event {
     private final String id;

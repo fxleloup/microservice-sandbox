@@ -1,11 +1,11 @@
-package net.bakaar.sandbox.casemgmt.cucumber.steps;
+package net.bakaar.sandbox.cas.domain.cucumber.steps;
 
 import cucumber.api.java8.En;
-import net.bakaar.sandbox.casemgmt.CaseService;
-import net.bakaar.sandbox.casemgmt.aggregate.Case;
-import net.bakaar.sandbox.casemgmt.cucumber.util.DummyEventEmmitter;
-import net.bakaar.sandbox.casemgmt.event.CaseCreated;
-import net.bakaar.sandbox.casemgmt.event.EventEmitter;
+import net.bakaar.sandbox.cas.domain.CaseService;
+import net.bakaar.sandbox.cas.domain.aggregate.Case;
+import net.bakaar.sandbox.cas.domain.cucumber.util.DummyEventEmmitter;
+import net.bakaar.sandbox.cas.domain.event.CaseCreated;
+import net.bakaar.sandbox.cas.domain.event.EventEmitter;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
