@@ -19,7 +19,8 @@ I want to show precises use cases through those projects
 * Synchronous call with gentle degradation (cache)
 * Long business transaction through multiple microservices enduring failure (Sagas)
 * Synchronous call with retry
-* Communication with messages
+* Communication with messages (Choreography/Broker)
+* Communication with messages (Polling)
 
 ## TODO's
 * Service discovery with Spring Cloud Eureka
