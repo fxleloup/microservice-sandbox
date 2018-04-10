@@ -19,12 +19,13 @@ node "Tasks" as tasks {
 
 node "Claim" as main {
     [Case] as c
-}
     [Link Partner] as lp
+}
 
+
+    c -left-> ts : choregraphy (message)
     c --> lp : saga
     lp <- ls : poll
-    c --> ts : choregraphy (message)
     c -u-> bns : call&retry
     c -> ps : gentle degradation
 

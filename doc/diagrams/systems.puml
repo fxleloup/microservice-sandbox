@@ -13,6 +13,6 @@ node "Claim" as main
 node "Tasks" as tasks
 
 main -up-> bn
-main -left-> pdv
-main -down-> tasks
+main -right-> pdv
+main -left-> tasks
 @enduml
