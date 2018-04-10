@@ -16,13 +16,10 @@ Those diagrams are freely inspired from the C4 model from Simons.
 ## Use Cases
 I want to show precises use cases through those projects
 
-* Synchronous call with gentle degradation
-
-![Command and Retry](./doc/images/cmdRetry.png)
-
-* Long business transaction through multiple microservices enduring failure
-
-![Sagas](./doc/images/saga.png)
+* Synchronous call with gentle degradation (cache)
+* Long business transaction through multiple microservices enduring failure (Sagas)
+* Synchronous call with retry
+* Communication with messages
 
 ## TODO's
 * Service discovery with Spring Cloud Eureka
