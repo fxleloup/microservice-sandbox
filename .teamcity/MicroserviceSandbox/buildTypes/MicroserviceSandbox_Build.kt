@@ -16,8 +16,8 @@ object MicroserviceSandbox_Build : BuildType({
 
     steps {
         maven {
-            name = "clean compile"
-            goals = "clean compile"
+            name = "clean verify"
+            goals = "clean verify"
             mavenVersion = defaultProvidedVersion()
             jdkHome = "%env.JDK_18_x64%"
         }
