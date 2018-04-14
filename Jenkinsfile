@@ -1,8 +1,8 @@
 pipeline {
     stages {
-        stage('compile'){
-            steps {
-                sh 'mvn clean compile'
+        stage('compile') {
+            withMaven {
+                sh 'mvn clean compileblue'
             }
         }
     }
