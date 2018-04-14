@@ -1,9 +1,8 @@
 pipeline {
+    agent { docker 'maven:3-alpine' }
     stages {
         stage('compile') {
-            withMaven {
-                sh 'mvn clean compileblue'
-            }
+            sh 'mvn clean compileblue'
         }
     }
 }
