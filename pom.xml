@@ -16,6 +16,8 @@
     <modules>
         <module>business-number</module>
         <module>case</module>
+        <module>event</module>
+        <module>messaging</module>
     </modules>
     <dependencies>
         <dependency>

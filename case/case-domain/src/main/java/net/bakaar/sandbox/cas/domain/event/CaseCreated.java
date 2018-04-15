@@ -1,5 +1,7 @@
 package net.bakaar.sandbox.cas.domain.event;
 
+import net.bakaar.sandbox.event.common.Event;
+
 public class CaseCreated implements Event {
     private final String id;
     private final String pnummer;

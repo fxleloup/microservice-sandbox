@@ -7,7 +7,7 @@ import net.bakaar.sandbox.cas.domain.cucumber.repository.DummyCaseRepository;
 import net.bakaar.sandbox.cas.domain.cucumber.repository.DummyEventEmmitter;
 import net.bakaar.sandbox.cas.domain.event.CaseCreated;
 import net.bakaar.sandbox.cas.domain.repository.CaseRepository;
-import net.bakaar.sandbox.cas.domain.repository.EventEmitter;
+import net.bakaar.sandbox.event.publisher.DomainEventPublisher;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.catchThrowable;
 
 public class CaseStepDefintion implements En {
 
-    private final EventEmitter emitter = new DummyEventEmmitter();
+    private final DomainEventPublisher emitter = new DummyEventEmmitter();
     private final CaseRepository repository = new DummyCaseRepository();
     private final CaseService service = new CaseService(emitter, repository);
     private Case caseCreated;

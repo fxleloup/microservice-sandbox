@@ -3,17 +3,13 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>case</artifactId>
+        <artifactId>microservice-sandbox</artifactId>
         <groupId>net.bakaar</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>case-domain</artifactId>
-    <dependencies>
-        <dependency>
-            <groupId>net.bakaar</groupId>
-            <artifactId>event</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-    </dependencies>
+
+    <artifactId>event</artifactId>
+
+
 </project>

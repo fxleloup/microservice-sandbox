@@ -2,7 +2,7 @@ package net.bakaar.sandbox.cas.infra.repository;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import net.bakaar.sandbox.cas.domain.event.CaseCreated;
-import net.bakaar.sandbox.cas.domain.event.Event;
+import net.bakaar.sandbox.event.common.Event;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
@@ -17,7 +17,7 @@ import static org.mockito.Mockito.verify;
 
 
 @RunWith(MockitoJUnitRunner.class)
-public class DBEventEmitterAdapterTest {
+public class DBDomainEventPublisherAdapterTest {
     @Mock
     private EventRepository repository;
     @Mock

@@ -2,10 +2,10 @@ package net.bakaar.sandbox.cas.infra.repository;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import net.bakaar.sandbox.cas.domain.event.Event;
-import net.bakaar.sandbox.cas.domain.repository.EventEmitter;
+import net.bakaar.sandbox.event.common.Event;
+import net.bakaar.sandbox.event.publisher.DomainEventPublisher;
 
-public class DBEventEmitterAdapter implements EventEmitter {
+public class DBEventEmitterAdapter implements DomainEventPublisher {
 
     private final ObjectMapper mapper;
     private final EventRepository repository;
