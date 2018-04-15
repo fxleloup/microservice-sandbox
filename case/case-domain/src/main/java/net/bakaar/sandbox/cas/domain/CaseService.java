@@ -14,10 +14,10 @@ public class CaseService {
         this.repository = repository;
     }
 
-    public Case createCase(String pnummer) throws Exception {
+    public Case createCase(String pnummer) {
         Case caseCreated = new Case(pnummer);
         CaseCreated event = new CaseCreated(caseCreated.getId(), caseCreated.getPnummer());
-        publisher.emit(event);
+        publisher.publish(event);
         return repository.save(caseCreated);
     }
 }

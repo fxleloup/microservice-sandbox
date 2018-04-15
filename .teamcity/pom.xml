@@ -13,26 +13,26 @@
   </parent>
 
   <repositories>
-    <repository>
+      <messageProducer>
       <id>jetbrains-all</id>
-      <url>http://download.jetbrains.com/teamcity-repository</url>
+          <url>http://download.jetbrains.com/teamcity-messageProducer</url>
       <snapshots>
         <enabled>true</enabled>
       </snapshots>
-    </repository>
-    <repository>
+      </messageProducer>
+      <messageProducer>
       <id>teamcity-server</id>
-      <url>http://10.0.0.254:9999/app/dsl-plugins-repository</url>
+          <url>http://10.0.0.254:9999/app/dsl-plugins-messageProducer</url>
       <snapshots>
         <enabled>true</enabled>
       </snapshots>
-    </repository>
+      </messageProducer>
   </repositories>
 
   <pluginRepositories>
     <pluginRepository>
       <id>JetBrains</id>
-      <url>http://download.jetbrains.com/teamcity-repository</url>
+        <url>http://download.jetbrains.com/teamcity-messageProducer</url>
     </pluginRepository>
   </pluginRepositories>
 

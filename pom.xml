@@ -15,9 +15,9 @@
     </properties>
     <modules>
         <module>business-number</module>
-        <module>case</module>
         <module>event</module>
         <module>messaging</module>
+        <module>case</module>
     </modules>
     <dependencies>
         <dependency>

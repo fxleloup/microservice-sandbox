@@ -44,6 +44,6 @@ public class CaseServiceTest {
         // When
         service.createCase("P1234566");
         // Then
-        verify(publisher).emit(any(Event.class));
+        verify(publisher).publish(any(Event.class));
     }
 }
