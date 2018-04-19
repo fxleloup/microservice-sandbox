@@ -5,7 +5,7 @@ import net.bakaar.sandbox.cas.domain.CaseService;
 import net.bakaar.sandbox.cas.domain.aggregate.Case;
 import net.bakaar.sandbox.cas.domain.event.CaseCreated;
 import net.bakaar.sandbox.cas.domain.repository.CaseRepository;
-import net.bakaar.sandbox.event.publisher.DomainEventPublisher;
+import net.bakaar.sandbox.event.jpa.repository.DomainEventRaisedRepository;
 import org.mockito.ArgumentCaptor;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -17,7 +17,7 @@ import static org.mockito.Mockito.verify;
 
 public class CaseStepDefintion implements En {
 
-    private DomainEventPublisher publisher = mock(DomainEventPublisher.class);
+    private DomainEventRaisedRepository publisher = mock(DomainEventRaisedRepository.class);
     private CaseRepository repository = mock(CaseRepository.class);
     private CaseService service = new CaseService(publisher, repository);
     private ArgumentCaptor<CaseCreated> eventArgumentCaptor = ArgumentCaptor.forClass(CaseCreated.class);
@@ -29,7 +29,7 @@ public class CaseStepDefintion implements En {
             given(repository.save(any(Case.class))).willAnswer(invocation -> invocation.getArgument(0));
             Throwable throwable = catchThrowable(() -> aCase = this.service.createCase(pnummer));
             verify(repository).save(any(Case.class));
-            verify(publisher).publish(eventArgumentCaptor.capture());
+            verify(publisher).save(eventArgumentCaptor.capture());
             assertThat(throwable).isNull();
         });
 

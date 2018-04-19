@@ -2,8 +2,8 @@ package net.bakaar.sandbox.cas.domain;
 
 import net.bakaar.sandbox.cas.domain.aggregate.Case;
 import net.bakaar.sandbox.cas.domain.repository.CaseRepository;
-import net.bakaar.sandbox.event.common.Event;
-import net.bakaar.sandbox.event.publisher.DomainEventPublisher;
+import net.bakaar.sandbox.event.common.DomainEvent;
+import net.bakaar.sandbox.event.jpa.repository.DomainEventRaisedRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -19,14 +19,14 @@ import static org.mockito.Mockito.verify;
 public class CaseServiceTest {
 
     @Mock
-    private DomainEventPublisher publisher;
+    private DomainEventRaisedRepository publisher;
     @Mock
     private CaseRepository repository;
     @InjectMocks
     private CaseService service;
 
     @Test
-    public void createCase_should_return_a_case() throws Exception {
+    public void createCase_should_return_a_case() {
         // Given
         String pnummer = "P1234566";
         given(repository.save(any(Case.class))).willAnswer(invocationOnMock -> invocationOnMock.getArgument(0));
@@ -39,11 +39,11 @@ public class CaseServiceTest {
     }
 
     @Test
-    public void createCase_should_emitt_an_event() throws Exception {
+    public void createCase_should_emitt_an_event() {
         // Given
         // When
         service.createCase("P1234566");
         // Then
-        verify(publisher).publish(any(Event.class));
+        verify(publisher).save(any(DomainEvent.class));
     }
 }
