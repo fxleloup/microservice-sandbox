@@ -3,7 +3,8 @@ package net.bakaar.sandbox.cas.infra;
 import net.bakaar.sandbox.cas.domain.CaseService;
 import net.bakaar.sandbox.cas.domain.repository.CaseRepository;
 import net.bakaar.sandbox.cas.infra.event.DBDomainEventEmitter;
-import net.bakaar.sandbox.cas.infra.repository.CaseRepositoryAdapter;
+import net.bakaar.sandbox.cas.infra.repository.DBCaseRepository;
+import net.bakaar.sandbox.cas.infra.repository.jpa.JpaCaseRepository;
 import net.bakaar.sandbox.event.common.DomainEventEmitter;
 import org.junit.Test;
 
@@ -15,10 +16,11 @@ public class CaseInfraConfigurationTest {
     private CaseInfraConfiguration configuration = new CaseInfraConfiguration();
     private DomainEventEmitter emitter = mock(DomainEventEmitter.class);
     private CaseRepository repository = mock(CaseRepository.class);
+    private JpaCaseRepository jpaCaseRepository = mock(JpaCaseRepository.class);
 
     @Test
     public void caseRespository_should_return_adapter() {
-        assertThat(configuration.caseRepository()).isInstanceOf(CaseRepositoryAdapter.class);
+        assertThat(configuration.caseRepository(jpaCaseRepository)).isInstanceOf(DBCaseRepository.class);
     }
 
     @Test
