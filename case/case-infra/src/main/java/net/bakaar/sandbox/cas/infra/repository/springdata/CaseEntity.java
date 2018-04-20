@@ -16,7 +16,7 @@ public class CaseEntity {
     }
 
     public Case toCase() {
-        return new Case(bussinessIdProvider.generateId(), this.getPnummer());
+        return new Case(this.businessId, this.getPnummer());
     }
 
     public String getPnummer() {

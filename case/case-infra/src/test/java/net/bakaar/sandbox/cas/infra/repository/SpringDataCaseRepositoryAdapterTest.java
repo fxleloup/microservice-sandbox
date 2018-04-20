@@ -11,6 +11,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.util.UUID;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
@@ -28,7 +30,8 @@ public class SpringDataCaseRepositoryAdapterTest {
     public void save_should_returned_the_saved_case() {
         //Given
         String pnummer = "pnummer";
-        Case aCase = new Case(bussinessIdProvider.generateId(), pnummer);
+        String id = UUID.randomUUID().toString();
+        Case aCase = new Case(id, pnummer);
         given(springDataCaseRepository.save(any(CaseEntity.class))).willAnswer(invocation -> invocation.getArgument(0));
         //When
         Case returnedCase = springDataCaseRepositoryAdapter.save(aCase);

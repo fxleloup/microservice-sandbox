@@ -1,6 +1,7 @@
 package net.bakaar.sandbox.cas.infra;
 
 import net.bakaar.sandbox.cas.domain.CaseService;
+import net.bakaar.sandbox.cas.domain.provider.BussinessIdProvider;
 import net.bakaar.sandbox.cas.domain.repository.CaseRepository;
 import net.bakaar.sandbox.cas.infra.event.db.DBDomainEventEmitter;
 import net.bakaar.sandbox.cas.infra.event.db.EventRaisedRepository;
@@ -19,6 +20,7 @@ public class CaseInfraConfigurationTest {
     private CaseRepository repository = mock(CaseRepository.class);
     private EventRaisedRepository eventRaisedRepository = mock(EventRaisedRepository.class);
     private SpringDataCaseRepository springDataCaseRepository = mock(SpringDataCaseRepository.class);
+    private BussinessIdProvider provider = mock(BussinessIdProvider.class);
 
     @Test
     public void caseRespository_should_return_adapter() {
@@ -32,7 +34,7 @@ public class CaseInfraConfigurationTest {
 
     @Test
     public void caseService_should_return_service() {
-        assertThat(configuration.caseService(emitter, repository)).isInstanceOf(CaseService.class);
+        assertThat(configuration.caseService(emitter, repository, provider)).isInstanceOf(CaseService.class);
     }
 
 }
