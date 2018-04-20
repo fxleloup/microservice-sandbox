@@ -2,7 +2,8 @@ package net.bakaar.sandbox.cas.infra;
 
 import net.bakaar.sandbox.cas.domain.CaseService;
 import net.bakaar.sandbox.cas.domain.repository.CaseRepository;
-import net.bakaar.sandbox.cas.infra.event.DBDomainEventEmitter;
+import net.bakaar.sandbox.cas.infra.event.db.DBDomainEventEmitter;
+import net.bakaar.sandbox.cas.infra.event.db.EventRaisedRepository;
 import net.bakaar.sandbox.cas.infra.repository.springdata.SpringDataCaseRepository;
 import net.bakaar.sandbox.cas.infra.repository.springdata.SpringDataCaseRepositoryAdapter;
 import net.bakaar.sandbox.event.common.DomainEventEmitter;
@@ -16,7 +17,7 @@ public class CaseInfraConfiguration {
         return new CaseService(emitter, repository);
     }
 
-    public DomainEventEmitter domainEventEmitter() {
-        return new DBDomainEventEmitter();
+    public DomainEventEmitter domainEventEmitter(EventRaisedRepository repository) {
+        return new DBDomainEventEmitter(repository);
     }
 }

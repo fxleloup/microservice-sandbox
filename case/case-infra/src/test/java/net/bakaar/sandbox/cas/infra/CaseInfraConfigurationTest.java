@@ -2,7 +2,8 @@ package net.bakaar.sandbox.cas.infra;
 
 import net.bakaar.sandbox.cas.domain.CaseService;
 import net.bakaar.sandbox.cas.domain.repository.CaseRepository;
-import net.bakaar.sandbox.cas.infra.event.DBDomainEventEmitter;
+import net.bakaar.sandbox.cas.infra.event.db.DBDomainEventEmitter;
+import net.bakaar.sandbox.cas.infra.event.db.EventRaisedRepository;
 import net.bakaar.sandbox.cas.infra.repository.springdata.SpringDataCaseRepository;
 import net.bakaar.sandbox.cas.infra.repository.springdata.SpringDataCaseRepositoryAdapter;
 import net.bakaar.sandbox.event.common.DomainEventEmitter;
@@ -16,6 +17,7 @@ public class CaseInfraConfigurationTest {
     private CaseInfraConfiguration configuration = new CaseInfraConfiguration();
     private DomainEventEmitter emitter = mock(DomainEventEmitter.class);
     private CaseRepository repository = mock(CaseRepository.class);
+    private EventRaisedRepository eventRaisedRepository = mock(EventRaisedRepository.class);
     private SpringDataCaseRepository springDataCaseRepository = mock(SpringDataCaseRepository.class);
 
     @Test
@@ -25,7 +27,7 @@ public class CaseInfraConfigurationTest {
 
     @Test
     public void domainEventEmitter_should_return_emitter() {
-        assertThat(configuration.domainEventEmitter()).isInstanceOf(DBDomainEventEmitter.class);
+        assertThat(configuration.domainEventEmitter(eventRaisedRepository)).isInstanceOf(DBDomainEventEmitter.class);
     }
 
     @Test
