@@ -1,6 +1,6 @@
 package net.bakaar.sandbox.cas.infra.repository.springdata;
 
-import net.bakaar.sandbox.cas.domain.aggregate.Case;
+import net.bakaar.sandbox.cas.domain.Case;
 import net.bakaar.sandbox.cas.domain.repository.CaseRepository;
 
 public class SpringDataCaseRepositoryAdapter implements CaseRepository {

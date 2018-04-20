@@ -1,29 +1,23 @@
 package net.bakaar.sandbox.cas.domain;
 
-import net.bakaar.sandbox.cas.domain.aggregate.Case;
 import net.bakaar.sandbox.cas.domain.repository.CaseRepository;
+import net.bakaar.sandbox.cas.domain.util.UUIDIdProvider;
 import net.bakaar.sandbox.event.common.DomainEvent;
 import net.bakaar.sandbox.event.common.DomainEventEmitter;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-@RunWith(MockitoJUnitRunner.class)
 public class CaseServiceTest {
 
-    @Mock
-    private DomainEventEmitter emitter;
-    @Mock
-    private CaseRepository repository;
-    @InjectMocks
-    private CaseService service;
+    private DomainEventEmitter emitter = mock(DomainEventEmitter.class);
+    private CaseRepository repository = mock(CaseRepository.class);
+    private CaseDomainObjectFactory factory = new CaseDomainObjectFactory(new UUIDIdProvider());
+    private CaseService service = new CaseService(emitter, repository, factory);
 
     @Test
     public void createCase_should_return_a_case() {

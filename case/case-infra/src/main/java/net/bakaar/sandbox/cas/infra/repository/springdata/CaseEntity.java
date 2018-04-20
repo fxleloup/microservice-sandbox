@@ -1,6 +1,6 @@
 package net.bakaar.sandbox.cas.infra.repository.springdata;
 
-import net.bakaar.sandbox.cas.domain.aggregate.Case;
+import net.bakaar.sandbox.cas.domain.Case;
 
 import javax.persistence.Entity;
 
@@ -16,7 +16,7 @@ public class CaseEntity {
     }
 
     public Case toCase() {
-        return new Case(this.getPnummer());
+        return new Case(bussinessIdProvider.generateId(), this.getPnummer());
     }
 
     public String getPnummer() {

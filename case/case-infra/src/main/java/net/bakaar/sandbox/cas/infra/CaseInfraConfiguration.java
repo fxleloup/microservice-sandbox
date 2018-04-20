@@ -14,7 +14,7 @@ public class CaseInfraConfiguration {
     }
 
     public CaseService caseService(DomainEventEmitter emitter, CaseRepository repository) {
-        return new CaseService(emitter, repository);
+        return new CaseService(emitter, repository, factory);
     }
 
     public DomainEventEmitter domainEventEmitter(EventRaisedRepository repository) {

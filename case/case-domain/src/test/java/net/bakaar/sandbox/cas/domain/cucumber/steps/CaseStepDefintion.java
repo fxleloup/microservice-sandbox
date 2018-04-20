@@ -1,10 +1,13 @@
 package net.bakaar.sandbox.cas.domain.cucumber.steps;
 
 import cucumber.api.java8.En;
+import net.bakaar.sandbox.cas.domain.Case;
+import net.bakaar.sandbox.cas.domain.CaseDomainObjectFactory;
 import net.bakaar.sandbox.cas.domain.CaseService;
-import net.bakaar.sandbox.cas.domain.aggregate.Case;
 import net.bakaar.sandbox.cas.domain.event.CaseCreated;
+import net.bakaar.sandbox.cas.domain.provider.BussinessIdProvider;
 import net.bakaar.sandbox.cas.domain.repository.CaseRepository;
+import net.bakaar.sandbox.cas.domain.util.UUIDIdProvider;
 import net.bakaar.sandbox.event.common.DomainEventEmitter;
 import org.mockito.ArgumentCaptor;
 
@@ -19,7 +22,8 @@ public class CaseStepDefintion implements En {
 
     private DomainEventEmitter publisher = mock(DomainEventEmitter.class);
     private CaseRepository repository = mock(CaseRepository.class);
-    private CaseService service = new CaseService(publisher, repository);
+    private BussinessIdProvider bussinessIdProvider = new UUIDIdProvider();
+    private CaseService service = new CaseService(publisher, repository, new CaseDomainObjectFactory(bussinessIdProvider));
     private ArgumentCaptor<CaseCreated> eventArgumentCaptor = ArgumentCaptor.forClass(CaseCreated.class);
     private Case aCase;
 
@@ -43,4 +47,5 @@ public class CaseStepDefintion implements En {
             assertThat(aCase.getId()).isNotNull();
         });
     }
+
 }

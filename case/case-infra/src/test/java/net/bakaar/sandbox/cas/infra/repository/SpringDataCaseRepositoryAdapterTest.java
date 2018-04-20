@@ -1,6 +1,6 @@
 package net.bakaar.sandbox.cas.infra.repository;
 
-import net.bakaar.sandbox.cas.domain.aggregate.Case;
+import net.bakaar.sandbox.cas.domain.Case;
 import net.bakaar.sandbox.cas.infra.repository.springdata.CaseEntity;
 import net.bakaar.sandbox.cas.infra.repository.springdata.SpringDataCaseRepository;
 import net.bakaar.sandbox.cas.infra.repository.springdata.SpringDataCaseRepositoryAdapter;
@@ -28,7 +28,7 @@ public class SpringDataCaseRepositoryAdapterTest {
     public void save_should_returned_the_saved_case() {
         //Given
         String pnummer = "pnummer";
-        Case aCase = new Case(pnummer);
+        Case aCase = new Case(bussinessIdProvider.generateId(), pnummer);
         given(springDataCaseRepository.save(any(CaseEntity.class))).willAnswer(invocation -> invocation.getArgument(0));
         //When
         Case returnedCase = springDataCaseRepositoryAdapter.save(aCase);
