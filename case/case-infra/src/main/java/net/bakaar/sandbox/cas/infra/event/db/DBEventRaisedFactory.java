@@ -4,17 +4,17 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import net.bakaar.sandbox.event.common.DomainEvent;
 
-public class EventRaisedFactory {
+public class DBEventRaisedFactory {
 
     private final ObjectMapper mapper;
 
-    public EventRaisedFactory(ObjectMapper mapper) {
+    public DBEventRaisedFactory(ObjectMapper mapper) {
         this.mapper = mapper;
     }
 
-    public EventRaised fromEvent(DomainEvent event) {
+    public DBEventRaised fromEvent(DomainEvent event) {
         try {
-            return new EventRaised(mapper.writeValueAsString(event));
+            return new DBEventRaised(mapper.writeValueAsString(event));
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }

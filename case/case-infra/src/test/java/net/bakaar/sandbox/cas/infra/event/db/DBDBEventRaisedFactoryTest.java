@@ -4,18 +4,17 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import net.bakaar.sandbox.cas.domain.event.CaseCreated;
 import org.junit.Test;
+import org.mockito.ArgumentMatchers;
 
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 
-public class EventRaisedFactoryTest {
+public class DBDBEventRaisedFactoryTest {
 
-    private EventRaisedFactory factory;
-
+    private DBEventRaisedFactory factory;
 
     @Test
     public void fromEvent_should_serialze_event() {
@@ -24,12 +23,12 @@ public class EventRaisedFactoryTest {
         String id = UUID.randomUUID().toString();
         CaseCreated event = new CaseCreated(id, pnummer);
         ObjectMapper mapper = new ObjectMapper();
-        factory = new EventRaisedFactory(mapper);
+        factory = new DBEventRaisedFactory(mapper);
         //When
-        EventRaised eventRaised = factory.fromEvent(event);
+        DBEventRaised DBEventRaised = factory.fromEvent(event);
         //Then
-        assertThat(eventRaised).isNotNull();
-        assertThat(eventRaised.getEvent()).contains(pnummer, id);
+        assertThat(DBEventRaised).isNotNull();
+        assertThat(DBEventRaised.getEvent()).contains(pnummer, id);
     }
 
     @Test(expected = RuntimeException.class)
@@ -39,8 +38,8 @@ public class EventRaisedFactoryTest {
         String id = UUID.randomUUID().toString();
         CaseCreated event = new CaseCreated(id, pnummer);
         ObjectMapper mapper = mock(ObjectMapper.class);
-        given(mapper.writeValueAsString(any())).willThrow(new SimpleJsonProcessingException("Error"));
-        factory = new EventRaisedFactory(mapper);
+        given(mapper.writeValueAsString(ArgumentMatchers.any())).willThrow(new SimpleJsonProcessingException("Error"));
+        factory = new DBEventRaisedFactory(mapper);
         //When
         factory.fromEvent(event);
         //Then

@@ -5,8 +5,9 @@ import net.bakaar.sandbox.cas.domain.CaseService;
 import net.bakaar.sandbox.cas.domain.provider.BussinessIdProvider;
 import net.bakaar.sandbox.cas.domain.repository.CaseRepository;
 import net.bakaar.sandbox.cas.infra.event.db.DBDomainEventEmitter;
-import net.bakaar.sandbox.cas.infra.event.db.EventRaisedFactory;
+import net.bakaar.sandbox.cas.infra.event.db.DBEventRaisedFactory;
 import net.bakaar.sandbox.cas.infra.event.db.EventRaisedRepository;
+import net.bakaar.sandbox.cas.infra.event.inmemory.InMemoryDomainEventEmitter;
 import net.bakaar.sandbox.cas.infra.repository.springdata.SpringDataCaseRepository;
 import net.bakaar.sandbox.cas.infra.repository.springdata.SpringDataCaseRepositoryAdapter;
 import net.bakaar.sandbox.event.common.DomainEventEmitter;
@@ -23,7 +24,8 @@ public class CaseInfraConfigurationTest {
     private EventRaisedRepository eventRaisedRepository = mock(EventRaisedRepository.class);
     private SpringDataCaseRepository springDataCaseRepository = mock(SpringDataCaseRepository.class);
     private BussinessIdProvider provider = mock(BussinessIdProvider.class);
-    private final EventRaisedFactory factory = new EventRaisedFactory(new ObjectMapper());
+    private final ObjectMapper mapper = new ObjectMapper();
+    private final DBEventRaisedFactory factory = new DBEventRaisedFactory(mapper);
 
     @Test
     public void caseRespository_should_return_adapter() {
@@ -31,8 +33,8 @@ public class CaseInfraConfigurationTest {
     }
 
     @Test
-    public void domainEventEmitter_should_return_emitter() {
-        assertThat(configuration.domainEventEmitter(eventRaisedRepository, factory)).isInstanceOf(DBDomainEventEmitter.class);
+    public void dbDomainEventEmitter_should_return_emitter() {
+        assertThat(configuration.dbDomainEventEmitter(eventRaisedRepository, factory)).isInstanceOf(DBDomainEventEmitter.class);
     }
 
     @Test
@@ -40,4 +42,15 @@ public class CaseInfraConfigurationTest {
         assertThat(configuration.caseService(emitter, repository, provider)).isInstanceOf(CaseService.class);
     }
 
+    @Test
+    public void eventRaisedFactory_should_return_the_factory() {
+        assertThat(configuration.eventRaisedFactory(mapper)).isInstanceOf(DBEventRaisedFactory.class);
+    }
+
+    @Test
+    public void inMemoryDomainEventEmitter_should_return_emitter() {
+        assertThat(configuration.inMemoryDomainEventemitter()).isInstanceOf(InMemoryDomainEventEmitter.class);
+    }
+
+    //TODO BusinessIdProvider
 }

@@ -19,7 +19,7 @@ public class DBDomainEventEmitterTest {
     @Mock
     private EventRaisedRepository repository;
     @Mock
-    private EventRaisedFactory factory;
+    private DBEventRaisedFactory factory;
     @InjectMocks
     private DBDomainEventEmitter emitter;
 
@@ -27,14 +27,14 @@ public class DBDomainEventEmitterTest {
     public void emit_should_save_event_in_db() {
         // Given
         DomainEvent event = mock(DomainEvent.class);
-        EventRaised raised = mock(EventRaised.class);
+        DBEventRaised raised = mock(DBEventRaised.class);
         given(factory.fromEvent(event)).willReturn(raised);
         // When
         emitter.emit(event);
         // Then
-        ArgumentCaptor<EventRaised> captor = ArgumentCaptor.forClass(EventRaised.class);
+        ArgumentCaptor<DBEventRaised> captor = ArgumentCaptor.forClass(DBEventRaised.class);
         verify(repository).save(captor.capture());
-        EventRaised eventRaised = captor.getValue();
-        assertThat(eventRaised).isNotNull();
+        DBEventRaised DBEventRaised = captor.getValue();
+        assertThat(DBEventRaised).isNotNull();
     }
 }

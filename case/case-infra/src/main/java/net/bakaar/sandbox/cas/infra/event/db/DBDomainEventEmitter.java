@@ -6,9 +6,9 @@ import net.bakaar.sandbox.event.common.DomainEventEmitter;
 public class DBDomainEventEmitter implements DomainEventEmitter {
 
     private final EventRaisedRepository repository;
-    private EventRaisedFactory factory;
+    private DBEventRaisedFactory factory;
 
-    public DBDomainEventEmitter(EventRaisedRepository repository, EventRaisedFactory factory) {
+    public DBDomainEventEmitter(EventRaisedRepository repository, DBEventRaisedFactory factory) {
         this.repository = repository;
         this.factory = factory;
     }
