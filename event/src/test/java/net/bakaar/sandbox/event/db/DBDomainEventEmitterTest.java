@@ -1,4 +1,4 @@
-package net.bakaar.sandbox.cas.infra.event.db;
+package net.bakaar.sandbox.event.db;
 
 import net.bakaar.sandbox.event.common.DomainEvent;
 import org.junit.Test;
@@ -35,6 +35,6 @@ public class DBDomainEventEmitterTest {
         ArgumentCaptor<DBEventRaised> captor = ArgumentCaptor.forClass(DBEventRaised.class);
         verify(repository).save(captor.capture());
         DBEventRaised DBEventRaised = captor.getValue();
-        assertThat(DBEventRaised).isNotNull();
+        assertThat(DBEventRaised).isEqualTo(raised);
     }
 }

@@ -1,9 +1,6 @@
-package net.bakaar.sandbox.cas.infra.repository;
+package net.bakaar.sandbox.cas.infra.repository.springdata;
 
 import net.bakaar.sandbox.cas.domain.Case;
-import net.bakaar.sandbox.cas.infra.repository.springdata.CaseEntity;
-import net.bakaar.sandbox.cas.infra.repository.springdata.SpringDataCaseRepository;
-import net.bakaar.sandbox.cas.infra.repository.springdata.SpringDataCaseRepositoryAdapter;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;

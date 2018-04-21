@@ -1,12 +1,10 @@
-package net.bakaar.sandbox.cas.infra.event.db;
+package net.bakaar.sandbox.event.db;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import net.bakaar.sandbox.cas.domain.event.CaseCreated;
+import net.bakaar.sandbox.event.common.DomainEvent;
 import org.junit.Test;
 import org.mockito.ArgumentMatchers;
-
-import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
@@ -19,24 +17,20 @@ public class DBDBEventRaisedFactoryTest {
     @Test
     public void fromEvent_should_serialze_event() {
         //Given
-        String pnummer = "pNummer";
-        String id = UUID.randomUUID().toString();
-        CaseCreated event = new CaseCreated(id, pnummer);
+        DomainEvent event = mock(DomainEvent.class);
         ObjectMapper mapper = new ObjectMapper();
         factory = new DBEventRaisedFactory(mapper);
         //When
         DBEventRaised DBEventRaised = factory.fromEvent(event);
         //Then
         assertThat(DBEventRaised).isNotNull();
-        assertThat(DBEventRaised.getEvent()).contains(pnummer, id);
+        assertThat(DBEventRaised.getEvent()).isNotBlank();
     }
 
     @Test(expected = RuntimeException.class)
-    public void name() throws Exception {
+    public void fromEvent_should_throw_runtimeexception() throws Exception {
         //Given
-        String pnummer = "pNummer";
-        String id = UUID.randomUUID().toString();
-        CaseCreated event = new CaseCreated(id, pnummer);
+        DomainEvent event = mock(DomainEvent.class);
         ObjectMapper mapper = mock(ObjectMapper.class);
         given(mapper.writeValueAsString(ArgumentMatchers.any())).willThrow(new SimpleJsonProcessingException("Error"));
         factory = new DBEventRaisedFactory(mapper);

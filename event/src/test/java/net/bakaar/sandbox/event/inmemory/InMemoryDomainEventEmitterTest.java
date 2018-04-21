@@ -1,4 +1,4 @@
-package net.bakaar.sandbox.cas.infra.event.inmemory;
+package net.bakaar.sandbox.event.inmemory;
 
 import net.bakaar.sandbox.event.common.DomainEvent;
 import org.junit.Test;

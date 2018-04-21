@@ -1,7 +1,7 @@
-package net.bakaar.sandbox.cas.infra.event.inmemory;
+package net.bakaar.sandbox.event.inmemory;
 
-import net.bakaar.sandbox.cas.infra.event.common.EventRaised;
 import net.bakaar.sandbox.event.common.DomainEvent;
+import net.bakaar.sandbox.event.common.EventRaised;
 
 public class InMemoryEventRaised implements EventRaised<DomainEvent> {
     private final DomainEvent event;
