@@ -1,5 +1,6 @@
 package MicroserviceSandbox.vcsRoots
 
+import jetbrains.buildServer.configs.kotlin.v2017_2.*
 import jetbrains.buildServer.configs.kotlin.v2017_2.vcs.GitVcsRoot
 
 object MicroserviceSandbox_HttpsGithubComMcKrattMicroserviceSandboxRefsHeadsMaster : GitVcsRoot({
@@ -7,6 +8,7 @@ object MicroserviceSandbox_HttpsGithubComMcKrattMicroserviceSandboxRefsHeadsMast
     id = "MicroserviceSandbox_HttpsGithubComMcKrattMicroserviceSandboxRefsHeadsMaster"
     name = "https://github.com/McKratt/microservice-sandbox#refs/heads/master"
     url = "https://github.com/McKratt/microservice-sandbox"
+    branchSpec = "+:refs/pull/(*/merge)"
     authMethod = password {
         userName = "McKratt"
         password = "credentialsJSON:5f460ae0-2380-4763-8bb9-7c6df62ad0e8"

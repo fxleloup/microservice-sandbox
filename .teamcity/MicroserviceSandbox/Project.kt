@@ -24,7 +24,7 @@ object Project : Project({
             mode = VersionedSettings.Mode.ENABLED
             buildSettingsMode = VersionedSettings.BuildSettingsMode.PREFER_SETTINGS_FROM_VCS
             rootExtId = MicroserviceSandbox_HttpsGithubComMcKrattMicroserviceSandboxRefsHeadsMaster.id
-            showChanges = true
+            showChanges = false
             settingsFormat = VersionedSettings.Format.KOTLIN
             storeSecureParamsOutsideOfVcs = true
         }
