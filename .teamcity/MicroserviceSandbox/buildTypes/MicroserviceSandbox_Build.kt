@@ -1,6 +1,8 @@
 package MicroserviceSandbox.buildTypes
 
+import MicroserviceSandbox.vcsRoots.MicroserviceSandbox_HttpsGithubComMcKrattMicroserviceSandboxRefsHeadsMaster
 import jetbrains.buildServer.configs.kotlin.v2017_2.*
+import jetbrains.buildServer.configs.kotlin.v2017_2.buildFeatures.commitStatusPublisher
 import jetbrains.buildServer.configs.kotlin.v2017_2.buildSteps.maven
 import jetbrains.buildServer.configs.kotlin.v2017_2.triggers.vcs
 
@@ -25,6 +27,19 @@ object MicroserviceSandbox_Build : BuildType({
 
     triggers {
         vcs {
+        }
+    }
+
+    features {
+        commitStatusPublisher {
+            vcsRootExtId = MicroserviceSandbox_HttpsGithubComMcKrattMicroserviceSandboxRefsHeadsMaster.id
+            publisher = github {
+                githubUrl = "https://api.github.com"
+                authType = personalToken {
+                    token = "credentialsJSON:5f460ae0-2380-4763-8bb9-7c6df62ad0e8"
+                }
+            }
+            param("github_oauth_user", "McKratt")
         }
     }
 })
