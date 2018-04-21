@@ -11,6 +11,5 @@ object MicroserviceSandbox_HttpsGithubComMcKrattMicroserviceSandboxRefsHeadsMast
         userName = "McKratt"
         password = "credentialsJSON:5f460ae0-2380-4763-8bb9-7c6df62ad0e8"
     }
-    branch = "ref/heads/master"
     branchSpec = "+:refs/pull/(*/merge)"
 })
