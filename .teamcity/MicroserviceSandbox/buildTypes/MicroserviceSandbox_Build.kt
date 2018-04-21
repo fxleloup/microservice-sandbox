@@ -22,7 +22,7 @@ object MicroserviceSandbox_Build : BuildType({
             goals = "clean verify"
             mavenVersion = defaultProvidedVersion()
             jdkHome = "%env.JDK_18_x64%"
-            jacoco {
+            coverageEngine = jacoco {
                 classLocations = "+:**/target/classes/**"
             }
         }
