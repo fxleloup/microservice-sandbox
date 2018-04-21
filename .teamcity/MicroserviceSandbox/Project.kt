@@ -26,5 +26,12 @@ object Project : Project({
             settingsFormat = VersionedSettings.Format.KOTLIN
             storeSecureParamsOutsideOfVcs = true
         }
+        feature {
+            type = "ReportTab"
+            id = "PROJECT_EXT_1"
+            param("startPage", "pitreports/index.html")
+            param("title", "PIT Report")
+            param("type", "BuildReportTab")
+        }
     }
 })
