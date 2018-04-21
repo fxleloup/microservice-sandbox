@@ -31,12 +31,17 @@ object MicroserviceSandbox_Build : BuildType({
             }
         }
         maven {
+            name = "deploy"
+            goals = "install"
+            mavenVersion = defaultProvidedVersion()
+            jdkHome = "%env.JDK_18_x64%"
+        }
+        maven {
             name = "Mutation Coverage"
             goals = "pitmp:run"
             mavenVersion = defaultProvidedVersion()
             jdkHome = "%env.JDK_18_x64%"
             pomLocation = "case/pom.xml"
-
         }
     }
 
