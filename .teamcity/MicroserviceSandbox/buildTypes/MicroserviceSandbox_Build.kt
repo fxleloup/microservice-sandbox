@@ -1,7 +1,7 @@
 package MicroserviceSandbox.buildTypes
 
 import MicroserviceSandbox.vcsRoots.MicroserviceSandbox_HttpsGithubComMcKrattMicroserviceSandboxRefsHeadsMaster
-import jetbrains.buildServer.configs.kotlin.v2017_2.*
+import jetbrains.buildServer.configs.kotlin.v2017_2.BuildType
 import jetbrains.buildServer.configs.kotlin.v2017_2.buildFeatures.commitStatusPublisher
 import jetbrains.buildServer.configs.kotlin.v2017_2.buildSteps.maven
 import jetbrains.buildServer.configs.kotlin.v2017_2.triggers.vcs
@@ -22,6 +22,9 @@ object MicroserviceSandbox_Build : BuildType({
             goals = "clean verify"
             mavenVersion = defaultProvidedVersion()
             jdkHome = "%env.JDK_18_x64%"
+            jacoco {
+
+            }
         }
     }
 
