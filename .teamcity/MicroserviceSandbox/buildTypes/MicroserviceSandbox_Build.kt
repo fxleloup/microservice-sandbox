@@ -10,7 +10,7 @@ object MicroserviceSandbox_Build : BuildType({
     uuid = "86a5392d-63ce-4be0-9f16-f32f89b04336"
     id = "MicroserviceSandbox_Build"
     name = "Build"
-    artifactRules = "+:**/case/case-infra/target/pitreports/** => pitreports"
+    artifactRules = "+:**/case/case-infra/target/pitreports => pitreports"
 
     vcs {
         root(MicroserviceSandbox.vcsRoots.MicroserviceSandbox_HttpsGithubComMcKrattMicroserviceSandboxRefsHeadsMaster)
