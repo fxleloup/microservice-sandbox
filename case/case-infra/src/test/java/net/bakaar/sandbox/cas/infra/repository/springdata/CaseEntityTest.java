@@ -25,8 +25,13 @@ public class CaseEntityTest {
     @Test
     public void toCase_should_change_entity_to_case() {
         //Given
-        //TODO
+        String pnummer = "pNummer";
+        String id = UUID.randomUUID().toString();
+        CaseEntity caseEntity = new CaseEntity().setBusinessId(id).setPnummer(pnummer);
         //When
+        Case aCase = caseEntity.toCase();
         //Then
+        assertThat(aCase.getPnummer()).isEqualTo(pnummer);
+        assertThat(aCase.getId()).isEqualTo(id);
     }
 }

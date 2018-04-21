@@ -11,4 +11,7 @@ public class EventRaised {
     }
 
 
+    public String getEvent() {
+        return event;
+    }
 }

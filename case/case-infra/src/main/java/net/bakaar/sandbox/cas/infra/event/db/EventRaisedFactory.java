@@ -6,11 +6,15 @@ import net.bakaar.sandbox.event.common.DomainEvent;
 
 public class EventRaisedFactory {
 
-    private static final ObjectMapper MAPPER = new ObjectMapper();
+    private final ObjectMapper mapper;
 
-    public static EventRaised fromEvent(DomainEvent event) {
+    public EventRaisedFactory(ObjectMapper mapper) {
+        this.mapper = mapper;
+    }
+
+    public EventRaised fromEvent(DomainEvent event) {
         try {
-            return new EventRaised(MAPPER.writeValueAsString(event));
+            return new EventRaised(mapper.writeValueAsString(event));
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }

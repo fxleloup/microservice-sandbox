@@ -9,6 +9,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -17,13 +18,17 @@ public class DBDomainEventEmitterTest {
 
     @Mock
     private EventRaisedRepository repository;
+    @Mock
+    private EventRaisedFactory factory;
     @InjectMocks
     private DBDomainEventEmitter emitter;
 
     @Test
-    public void emit_should_save_event_in_db() throws Exception {
+    public void emit_should_save_event_in_db() {
         // Given
         DomainEvent event = mock(DomainEvent.class);
+        EventRaised raised = mock(EventRaised.class);
+        given(factory.fromEvent(event)).willReturn(raised);
         // When
         emitter.emit(event);
         // Then
