@@ -1,14 +1,12 @@
-package net.bakaar.sandbox.cas.domain.aggregate;
-
-import java.util.UUID;
+package net.bakaar.sandbox.cas.domain;
 
 public class Case {
     private final String pnummer;
-    private String id;
+    private final String id;
 
-    public Case(String pnummer) {
+    public Case(String id, String pnummer) {
         this.pnummer = pnummer;
-        id = UUID.randomUUID().toString();
+        this.id = id;
     }
 
     public String getPnummer() {

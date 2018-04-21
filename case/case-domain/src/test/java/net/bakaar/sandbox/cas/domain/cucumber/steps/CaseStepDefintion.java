@@ -1,11 +1,14 @@
 package net.bakaar.sandbox.cas.domain.cucumber.steps;
 
 import cucumber.api.java8.En;
+import net.bakaar.sandbox.cas.domain.Case;
+import net.bakaar.sandbox.cas.domain.CaseDomainObjectFactory;
 import net.bakaar.sandbox.cas.domain.CaseService;
-import net.bakaar.sandbox.cas.domain.aggregate.Case;
 import net.bakaar.sandbox.cas.domain.event.CaseCreated;
+import net.bakaar.sandbox.cas.domain.provider.BussinessIdProvider;
 import net.bakaar.sandbox.cas.domain.repository.CaseRepository;
-import net.bakaar.sandbox.event.publisher.DomainEventPublisher;
+import net.bakaar.sandbox.cas.domain.util.UUIDIdProvider;
+import net.bakaar.sandbox.event.common.DomainEventEmitter;
 import org.mockito.ArgumentCaptor;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -17,9 +20,10 @@ import static org.mockito.Mockito.verify;
 
 public class CaseStepDefintion implements En {
 
-    private DomainEventPublisher publisher = mock(DomainEventPublisher.class);
+    private DomainEventEmitter publisher = mock(DomainEventEmitter.class);
     private CaseRepository repository = mock(CaseRepository.class);
-    private CaseService service = new CaseService(publisher, repository);
+    private BussinessIdProvider bussinessIdProvider = new UUIDIdProvider();
+    private CaseService service = new CaseService(publisher, repository, new CaseDomainObjectFactory(bussinessIdProvider));
     private ArgumentCaptor<CaseCreated> eventArgumentCaptor = ArgumentCaptor.forClass(CaseCreated.class);
     private Case aCase;
 
@@ -29,7 +33,7 @@ public class CaseStepDefintion implements En {
             given(repository.save(any(Case.class))).willAnswer(invocation -> invocation.getArgument(0));
             Throwable throwable = catchThrowable(() -> aCase = this.service.createCase(pnummer));
             verify(repository).save(any(Case.class));
-            verify(publisher).publish(eventArgumentCaptor.capture());
+            verify(publisher).emit(eventArgumentCaptor.capture());
             assertThat(throwable).isNull();
         });
 
@@ -43,4 +47,5 @@ public class CaseStepDefintion implements En {
             assertThat(aCase.getId()).isNotNull();
         });
     }
+
 }
