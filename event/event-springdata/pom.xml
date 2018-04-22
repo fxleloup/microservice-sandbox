@@ -3,16 +3,18 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>case</artifactId>
+        <artifactId>event</artifactId>
         <groupId>net.bakaar</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>case-infra</artifactId>
+
+    <artifactId>event-springdata</artifactId>
+
     <dependencies>
         <dependency>
             <groupId>net.bakaar</groupId>
-            <artifactId>case-domain</artifactId>
+            <artifactId>event-commons</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
@@ -20,23 +22,8 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>net.bakaar</groupId>
-            <artifactId>messaging</artifactId>
-            <version>${messaging.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>net.bakaar</groupId>
-            <artifactId>event-springdata</artifactId>
-            <version>${event.version}</version>
         </dependency>
     </dependencies>
 </project>
