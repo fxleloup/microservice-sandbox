@@ -6,6 +6,8 @@ import net.bakaar.sandbox.event.common.DomainEvent;
 import org.junit.Test;
 import org.mockito.ArgumentMatchers;
 
+import java.time.Instant;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
@@ -20,11 +22,14 @@ public class DBDBEventRaisedFactoryTest {
         DomainEvent event = mock(DomainEvent.class);
         ObjectMapper mapper = new ObjectMapper();
         factory = new DBEventRaisedFactory(mapper);
+        Instant before = Instant.now();
         //When
         DBEventRaised DBEventRaised = factory.fromEvent(event);
         //Then
+        Instant after = Instant.now();
         assertThat(DBEventRaised).isNotNull();
         assertThat(DBEventRaised.getEvent()).isNotBlank();
+        assertThat(DBEventRaised.raiseAt()).isBetween(before, after);
     }
 
     @Test(expected = RuntimeException.class)
