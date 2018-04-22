@@ -1,9 +1,7 @@
 package MicroserviceSandbox
 
-import MicroserviceSandbox.buildTypes.*
-import MicroserviceSandbox.vcsRoots.*
+import MicroserviceSandbox.buildTypes.MicroserviceSandbox_Build
 import MicroserviceSandbox.vcsRoots.MicroserviceSandbox_HttpsGithubComMcKrattMicroserviceSandboxRefsHeadsMaster
-import jetbrains.buildServer.configs.kotlin.v2017_2.*
 import jetbrains.buildServer.configs.kotlin.v2017_2.Project
 import jetbrains.buildServer.configs.kotlin.v2017_2.projectFeatures.VersionedSettings
 import jetbrains.buildServer.configs.kotlin.v2017_2.projectFeatures.versionedSettings
@@ -27,6 +25,13 @@ object Project : Project({
             showChanges = false
             settingsFormat = VersionedSettings.Format.KOTLIN
             storeSecureParamsOutsideOfVcs = true
+        }
+        feature {
+            type = "ReportTab"
+            id = "PROJECT_EXT_1"
+            param("startPage", "pitreports/index.html")
+            param("title", "PIT Report")
+            param("type", "BuildReportTab")
         }
     }
 })
