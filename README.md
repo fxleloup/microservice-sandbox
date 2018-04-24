@@ -22,6 +22,10 @@ Those diagrams are freely inspired from the C4 model from Simons.
 - Interrogate the Claim system and show a Case with all the information of the related partner
 - Once the Case closed, the related Task should closed too
 
+### NFRs
+- Every call should be tracked with a CorrelationID
+- Every sent event should resendable
+- All system should be idempotent (multiple messages delivery)
 
 ## Techological show cases
 
@@ -33,6 +37,9 @@ Those diagrams are freely inspired from the C4 model from Simons.
 
 ## TODO's
 * Service discovery with Spring Cloud Eureka
+* Call tracking with :
+  * Zipkin
+  * Jhipster console
 * Security with Spring Security
   * JWT
 * Distributed Configuration
