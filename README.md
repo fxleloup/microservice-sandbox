@@ -7,14 +7,27 @@ Those diagrams are freely inspired from the C4 model from Simons.
 
 ### Systems
 
-![Systems Doagram](./doc/images/systems.png)
+![Systems Diagram](./doc/images/systems.png)
 
 ### Components
 
-![Components Doagram](./doc/images/components.png)
+![Components Diagram](./doc/images/components.png)
 
 ## Use Cases
-I want to show precises use cases through those projects
+
+- Create a Partner in the dedicated system
+- Create a Case linked to a Partner, the Case should become a Business Number
+- When a Case is created, a Task should appear to remind me to treat the Case
+- Change the Business ID of a Partner (the change should cascade to the Claim domain)
+- Interrogate the Claim system and show a Case with all the information of the related partner
+- Once the Case closed, the related Task should closed too
+
+### NFRs
+- Every call should be tracked with a CorrelationID
+- Every sent event should resendable
+- All system should be idempotent (multiple messages delivery)
+
+## Techological show cases
 
 * Synchronous call with gentle degradation (cache)
 * Long business transaction through multiple microservices enduring failure (Sagas)
@@ -24,6 +37,9 @@ I want to show precises use cases through those projects
 
 ## TODO's
 * Service discovery with Spring Cloud Eureka
+* Call tracking with :
+  * Zipkin
+  * Jhipster console
 * Security with Spring Security
   * JWT
 * Distributed Configuration
