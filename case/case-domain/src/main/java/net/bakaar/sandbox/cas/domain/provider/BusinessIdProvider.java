@@ -1,5 +1,5 @@
 package net.bakaar.sandbox.cas.domain.provider;
 
-public interface BussinessIdProvider {
+public interface BusinessIdProvider {
     String generateId();
 }
