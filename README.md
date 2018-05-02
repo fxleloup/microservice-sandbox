@@ -63,4 +63,4 @@ Those diagrams are freely inspired from the C4 model from Simons.
   * Use DockerHub to deploy Container
   * Use Minikub in local to Deploy
   * Jenkins pipeline as Code
-* Use Hibernate Search in Partner to find partner by birthDate or forname
+* Use Hibernate Search in Partner to find partner by name or forname
