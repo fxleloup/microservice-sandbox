@@ -51,5 +51,10 @@
             <artifactId>event-springdata</artifactId>
             <version>${event.version}</version>
         </dependency>
+        <dependency>
+            <groupId>net.bakaar</groupId>
+            <artifactId>event-inmemory</artifactId>
+            <version>${event.version}</version>
+        </dependency>
     </dependencies>
 </project>

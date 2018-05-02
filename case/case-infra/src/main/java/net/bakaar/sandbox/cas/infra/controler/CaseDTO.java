@@ -1,11 +1,19 @@
 package net.bakaar.sandbox.cas.infra.controler;
 
+import net.bakaar.sandbox.cas.domain.Case;
+
 import java.time.LocalDate;
 
 public class CaseDTO {
 
     private PartnerDTO injured;
     private String id;
+
+    static CaseDTO fromCase(Case aCase) {
+        return new CaseDTO().setId(aCase.getId())
+                .addPnummerInjured(aCase.getPnummer())
+                .addBirhtDateInjured(aCase.getBirthDate());
+    }
 
     CaseDTO addPnummerInjured(String pNummer) {
         checkIfInjuredNull();

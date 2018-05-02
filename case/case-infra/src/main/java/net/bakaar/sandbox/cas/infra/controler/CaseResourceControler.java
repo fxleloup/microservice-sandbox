@@ -1,10 +1,13 @@
 package net.bakaar.sandbox.cas.infra.controler;
 
+import net.bakaar.sandbox.cas.domain.Case;
+import net.bakaar.sandbox.cas.domain.CaseService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import static net.bakaar.sandbox.cas.infra.controler.CaseDTO.fromCase;
 import static org.springframework.http.ResponseEntity.created;
 import static org.springframework.web.util.UriComponentsBuilder.fromPath;
 
@@ -12,13 +15,19 @@ import static org.springframework.web.util.UriComponentsBuilder.fromPath;
 public class CaseResourceControler {
 
     private final static String CASE_ROOT_URI = "/cases";
+    private final CaseService service;
+
+    public CaseResourceControler(CaseService service) {
+        this.service = service;
+    }
 
     @PostMapping(value = CASE_ROOT_URI, consumes = "application/json")
     public ResponseEntity<CaseDTO> addNewCase(@RequestBody CaseDTO aCase) {
+        Case createdCase = service.createCase(aCase.getInjured().getPnummer(), aCase.getInjured().getBirthDate());
         return created(
-                fromPath(CASE_ROOT_URI + "/" + aCase.getId())
+                fromPath(CASE_ROOT_URI + "/" + createdCase.getId())
                         .build()
                         .toUri())
-                .body(aCase);
+                .body(fromCase(createdCase));
     }
 }

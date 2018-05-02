@@ -6,7 +6,7 @@
     <artifactId>microservice-sandbox</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <birthDate>Microservice Sandbox</birthDate>
+    <name>Microservice Sandbox</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
