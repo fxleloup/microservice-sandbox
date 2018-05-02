@@ -1,12 +1,16 @@
 package net.bakaar.sandbox.cas.domain;
 
+import java.time.LocalDate;
+
 public class Case {
     private final String pnummer;
     private final String id;
+    private LocalDate birthDate;
 
-    public Case(String id, String pnummer) {
+    public Case(String id, String pnummer, LocalDate birthDate) {
         this.pnummer = pnummer;
         this.id = id;
+        this.birthDate = birthDate;
     }
 
     public String getPnummer() {
@@ -18,4 +22,7 @@ public class Case {
     }
 
 
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
 }

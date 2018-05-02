@@ -8,6 +8,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -27,15 +28,17 @@ public class SpringDataCaseRepositoryAdapterTest {
     public void save_should_returned_the_saved_case() {
         //Given
         String pnummer = "pnummer";
+        LocalDate birthDate = LocalDate.now();
         String id = UUID.randomUUID().toString();
-        Case aCase = new Case(id, pnummer);
+        Case aCase = new Case(id, pnummer, birthDate);
         given(springDataCaseRepository.save(any(CaseEntity.class))).willAnswer(invocation -> invocation.getArgument(0));
         //When
         Case returnedCase = springDataCaseRepositoryAdapter.save(aCase);
         //Then
         ArgumentCaptor<CaseEntity> caseEntityArgumentCaptor = ArgumentCaptor.forClass(CaseEntity.class);
         verify(springDataCaseRepository).save(caseEntityArgumentCaptor.capture());
-        assertThat(returnedCase).isNotNull().isEqualToComparingOnlyGivenFields(aCase, "pnummer", "id");
+        assertThat(returnedCase).isNotNull()
+                .isEqualToComparingOnlyGivenFields(aCase, "pnummer", "birthDate", "id");
         CaseEntity entity = caseEntityArgumentCaptor.getValue();
         assertThat(entity).isNotNull();
     }

@@ -3,10 +3,17 @@ package net.bakaar.sandbox.event.springdata;
 import net.bakaar.sandbox.event.common.EventRaised;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.Instant;
 
 @Entity
 public class DBEventRaised implements EventRaised<String> {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private final String event;
     private Instant raised;
 
@@ -27,5 +34,9 @@ public class DBEventRaised implements EventRaised<String> {
     @Override
     public Instant raiseAt() {
         return raised;
+    }
+
+    public Long getId() {
+        return id;
     }
 }

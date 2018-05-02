@@ -1,12 +1,13 @@
 package net.bakaar.sandbox.cas.domain;
 
-import net.bakaar.sandbox.cas.domain.provider.BussinessIdProvider;
+import net.bakaar.sandbox.cas.domain.provider.BusinessIdProvider;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -17,7 +18,7 @@ import static org.mockito.Mockito.verify;
 public class CaseDomainObjectFactoryTest {
 
     @Mock
-    private BussinessIdProvider bussinessIdProvider;
+    private BusinessIdProvider businessIdProvider;
     @InjectMocks
     private CaseDomainObjectFactory factory;
 
@@ -26,13 +27,15 @@ public class CaseDomainObjectFactoryTest {
         //Given
         String pnummer = "pnummer";
         String id = UUID.randomUUID().toString();
-        given(bussinessIdProvider.generateId()).willReturn(id);
+        LocalDate birthDate = LocalDate.now();
+        given(businessIdProvider.generateId()).willReturn(id);
         //When
-        Case aCase = factory.createCase(pnummer);
+        Case aCase = factory.createCase(pnummer, birthDate);
         //Then
-        verify(bussinessIdProvider).generateId();
+        verify(businessIdProvider).generateId();
         assertThat(aCase).isNotNull();
         assertThat(aCase.getId()).isEqualTo(id);
         assertThat(aCase.getPnummer()).isEqualTo(pnummer);
+        assertThat(aCase.getBirthDate()).isEqualTo(birthDate);
     }
 }
