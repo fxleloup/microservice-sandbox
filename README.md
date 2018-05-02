@@ -36,6 +36,10 @@ Those diagrams are freely inspired from the C4 model from Simon Brown.
 * Communication with messages (Polling)
 
 ## TODO's
+
+[ ] Make a todo list ;-)
+
+## Thing to explore
 * Service discovery with Spring Cloud Eureka
 * Call tracking with :
   * Zipkin
