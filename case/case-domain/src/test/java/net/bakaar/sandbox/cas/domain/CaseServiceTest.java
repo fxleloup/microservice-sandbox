@@ -7,6 +7,7 @@ import net.bakaar.sandbox.event.common.DomainEventEmitter;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -30,7 +31,7 @@ public class CaseServiceTest {
         given(repository.save(any(Case.class))).willAnswer(invocationOnMock -> invocationOnMock.getArgument(0));
         given(businessIdProvider.generateId()).willReturn(UUID.randomUUID().toString());
         // When
-        Case aCase = service.createCase(pnummer);
+        Case aCase = service.createCase(pnummer, LocalDate.now());
         // Then
         assertThat(aCase).isNotNull();
         assertThat(aCase.getPnummer()).isEqualTo(pnummer);
@@ -44,7 +45,7 @@ public class CaseServiceTest {
         given(repository.save(any(Case.class))).willAnswer(invocationOnMock -> invocationOnMock.getArgument(0));
         given(businessIdProvider.generateId()).willReturn(UUID.randomUUID().toString());
         // When
-        Case aCase = service.createCase(pnummer);
+        Case aCase = service.createCase(pnummer, LocalDate.now());
         // Then
         ArgumentCaptor<CaseCreated> captor = ArgumentCaptor.forClass(CaseCreated.class);
         verify(emitter).emit(captor.capture());

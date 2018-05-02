@@ -10,6 +10,7 @@ import net.bakaar.sandbox.cas.domain.repository.CaseRepository;
 import net.bakaar.sandbox.event.common.DomainEventEmitter;
 import org.mockito.ArgumentCaptor;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -33,7 +34,7 @@ public class CaseStepDefintion implements En {
         When("^we create a case with a Partner number (.+)$", (String pnummer) -> {
             given(repository.save(any(Case.class))).willAnswer(invocation -> invocation.getArgument(0));
             given(businessIdProvider.generateId()).willReturn(UUID.randomUUID().toString());
-            Throwable throwable = catchThrowable(() -> aCase = this.service.createCase(pnummer));
+            Throwable throwable = catchThrowable(() -> aCase = this.service.createCase(pnummer, LocalDate.now()));
             verify(repository).save(any(Case.class));
             verify(publisher).emit(eventArgumentCaptor.capture());
             assertThat(throwable).isNull();

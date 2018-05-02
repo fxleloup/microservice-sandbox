@@ -7,6 +7,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -26,13 +27,15 @@ public class CaseDomainObjectFactoryTest {
         //Given
         String pnummer = "pnummer";
         String id = UUID.randomUUID().toString();
+        LocalDate birthDate = LocalDate.now();
         given(businessIdProvider.generateId()).willReturn(id);
         //When
-        Case aCase = factory.createCase(pnummer);
+        Case aCase = factory.createCase(pnummer, birthDate);
         //Then
         verify(businessIdProvider).generateId();
         assertThat(aCase).isNotNull();
         assertThat(aCase.getId()).isEqualTo(id);
         assertThat(aCase.getPnummer()).isEqualTo(pnummer);
+        assertThat(aCase.getBirthDate()).isEqualTo(birthDate);
     }
 }
