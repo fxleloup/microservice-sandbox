@@ -37,9 +37,20 @@ Those diagrams are freely inspired from the C4 model from Simon Brown.
 
 ## TODO's
 
-- [ ] Make a todo list ;-)
+- [x] Make a todo list ;-)
+- [ ] Implement VO's for insured and PNummer
+- [ ] Implement Business Number provider
+- [ ] Create Partner service
+- [ ] Add partner info
+- [ ] Create the claim link service
+- [ ] Create polling service
+- [ ] Add callcontext for all calls
+- [ ] Put in place the calls tracking system
+- [ ] Add the messaging part
+- [ ] Create the task service
+- [ ] Make the partner number change cascade to Case
 
-## Thing to explore
+## Things to explore
 * Service discovery with Spring Cloud Eureka
 * Call tracking with :
   * Zipkin
