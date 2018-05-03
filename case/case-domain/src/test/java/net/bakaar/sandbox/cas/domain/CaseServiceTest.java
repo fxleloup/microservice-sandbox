@@ -45,7 +45,7 @@ public class CaseServiceTest {
         given(repository.save(any(Case.class))).willAnswer(invocationOnMock -> invocationOnMock.getArgument(0));
         given(businessIdProvider.generateId()).willReturn(UUID.randomUUID().toString());
         // When
-        Case aCase = service.createCase(pnumme);
+        Case aCase = service.createCase(pnummer);
         // Then
         ArgumentCaptor<CaseCreated> captor = ArgumentCaptor.forClass(CaseCreated.class);
         verify(emitter).emit(captor.capture());

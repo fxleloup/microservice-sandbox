@@ -1,6 +1,7 @@
 package net.bakaar.sandbox.cas.infra.repository.springdata;
 
 import net.bakaar.sandbox.cas.domain.Case;
+import net.bakaar.sandbox.cas.domain.vo.PNummer;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,7 +19,7 @@ public class CaseEntity {
 
     public static CaseEntity fromCase(Case aCase) {
         return new CaseEntity()
-                .setPnummer(aCase.getPnummer())
+                .setPnummer(aCase.getPnummer().format())
                 .setBusinessId(aCase.getId());
     }
 
@@ -41,6 +42,6 @@ public class CaseEntity {
     }
 
     public Case toCase() {
-        return new Case(this.businessId, this.getPnummer());
+        return new Case(this.businessId, PNummer.of(this.getPnummer()));
     }
 }

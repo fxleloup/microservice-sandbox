@@ -1,6 +1,7 @@
 package net.bakaar.sandbox.cas.infra.repository.springdata;
 
 import net.bakaar.sandbox.cas.domain.Case;
+import net.bakaar.sandbox.cas.domain.vo.PNummer;
 import org.junit.Test;
 
 import java.util.UUID;
@@ -12,9 +13,9 @@ public class CaseEntityTest {
     @Test
     public void fromCase_should_create_entity_with_case_values() {
         //Given
-        String pnummer = "pNummer";
+        String pnummer = "P12345678";
         String id = UUID.randomUUID().toString();
-        Case aCase = new Case(id, pnummer);
+        Case aCase = new Case(id, PNummer.of(pnummer));
         //When
         CaseEntity entity = CaseEntity.fromCase(aCase);
         //Then
@@ -25,13 +26,13 @@ public class CaseEntityTest {
     @Test
     public void toCase_should_change_entity_to_case() {
         //Given
-        String pnummer = "pNummer";
+        String pnummer = "P12345678";
         String id = UUID.randomUUID().toString();
         CaseEntity caseEntity = new CaseEntity().setBusinessId(id).setPnummer(pnummer);
         //When
         Case aCase = caseEntity.toCase();
         //Then
-        assertThat(aCase.getPnummer()).isEqualTo(pnummer);
+        assertThat(aCase.getPnummer()).isEqualTo(PNummer.of(pnummer));
         assertThat(aCase.getId()).isEqualTo(id);
     }
 }

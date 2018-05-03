@@ -13,7 +13,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 import static net.bakaar.sandbox.cas.infra.controler.CaseResourceControlerIT.RegexMatcher.matches;
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8;
@@ -34,7 +33,7 @@ public class CaseResourceControlerIT {
     @Test
     public void endpoint_should_return_case() throws Exception {
         // Given
-        String pnummer = "PNummer";
+        String pnummer = "P12345678";
         LocalDate birthDate = LocalDate.of(1981, 12, 16);
         CaseDTO caseDTO = new CaseDTO()
                 .addPnummerInjured(pnummer)
@@ -50,7 +49,8 @@ public class CaseResourceControlerIT {
                 .andExpect(status().isCreated())
                 .andExpect(header().string("location", matches("/cases/([a-f0-9]){8}(-[a-f0-9]{4}){3}-([a-f0-9]){12}")))
                 .andExpect(jsonPath("$.injured.pnummer").value(pnummer))
-                .andExpect(jsonPath("$.injured.birthDate").value(birthDate.format(DateTimeFormatter.ISO_DATE)))
+                //TODO add this test when Person Service and the link with is established
+//                .andExpect(jsonPath("$.injured.birthDate").value(birthDate.format(DateTimeFormatter.ISO_DATE)))
                 .andExpect(jsonPath("$.id").isNotEmpty())
         ;
     }
