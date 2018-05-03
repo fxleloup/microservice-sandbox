@@ -42,6 +42,8 @@ public class CaseEntity {
     }
 
     public Case toCase() {
-        return new Case(this.businessId, PNummer.of(this.getPnummer()));
+        return Case.builder()
+                .withBusinnessId(this.businessId)
+                .withInjured(PNummer.of(this.getPnummer()));
     }
 }

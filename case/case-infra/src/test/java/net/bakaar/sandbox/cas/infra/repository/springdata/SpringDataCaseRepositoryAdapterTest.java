@@ -29,7 +29,7 @@ public class SpringDataCaseRepositoryAdapterTest {
         //Given
         String pnummer = "P12345678";
         String id = UUID.randomUUID().toString();
-        Case aCase = new Case(id, PNummer.of(pnummer));
+        Case aCase = Case.builder().withBusinnessId(id).withInjured(PNummer.of(pnummer));
         given(springDataCaseRepository.save(any(CaseEntity.class))).willAnswer(invocation -> invocation.getArgument(0));
         //When
         Case returnedCase = springDataCaseRepositoryAdapter.save(aCase);

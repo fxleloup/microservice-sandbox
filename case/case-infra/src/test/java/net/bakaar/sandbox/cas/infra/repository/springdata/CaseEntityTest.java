@@ -15,7 +15,7 @@ public class CaseEntityTest {
         //Given
         String pnummer = "P12345678";
         String id = UUID.randomUUID().toString();
-        Case aCase = new Case(id, PNummer.of(pnummer));
+        Case aCase = Case.builder().withBusinnessId(id).withInjured(PNummer.of(pnummer));
         //When
         CaseEntity entity = CaseEntity.fromCase(aCase);
         //Then

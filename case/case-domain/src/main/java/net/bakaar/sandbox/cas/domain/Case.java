@@ -6,7 +6,7 @@ public class Case {
     private final PNummer injured;
     private final String id;
 
-    public Case(String id, PNummer injured) {
+    private Case(String id, PNummer injured) {
         this.injured = injured;
         this.id = id;
     }
@@ -17,5 +17,17 @@ public class Case {
 
     public String getId() {
         return id;
+    }
+
+    public static BusinessIdBuilder builder() {
+        return id -> injured -> new Case(id, injured);
+    }
+
+    public interface InjuredBuilder {
+        Case withInjured(PNummer injured);
+    }
+
+    public interface BusinessIdBuilder {
+        InjuredBuilder withBusinnessId(String id);
     }
 }

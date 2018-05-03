@@ -12,6 +12,8 @@ public class CaseDomainObjectFactory {
     }
 
     public Case createCase(String pnummer) {
-        return new Case(businessIdProvider.generateId(), PNummer.of(pnummer));
+        return Case.builder()
+                .withBusinnessId(businessIdProvider.generateId())
+                .withInjured(PNummer.of(pnummer));
     }
 }
