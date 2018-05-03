@@ -43,11 +43,6 @@
         </dependency>
         <dependency>
             <groupId>net.bakaar</groupId>
-            <artifactId>messaging</artifactId>
-            <version>${messaging.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>net.bakaar</groupId>
             <artifactId>event-springdata</artifactId>
             <version>${event.version}</version>
         </dependency>
