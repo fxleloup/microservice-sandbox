@@ -11,8 +11,7 @@ public class CaseDTO {
 
     static CaseDTO fromCase(Case aCase) {
         return new CaseDTO().setId(aCase.getId())
-                .addPnummerInjured(aCase.getPnummer())
-                .addBirhtDateInjured(aCase.getBirthDate());
+                .addPnummerInjured(aCase.getPnummer());
     }
 
     CaseDTO addPnummerInjured(String pNummer) {

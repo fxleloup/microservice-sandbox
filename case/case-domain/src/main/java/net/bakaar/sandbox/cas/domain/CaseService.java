@@ -4,8 +4,6 @@ import net.bakaar.sandbox.cas.domain.event.CaseCreated;
 import net.bakaar.sandbox.cas.domain.repository.CaseRepository;
 import net.bakaar.sandbox.event.common.DomainEventEmitter;
 
-import java.time.LocalDate;
-
 public class CaseService {
     private final DomainEventEmitter eventEmitter;
     private final CaseRepository repository;
@@ -19,8 +17,8 @@ public class CaseService {
         this.factory = factory;
     }
 
-    public Case createCase(String pnummer, LocalDate birthDate) {
-        Case caseCreated = factory.createCase(pnummer, birthDate);
+    public Case createCase(String pnummer) {
+        Case caseCreated = factory.createCase(pnummer);
         CaseCreated event = new CaseCreated(caseCreated.getId(), caseCreated.getPnummer());
         eventEmitter.emit(event);
         return repository.save(caseCreated);
