@@ -32,7 +32,7 @@ public class CaseEntityTest {
         //When
         Case aCase = caseEntity.toCase();
         //Then
-        assertThat(aCase.getPnummer()).isEqualTo(PNummer.of(pnummer));
+        assertThat(aCase.getInjured()).isEqualTo(PNummer.of(pnummer));
         assertThat(aCase.getId()).isEqualTo(id);
     }
 }

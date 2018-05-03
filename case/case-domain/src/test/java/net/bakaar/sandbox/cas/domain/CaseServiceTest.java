@@ -34,7 +34,7 @@ public class CaseServiceTest {
         Case aCase = service.createCase(pnummer);
         // Then
         assertThat(aCase).isNotNull();
-        assertThat(aCase.getPnummer()).isEqualTo(PNummer.of(pnummer));
+        assertThat(aCase.getInjured()).isEqualTo(PNummer.of(pnummer));
         verify(repository).save(aCase);
     }
 
@@ -51,7 +51,7 @@ public class CaseServiceTest {
         verify(emitter).emit(captor.capture());
         CaseCreated eventEmitted = captor.getValue();
         assertThat(eventEmitted.getId()).isEqualTo(aCase.getId());
-        assertThat(eventEmitted.getPnummer()).isEqualTo(aCase.getPnummer());
+        assertThat(eventEmitted.getPnummer()).isEqualTo(aCase.getInjured());
 
     }
 }

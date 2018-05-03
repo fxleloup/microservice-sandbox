@@ -42,7 +42,7 @@ public class CaseStepDefintion implements En {
         Then("^an Event mentioning the new case is emitted$", () -> {
             CaseCreated event = eventArgumentCaptor.getValue();
             assertThat(event.getId()).isEqualTo(aCase.getId());
-            assertThat(event.getPnummer()).isEqualTo(aCase.getPnummer());
+            assertThat(event.getPnummer()).isEqualTo(aCase.getInjured());
         });
 
         Then("^this Case should have an id$", () -> {

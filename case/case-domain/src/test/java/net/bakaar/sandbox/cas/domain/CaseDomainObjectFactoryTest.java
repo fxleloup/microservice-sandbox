@@ -34,6 +34,6 @@ public class CaseDomainObjectFactoryTest {
         verify(businessIdProvider).generateId();
         assertThat(aCase).isNotNull();
         assertThat(aCase.getId()).isEqualTo(id);
-        assertThat(aCase.getPnummer()).isEqualTo(PNummer.of(pnummer));
+        assertThat(aCase.getInjured()).isEqualTo(PNummer.of(pnummer));
     }
 }

@@ -37,7 +37,7 @@ public class SpringDataCaseRepositoryAdapterTest {
         ArgumentCaptor<CaseEntity> caseEntityArgumentCaptor = ArgumentCaptor.forClass(CaseEntity.class);
         verify(springDataCaseRepository).save(caseEntityArgumentCaptor.capture());
         assertThat(returnedCase).isNotNull()
-                .isEqualToComparingOnlyGivenFields(aCase, "pnummer", "id");
+                .isEqualToComparingOnlyGivenFields(aCase, "injured", "id");
         CaseEntity entity = caseEntityArgumentCaptor.getValue();
         assertThat(entity).isNotNull();
     }

@@ -19,7 +19,7 @@ public class CaseService {
 
     public Case createCase(String pnummer) {
         Case caseCreated = factory.createCase(pnummer);
-        CaseCreated event = new CaseCreated(caseCreated.getId(), caseCreated.getPnummer());
+        CaseCreated event = new CaseCreated(caseCreated.getId(), caseCreated.getInjured());
         eventEmitter.emit(event);
         return repository.save(caseCreated);
     }

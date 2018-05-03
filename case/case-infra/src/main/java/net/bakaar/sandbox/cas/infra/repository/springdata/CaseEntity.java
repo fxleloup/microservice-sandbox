@@ -19,7 +19,7 @@ public class CaseEntity {
 
     public static CaseEntity fromCase(Case aCase) {
         return new CaseEntity()
-                .setPnummer(aCase.getPnummer().format())
+                .setPnummer(aCase.getInjured().format())
                 .setBusinessId(aCase.getId());
     }
 
