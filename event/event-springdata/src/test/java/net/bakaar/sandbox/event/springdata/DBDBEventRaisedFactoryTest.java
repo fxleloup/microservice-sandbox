@@ -24,12 +24,13 @@ public class DBDBEventRaisedFactoryTest {
         factory = new DBEventRaisedFactory(mapper);
         Instant before = Instant.now();
         //When
-        DBEventRaised DBEventRaised = factory.fromEvent(event);
+        DBEventRaised dbEventRaised = factory.fromEvent(event);
         //Then
         Instant after = Instant.now();
-        assertThat(DBEventRaised).isNotNull();
-        assertThat(DBEventRaised.getEvent()).isNotBlank();
-        assertThat(DBEventRaised.raiseAt()).isBetween(before, after);
+        assertThat(dbEventRaised).isNotNull();
+        assertThat(dbEventRaised.getEvent()).isNotBlank();
+        assertThat(dbEventRaised.raiseAt()).isBetween(before, after);
+        assertThat(dbEventRaised.getId()).isNull();
     }
 
     @Test(expected = RuntimeException.class)
