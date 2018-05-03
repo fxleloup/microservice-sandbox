@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/McKratt/microservice-sandbox.svg?branch=master)](https://travis-ci.org/McKratt/microservice-sandbox)
 # Microservice Sandbox 
 
 This Sandbox use a simplified version of an Insurance Claim System.
