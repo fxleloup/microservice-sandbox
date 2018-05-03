@@ -1,12 +1,13 @@
 package net.bakaar.sandbox.cas.domain.event;
 
+import net.bakaar.sandbox.cas.domain.vo.PNummer;
 import net.bakaar.sandbox.event.common.DomainEvent;
 
 public class CaseCreated implements DomainEvent {
     private final String id;
-    private final String pnummer;
+    private final PNummer pnummer;
 
-    public CaseCreated(String id, String pnummer) {
+    public CaseCreated(String id, PNummer pnummer) {
         this.id = id;
         this.pnummer = pnummer;
     }
@@ -15,7 +16,7 @@ public class CaseCreated implements DomainEvent {
         return id;
     }
 
-    public String getPnummer() {
+    public PNummer getPnummer() {
         return pnummer;
     }
 }

@@ -38,13 +38,18 @@ Those diagrams are freely inspired from the C4 model from Simon Brown.
 ## TODO's
 
 - [x] Make a todo list ;-)
-- [ ] Implement VO's for insured and PNummer
+- [x] Implement VO's for insured and PNummer
+- [ ] Add TravisCI configuration
+- [ ] Add SonarQube analysis to the build
+- [ ] Add Spring-Boot Application to Case to run it and test via rest interface
+- [ ] Create docker-compose file to run Case and its DB inside containers
 - [ ] Implement Business Number provider
 - [ ] Create Partner service
 - [ ] Add partner info
 - [ ] Create the claim link service
 - [ ] Create polling service
 - [ ] Add callcontext for all calls
+- [ ] Add Call context for all logging
 - [ ] Put in place the calls tracking system
 - [ ] Add the messaging part
 - [ ] Create the task service

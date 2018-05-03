@@ -1,28 +1,33 @@
 package net.bakaar.sandbox.cas.domain;
 
-import java.time.LocalDate;
+import net.bakaar.sandbox.cas.domain.vo.PNummer;
 
 public class Case {
-    private final String pnummer;
+    private final PNummer injured;
     private final String id;
-    private LocalDate birthDate;
 
-    public Case(String id, String pnummer, LocalDate birthDate) {
-        this.pnummer = pnummer;
+    private Case(String id, PNummer injured) {
+        this.injured = injured;
         this.id = id;
-        this.birthDate = birthDate;
     }
 
-    public String getPnummer() {
-        return pnummer;
+    public PNummer getInjured() {
+        return injured;
     }
 
     public String getId() {
         return id;
     }
 
+    public static BusinessIdBuilder builder() {
+        return id -> injured -> new Case(id, injured);
+    }
 
-    public LocalDate getBirthDate() {
-        return birthDate;
+    public interface InjuredBuilder {
+        Case withInjured(PNummer injured);
+    }
+
+    public interface BusinessIdBuilder {
+        InjuredBuilder withBusinnessId(String id);
     }
 }

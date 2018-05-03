@@ -1,8 +1,7 @@
 package net.bakaar.sandbox.cas.domain;
 
 import net.bakaar.sandbox.cas.domain.provider.BusinessIdProvider;
-
-import java.time.LocalDate;
+import net.bakaar.sandbox.cas.domain.vo.PNummer;
 
 public class CaseDomainObjectFactory {
 
@@ -12,7 +11,9 @@ public class CaseDomainObjectFactory {
         this.businessIdProvider = businessIdProvider;
     }
 
-    public Case createCase(String pnummer, LocalDate birthDate) {
-        return new Case(businessIdProvider.generateId(), pnummer, birthDate);
+    public Case createCase(String pnummer) {
+        return Case.builder()
+                .withBusinnessId(businessIdProvider.generateId())
+                .withInjured(PNummer.of(pnummer));
     }
 }

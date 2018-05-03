@@ -1,6 +1,7 @@
 package net.bakaar.sandbox.cas.infra.repository.springdata;
 
 import net.bakaar.sandbox.cas.domain.Case;
+import net.bakaar.sandbox.cas.domain.vo.PNummer;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
@@ -8,7 +9,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import java.time.LocalDate;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -27,10 +27,9 @@ public class SpringDataCaseRepositoryAdapterTest {
     @Test
     public void save_should_returned_the_saved_case() {
         //Given
-        String pnummer = "pnummer";
-        LocalDate birthDate = LocalDate.now();
+        String pnummer = "P12345678";
         String id = UUID.randomUUID().toString();
-        Case aCase = new Case(id, pnummer, birthDate);
+        Case aCase = Case.builder().withBusinnessId(id).withInjured(PNummer.of(pnummer));
         given(springDataCaseRepository.save(any(CaseEntity.class))).willAnswer(invocation -> invocation.getArgument(0));
         //When
         Case returnedCase = springDataCaseRepositoryAdapter.save(aCase);
@@ -38,7 +37,7 @@ public class SpringDataCaseRepositoryAdapterTest {
         ArgumentCaptor<CaseEntity> caseEntityArgumentCaptor = ArgumentCaptor.forClass(CaseEntity.class);
         verify(springDataCaseRepository).save(caseEntityArgumentCaptor.capture());
         assertThat(returnedCase).isNotNull()
-                .isEqualToComparingOnlyGivenFields(aCase, "pnummer", "birthDate", "id");
+                .isEqualToComparingOnlyGivenFields(aCase, "injured", "id");
         CaseEntity entity = caseEntityArgumentCaptor.getValue();
         assertThat(entity).isNotNull();
     }

@@ -1,12 +1,12 @@
 package net.bakaar.sandbox.cas.infra.repository.springdata;
 
 import net.bakaar.sandbox.cas.domain.Case;
+import net.bakaar.sandbox.cas.domain.vo.PNummer;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.time.LocalDate;
 
 @Entity
 public class CaseEntity {
@@ -16,22 +16,11 @@ public class CaseEntity {
     private Long id;
     private String pnummer;
     private String businessId;
-    private LocalDate birthDate;
 
     public static CaseEntity fromCase(Case aCase) {
         return new CaseEntity()
-                .setPnummer(aCase.getPnummer())
-                .setBusinessId(aCase.getId())
-                .setBirthDate(aCase.getBirthDate());
-    }
-
-    public LocalDate getBirthDate() {
-        return birthDate;
-    }
-
-    public CaseEntity setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
-        return this;
+                .setPnummer(aCase.getInjured().format())
+                .setBusinessId(aCase.getId());
     }
 
     public String getPnummer() {
@@ -53,6 +42,8 @@ public class CaseEntity {
     }
 
     public Case toCase() {
-        return new Case(this.businessId, this.getPnummer(), birthDate);
+        return Case.builder()
+                .withBusinnessId(this.businessId)
+                .withInjured(PNummer.of(this.getPnummer()));
     }
 }
