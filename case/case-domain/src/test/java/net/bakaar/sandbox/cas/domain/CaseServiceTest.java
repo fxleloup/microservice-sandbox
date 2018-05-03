@@ -3,6 +3,7 @@ package net.bakaar.sandbox.cas.domain;
 import net.bakaar.sandbox.cas.domain.event.CaseCreated;
 import net.bakaar.sandbox.cas.domain.provider.BusinessIdProvider;
 import net.bakaar.sandbox.cas.domain.repository.CaseRepository;
+import net.bakaar.sandbox.cas.domain.vo.PNummer;
 import net.bakaar.sandbox.event.common.DomainEventEmitter;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
@@ -27,21 +28,21 @@ public class CaseServiceTest {
     @Test
     public void createCase_should_return_a_case() {
         // Given
-        String pnummer = "P1234566";
+        String pnummer = "P12345678";
         given(repository.save(any(Case.class))).willAnswer(invocationOnMock -> invocationOnMock.getArgument(0));
         given(businessIdProvider.generateId()).willReturn(UUID.randomUUID().toString());
         // When
         Case aCase = service.createCase(pnummer, LocalDate.now());
         // Then
         assertThat(aCase).isNotNull();
-        assertThat(aCase.getPnummer()).isEqualTo(pnummer);
+        assertThat(aCase.getPnummer()).isEqualTo(PNummer.of(pnummer));
         verify(repository).save(aCase);
     }
 
     @Test
     public void createCase_should_emitt_an_event() {
         // Given
-        String pnummer = "P1234566";
+        String pnummer = "P12345678";
         given(repository.save(any(Case.class))).willAnswer(invocationOnMock -> invocationOnMock.getArgument(0));
         given(businessIdProvider.generateId()).willReturn(UUID.randomUUID().toString());
         // When
