@@ -39,6 +39,8 @@ Those diagrams are freely inspired from the C4 model from Simon Brown.
 
 - [x] Make a todo list ;-)
 - [x] Implement VO's for insured and PNummer
+- [ ] Add TravisCI configuration
+- [ ] Add SonarQube analysis to the build
 - [ ] Add Spring-Boot Application to Case to run it and test via rest interface
 - [ ] Create docker-compose file to run Case and its DB inside containers
 - [ ] Implement Business Number provider
