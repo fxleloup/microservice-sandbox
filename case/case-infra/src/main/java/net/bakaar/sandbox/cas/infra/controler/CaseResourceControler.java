@@ -14,7 +14,7 @@ import static org.springframework.web.util.UriComponentsBuilder.fromPath;
 @RestController
 public class CaseResourceControler {
 
-    private final static String CASE_ROOT_URI = "/cases";
+    private static final String CASE_ROOT_URI = "/cases";
     private final CaseService service;
 
     public CaseResourceControler(CaseService service) {
