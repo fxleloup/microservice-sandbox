@@ -2,7 +2,7 @@ package net.bakaar.sandbox.event.springdata;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import net.bakaar.sandbox.common.TechicalException;
+import net.bakaar.sandbox.common.TechnicalException;
 import net.bakaar.sandbox.event.common.DomainEvent;
 
 import java.time.Instant;
@@ -19,7 +19,7 @@ public class DBEventRaisedFactory {
         try {
             return new DBEventRaised(mapper.writeValueAsString(event)).raisedAt(Instant.now());
         } catch (JsonProcessingException e) {
-            throw new TechicalException(e);
+            throw new TechnicalException(e);
         }
     }
 }

@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.org/McKratt/microservice-sandbox.svg?branch=master)](https://travis-ci.org/McKratt/microservice-sandbox)
+[![Quality Status](https://sonarcloud.io/api/project_badges/measure?project=net.bakaar%3Amicroservice-sandbox&metric=alert_status)](https://sonarcloud.io/api/project_badges/measure?project=net.bakaar%3Amicroservice-sandbox&metric=alert_status)
+[![Code coverage](https://sonarcloud.io/api/project_badges/measure?project=net.bakaar%3Amicroservice-sandbox&metric=coverage)](https://sonarcloud.io/api/project_badges/measure?project=net.bakaar%3Amicroservice-sandbox&metric=coverage)
 # Microservice Sandbox 
 
 This Sandbox use a simplified version of an Insurance Claim System.

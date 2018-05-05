@@ -9,6 +9,7 @@ import org.mockito.ArgumentMatchers;
 import java.time.Instant;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowable;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 
@@ -33,16 +34,18 @@ public class DBDBEventRaisedFactoryTest {
         assertThat(dbEventRaised.getId()).isNull();
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test
     public void fromEvent_should_throw_runtimeexception() throws Exception {
         //Given
         DomainEvent event = mock(DomainEvent.class);
         ObjectMapper mapper = mock(ObjectMapper.class);
-        given(mapper.writeValueAsString(ArgumentMatchers.any())).willThrow(new SimpleJsonProcessingException("Error"));
+        Throwable t = new SimpleJsonProcessingException("Error");
+        given(mapper.writeValueAsString(ArgumentMatchers.any())).willThrow(t);
         factory = new DBEventRaisedFactory(mapper);
         //When
-        factory.fromEvent(event);
+        Throwable thrown = catchThrowable(() -> factory.fromEvent(event));
         //Then
+        assertThat(thrown.getCause()).isEqualTo(t);
     }
 
     private class SimpleJsonProcessingException extends JsonProcessingException {
