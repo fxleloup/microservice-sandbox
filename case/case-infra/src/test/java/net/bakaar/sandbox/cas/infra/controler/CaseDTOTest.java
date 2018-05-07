@@ -11,7 +11,7 @@ public class CaseDTOTest {
     private CaseDTO dto = new CaseDTO();
 
     @Test
-    public void setPNummerInjured_should_set_pnummer_in_injured() {
+    public void addPNummerInjured_should_set_pnummer_in_injured() {
         //Given
         String pnummer = "PNummer";
         //When
@@ -21,7 +21,7 @@ public class CaseDTOTest {
     }
 
     @Test
-    public void setBirthDateInjured_should_set_birthDate_in_injured() {
+    public void addBirthDateInjured_should_set_birthDate_in_injured() {
         //Given
         LocalDate birthDate = LocalDate.now();
         //When

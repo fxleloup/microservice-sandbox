@@ -27,7 +27,8 @@ public class CaseResourceControler {
         return created(
                 fromPath(CASE_ROOT_URI + "/" + createdCase.getId())
                         .build()
-                        .toUri())
+                        .toUri()
+        )
                 .body(fromCase(createdCase));
     }
 }

@@ -1,7 +1,8 @@
-package net.bakaar.sandbox.cas.infra.controler;
+package net.bakaar.sandbox.cas.application;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import net.bakaar.sandbox.cas.infra.controler.CaseDTO;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.junit.Test;
@@ -14,11 +15,11 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.LocalDate;
 
-import static net.bakaar.sandbox.cas.infra.controler.CaseResourceControlerIT.RegexMatcher.matches;
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -47,11 +48,12 @@ public class CaseResourceControlerIT {
                 )
                 .andDo(print())
                 .andExpect(status().isCreated())
-                .andExpect(header().string("location", matches("/cases/([a-f0-9]){8}(-[a-f0-9]{4}){3}-([a-f0-9]){12}")))
+//                .andExpect(header().string("location", matches("/cases/([a-f0-9]){8}(-[a-f0-9]{4}){3}-([a-f0-9]){12}")))
                 .andExpect(jsonPath("$.injured.pnummer").value(pnummer))
                 //TODO add this test when Person Service and the link with is established
 //                .andExpect(jsonPath("$.injured.birthDate").value(birthDate.format(DateTimeFormatter.ISO_DATE)))
                 .andExpect(jsonPath("$.id").isNotEmpty())
+        //TODO read in DB to check if the case is created
         ;
     }
 

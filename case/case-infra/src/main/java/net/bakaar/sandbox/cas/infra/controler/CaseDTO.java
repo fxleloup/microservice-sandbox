@@ -14,7 +14,7 @@ public class CaseDTO {
                 .addPnummerInjured(aCase.getInjured().format());
     }
 
-    CaseDTO addPnummerInjured(String pNummer) {
+    public CaseDTO addPnummerInjured(String pNummer) {
         checkIfInjuredNull();
         injured.setPnummer(pNummer);
         return this;
@@ -28,7 +28,7 @@ public class CaseDTO {
         this.injured = injured;
     }
 
-    CaseDTO addBirhtDateInjured(LocalDate birthDate) {
+    public CaseDTO addBirhtDateInjured(LocalDate birthDate) {
         checkIfInjuredNull();
         injured.setBirthDate(birthDate);
         return this;
