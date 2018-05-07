@@ -47,16 +47,21 @@ Those diagrams are freely inspired from the C4 model from Simon Brown.
 - [ ] Add Spring-Boot Application to Case to run it and test via rest interface
 - [ ] Create docker-compose file to run Case and its DB inside containers
 - [ ] Implement Business Number provider
+- [ ] Make Business Service running in a container
 - [ ] Create Partner service
-- [ ] Add partner info
+- [ ] Make Partner Service running in a container
+- [ ] Add partner info (Name, Forename, BirthDate)
 - [ ] Create the claim link service
 - [ ] Create polling service
-- [ ] Add callcontext for all calls
+- [ ] Create a base module (commons?) gathering all the interfaces and base classes 
+- [ ] Add call context for all rest calls
 - [ ] Add Call context for all logging
-- [ ] Put in place the calls tracking system
-- [ ] Add the messaging part
-- [ ] Create the task service
+- [ ] Add a message broker (RabbitMQ)
+- [ ] Put in place the calls tracking system (Jhipster console)
+- [ ] Finish messaging implementation (including Call Context)
+- [ ] Create the task service (link with messages)
 - [ ] Make the partner number change cascade to Case
+- [ ] Make the documentation with Structurizr
 
 ## Things to explore
 * Service discovery with Spring Cloud Eureka
