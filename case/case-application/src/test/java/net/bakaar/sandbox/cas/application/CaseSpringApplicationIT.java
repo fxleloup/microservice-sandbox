@@ -3,22 +3,17 @@ package net.bakaar.sandbox.cas.application;
 import net.bakaar.sandbox.cas.domain.provider.BusinessIdProvider;
 import net.bakaar.sandbox.cas.domain.repository.CaseRepository;
 import net.bakaar.sandbox.event.common.DomainEventEmitter;
-import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.testcontainers.containers.PostgreSQLContainer;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class CaseSpringApplicationIT {
-
-    @Rule
-    public PostgreSQLContainer postgres = new PostgreSQLContainer().withUsername("sa").withPassword("");
 
     @Autowired
     private DomainEventEmitter emitter;
