@@ -4,7 +4,6 @@ import net.bakaar.sandbox.cas.domain.Case;
 import net.bakaar.sandbox.cas.domain.CaseService;
 import net.bakaar.sandbox.cas.domain.vo.PNummer;
 import org.junit.Test;
-import org.mockito.Mock;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -18,7 +17,6 @@ import static org.mockito.Mockito.verify;
 
 public class CaseResourceControlerTest {
 
-    @Mock
     private CaseService service = mock(CaseService.class);
     private CaseResourceControler controler = new CaseResourceControler(service);
 
