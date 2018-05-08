@@ -40,5 +40,8 @@ public class SpringDataCaseRepositoryAdapterTest {
                 .isEqualToComparingOnlyGivenFields(aCase, "injured", "id");
         CaseEntity entity = caseEntityArgumentCaptor.getValue();
         assertThat(entity).isNotNull();
+        assertThat(entity.getId()).isNull();//This id is set by the DB
+        assertThat(entity.getBusinessId()).isEqualTo(id);
+        assertThat(entity.getPnummer()).isEqualTo(pnummer);
     }
 }

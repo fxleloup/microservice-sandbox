@@ -24,10 +24,6 @@ public class CaseDTO {
         return injured;
     }
 
-    public void setInjured(PartnerDTO injured) {
-        this.injured = injured;
-    }
-
     public CaseDTO addBirhtDateInjured(LocalDate birthDate) {
         checkIfInjuredNull();
         injured.setBirthDate(birthDate);

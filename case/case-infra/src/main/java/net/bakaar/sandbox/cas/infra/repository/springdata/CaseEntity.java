@@ -46,4 +46,8 @@ public class CaseEntity {
                 .withBusinnessId(this.businessId)
                 .withInjured(PNummer.of(this.getPnummer()));
     }
+
+    public Long getId() {
+        return id;
+    }
 }

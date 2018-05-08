@@ -3,6 +3,7 @@ package net.bakaar.sandbox.cas.application;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import net.bakaar.sandbox.cas.infra.controler.CaseDTO;
+import net.bakaar.sandbox.cas.infra.repository.springdata.CaseEntity;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.junit.Test;
@@ -13,8 +14,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.time.LocalDate;
+import javax.persistence.EntityManager;
+import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -30,31 +33,38 @@ public class CaseResourceControlerIT {
     private MockMvc mockMvc;
     @Autowired
     private ObjectMapper mapper;
+    @Autowired
+    private EntityManager entityManager;
 
     @Test
     public void endpoint_should_return_case() throws Exception {
         // Given
         String pnummer = "P12345678";
-        LocalDate birthDate = LocalDate.of(1981, 12, 16);
         CaseDTO caseDTO = new CaseDTO()
-                .addPnummerInjured(pnummer)
-                .addBirhtDateInjured(birthDate);
+                .addPnummerInjured(pnummer);
         mockMvc
                 .perform(post("/cases")
                         .accept(APPLICATION_JSON_UTF8)
                         .contentType(APPLICATION_JSON_UTF8)
                         .content(asJsonString(caseDTO))
-
                 )
                 .andDo(print())
                 .andExpect(status().isCreated())
+                //FIXME check if necessary
 //                .andExpect(header().string("location", matches("/cases/([a-f0-9]){8}(-[a-f0-9]{4}){3}-([a-f0-9]){12}")))
                 .andExpect(jsonPath("$.injured.pnummer").value(pnummer))
                 //TODO add this test when Person Service and the link with is established
 //                .andExpect(jsonPath("$.injured.birthDate").value(birthDate.format(DateTimeFormatter.ISO_DATE)))
                 .andExpect(jsonPath("$.id").isNotEmpty())
-        //TODO read in DB to check if the case is created
         ;
+        List<CaseEntity> cases = entityManager.createQuery("select cas from CaseEntity cas", CaseEntity.class).getResultList();
+        assertThat(cases).isNotEmpty();
+        assertThat(cases.size()).isEqualTo(1);
+        CaseEntity entity = cases.get(0);
+        assertThat(entity.getPnummer()).isEqualTo(pnummer);
+        assertThat(entity.getBusinessId()).isNotNull();
+        assertThat(entity.getId()).isPositive();
+
     }
 
     private String asJsonString(Object object) throws JsonProcessingException {
