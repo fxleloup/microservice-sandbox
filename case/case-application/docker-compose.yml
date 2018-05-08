@@ -1,0 +1,6 @@
+services:
+  db_case:
+    image: postgres:9.6.8-alpine
+    environment:
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_USER: case_user
