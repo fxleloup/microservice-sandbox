@@ -1,4 +1,4 @@
-package net.bakaar.sandbox.cas.infra.controler;
+package net.bakaar.sandbox.cas.infra.spring.controler;
 
 import net.bakaar.sandbox.cas.domain.Case;
 import net.bakaar.sandbox.cas.domain.CaseService;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import static net.bakaar.sandbox.cas.infra.controler.CaseDTO.fromCase;
+import static net.bakaar.sandbox.cas.infra.spring.controler.CaseDTO.fromCase;
 import static org.springframework.http.ResponseEntity.created;
 import static org.springframework.web.util.UriComponentsBuilder.fromPath;
 

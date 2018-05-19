@@ -1,4 +1,4 @@
-package net.bakaar.sandbox.cas.infra.controler;
+package net.bakaar.sandbox.cas.infra.spring.controler;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

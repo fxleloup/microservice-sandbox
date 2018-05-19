@@ -1,6 +1,6 @@
 package net.bakaar.sandbox.cas.application;
 
-import net.bakaar.sandbox.cas.infra.CaseInfraConfiguration;
+import net.bakaar.sandbox.cas.infra.spring.CaseInfraConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;

@@ -1,4 +1,4 @@
-package net.bakaar.sandbox.cas.infra.repository.springdata;
+package net.bakaar.sandbox.cas.infra.spring.repository;
 
 import org.springframework.data.repository.CrudRepository;
 

@@ -2,8 +2,8 @@ package net.bakaar.sandbox.cas.application;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import net.bakaar.sandbox.cas.infra.controler.CaseDTO;
-import net.bakaar.sandbox.cas.infra.repository.springdata.CaseEntity;
+import net.bakaar.sandbox.cas.infra.spring.controler.CaseDTO;
+import net.bakaar.sandbox.cas.infra.spring.repository.CaseEntity;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.junit.Test;

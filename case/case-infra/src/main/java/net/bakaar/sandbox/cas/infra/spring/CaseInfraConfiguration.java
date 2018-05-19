@@ -1,4 +1,4 @@
-package net.bakaar.sandbox.cas.infra;
+package net.bakaar.sandbox.cas.infra.spring;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -7,8 +7,8 @@ import net.bakaar.sandbox.cas.domain.CaseDomainObjectFactory;
 import net.bakaar.sandbox.cas.domain.CaseService;
 import net.bakaar.sandbox.cas.domain.provider.BusinessIdProvider;
 import net.bakaar.sandbox.cas.domain.repository.CaseRepository;
-import net.bakaar.sandbox.cas.infra.repository.springdata.CaseEntity;
-import net.bakaar.sandbox.cas.infra.repository.springdata.SpringDataCaseRepository;
+import net.bakaar.sandbox.cas.infra.spring.repository.CaseEntity;
+import net.bakaar.sandbox.cas.infra.spring.repository.SpringDataCaseRepository;
 import net.bakaar.sandbox.event.common.DomainEventEmitter;
 import net.bakaar.sandbox.event.inmemory.InMemoryDomainEventEmitter;
 import org.springframework.boot.autoconfigure.domain.EntityScan;

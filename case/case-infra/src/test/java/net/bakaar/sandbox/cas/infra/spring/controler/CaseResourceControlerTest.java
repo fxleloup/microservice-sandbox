@@ -1,4 +1,4 @@
-package net.bakaar.sandbox.cas.infra.controler;
+package net.bakaar.sandbox.cas.infra.spring.controler;
 
 import net.bakaar.sandbox.cas.domain.Case;
 import net.bakaar.sandbox.cas.domain.CaseService;
