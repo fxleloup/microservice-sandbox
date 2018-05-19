@@ -27,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class CaseResourceControlerIT {
+public class CaseAPIRestIT {
 
     @Autowired
     private MockMvc mockMvc;
