@@ -1,6 +1,13 @@
+version: '3'
 services:
-  db_case:
+  case-db:
+    container_name: "case-db"
     image: postgres:9.6.8-alpine
     environment:
       POSTGRES_PASSWORD: 123456
       POSTGRES_USER: case_user
+  case-service:
+    build: .
+    container_name: "case-service"
+    ports:
+      - "9080:8080"
