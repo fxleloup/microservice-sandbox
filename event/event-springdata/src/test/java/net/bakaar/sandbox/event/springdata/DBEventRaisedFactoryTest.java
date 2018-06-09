@@ -2,6 +2,7 @@ package net.bakaar.sandbox.event.springdata;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import net.bakaar.sandbox.common.TechnicalException;
 import net.bakaar.sandbox.event.common.DomainEvent;
 import org.junit.Test;
 import org.mockito.ArgumentMatchers;
@@ -13,7 +14,7 @@ import static org.assertj.core.api.Assertions.catchThrowable;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 
-public class DBDBEventRaisedFactoryTest {
+public class DBEventRaisedFactoryTest {
 
     private DBEventRaisedFactory factory;
 
@@ -35,7 +36,7 @@ public class DBDBEventRaisedFactoryTest {
     }
 
     @Test
-    public void fromEvent_should_throw_runtimeexception() throws Exception {
+    public void fromEvent_should_throw_technicalException() throws Exception {
         //Given
         DomainEvent event = mock(DomainEvent.class);
         ObjectMapper mapper = mock(ObjectMapper.class);
@@ -45,12 +46,13 @@ public class DBDBEventRaisedFactoryTest {
         //When
         Throwable thrown = catchThrowable(() -> factory.fromEvent(event));
         //Then
+        assertThat(thrown).isInstanceOf(TechnicalException.class);
         assertThat(thrown.getCause()).isEqualTo(t);
     }
 
     private class SimpleJsonProcessingException extends JsonProcessingException {
 
-        protected SimpleJsonProcessingException(String msg) {
+        SimpleJsonProcessingException(String msg) {
             super(msg);
         }
     }
