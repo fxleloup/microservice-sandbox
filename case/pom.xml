@@ -15,6 +15,7 @@
     <modules>
         <module>case-domain</module>
         <module>case-infra</module>
+        <module>case-application</module>
     </modules>
     <properties>
         <cucumber.version>1.2.5</cucumber.version>

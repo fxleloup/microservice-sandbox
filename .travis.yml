@@ -1,4 +1,10 @@
 language : java
+
+sudo: required
+
+services:
+  - docker
+
 addons:
   sonarcloud:
     organization: "mckratt-github"
