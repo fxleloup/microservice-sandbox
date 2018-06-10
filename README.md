@@ -45,7 +45,7 @@ Those diagrams are freely inspired from the C4 model from Simon Brown.
 - [x] Add TravisCI configuration
 - [x] Add SonarQube analysis to the build
 - [x] Add Spring-Boot Application to Case to run it and test via rest interface
-- [ ] Create docker-compose file to run Case and its DB inside containers
+- [x] Create docker-compose file to run Case and its DB inside containers
 - [ ] Implement ArchUnit Test
 - [ ] Implement Business Number provider
 - [ ] Make Business Service running in a container
