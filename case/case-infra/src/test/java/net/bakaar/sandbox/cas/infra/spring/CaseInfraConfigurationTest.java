@@ -21,7 +21,7 @@ public class CaseInfraConfigurationTest {
     private CaseInfraConfiguration configuration = new CaseInfraConfiguration();
 
     @Test
-    public void objetMapper_should_configure_correctly() {
+    public void objectMapper_should_configure_correctly() {
         //Given
         //When
         ObjectMapper mapper = configuration.objectMapper();
@@ -55,12 +55,5 @@ public class CaseInfraConfigurationTest {
         assertThat(emitter).isInstanceOf(InMemoryDomainEventEmitter.class);
     }
 
-    @Test
-    public void businessIdProvider_should_configure_provider() {
-        //Given
-        //When
-        BusinessIdProvider provider = configuration.businessIdProvider();
-        //Then
-        assertThat(provider).isNotNull();
-    }
+
 }

@@ -7,6 +7,7 @@ import net.bakaar.sandbox.cas.domain.CaseDomainObjectFactory;
 import net.bakaar.sandbox.cas.domain.CaseService;
 import net.bakaar.sandbox.cas.domain.provider.BusinessIdProvider;
 import net.bakaar.sandbox.cas.domain.repository.CaseRepository;
+import net.bakaar.sandbox.cas.infra.spring.provider.BusinessIdConfiguration;
 import net.bakaar.sandbox.cas.infra.spring.repository.CaseEntity;
 import net.bakaar.sandbox.cas.infra.spring.repository.SpringDataCaseRepository;
 import net.bakaar.sandbox.event.common.DomainEventEmitter;
@@ -15,14 +16,14 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-
-import java.util.UUID;
 
 @Configuration
 @EnableJpaRepositories(basePackageClasses = {SpringDataCaseRepository.class})
 @EntityScan(basePackageClasses = {CaseEntity.class})
 @ComponentScan(basePackageClasses = {CaseInfraConfiguration.class})
+@Import(BusinessIdConfiguration.class)
 public class CaseInfraConfiguration {
 
     @Bean
@@ -45,8 +46,5 @@ public class CaseInfraConfiguration {
         return new InMemoryDomainEventEmitter();
     }
 
-    @Bean
-    public BusinessIdProvider businessIdProvider() {
-        return () -> UUID.randomUUID().toString();
-    }
+
 }
