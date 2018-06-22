@@ -46,8 +46,7 @@ Those diagrams are freely inspired from the C4 model from Simon Brown.
 - [x] Add SonarQube analysis to the build
 - [x] Add Spring-Boot Application to Case to run it and test via rest interface
 - [x] Create docker-compose file to run Case and its DB inside containers
-- [ ] Implement ArchUnit Test
-- [ ] Implement Business Number provider
+- [x] Implement Business Number provider
 - [ ] Make Business Service running in a container
 - [ ] Create Partner service
 - [ ] Make Partner Service running in a container
@@ -63,6 +62,7 @@ Those diagrams are freely inspired from the C4 model from Simon Brown.
 - [ ] Create the task service (link with messages)
 - [ ] Make the partner number change cascade to Case
 - [ ] Make the documentation with Structurizr
+- [ ] Implement ArchUnit Test
 
 ## Things to explore
 * Service discovery with Spring Cloud Eureka
