@@ -47,7 +47,7 @@ Those diagrams are freely inspired from the C4 model from Simon Brown.
 - [x] Add Spring-Boot Application to Case to run it and test via rest interface
 - [x] Create docker-compose file to run Case and its DB inside containers
 - [x] Implement Business Number provider
-- [ ] Make Business Service running in a container
+- [x] Make Business Service running in a container
 - [ ] Create Partner service
 - [ ] Make Partner Service running in a container
 - [ ] Add partner info (Name, Forename, BirthDate)
