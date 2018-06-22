@@ -6,6 +6,7 @@ import net.bakaar.sandbox.cas.infra.spring.controler.CaseDTO;
 import net.bakaar.sandbox.cas.infra.spring.repository.CaseEntity;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
+import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,9 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.testcontainers.containers.FixedHostPortGenericContainer;
+import org.testcontainers.containers.GenericContainer;
+import org.testcontainers.containers.wait.strategy.Wait;
 
 import javax.persistence.EntityManager;
 import java.util.List;
@@ -35,6 +39,12 @@ public class CaseAPIRestIT {
     private ObjectMapper mapper;
     @Autowired
     private EntityManager entityManager;
+
+    @ClassRule
+    public static GenericContainer redis =
+            new FixedHostPortGenericContainer("sandbox/businessnumber:BETA")
+                    .withFixedExposedPort(8081, 8080)
+                    .waitingFor(Wait.forHttp("/business-number"));
 
     @Test
     public void endpoint_should_return_case() throws Exception {
