@@ -1,5 +1,10 @@
 version: '3'
 services:
+  business-number-service:
+    container_name: "businessnumber"
+    image: sandbox/businessnumber:BETA
+    ports:
+      - 8080
   case-db:
     container_name: "case-db"
     image: postgres:9.6.8-alpine
@@ -18,5 +23,7 @@ services:
       case.db.user: case_user
       case.db.pass: 123456
       case.db.driver: org.postgresql.Driver
+      businessnumber.url: http://bn:8080/business-number
     links:
       - case-db:db
+      - business-number-service:bn
