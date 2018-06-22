@@ -48,6 +48,7 @@ Those diagrams are freely inspired from the C4 model from Simon Brown.
 - [x] Create docker-compose file to run Case and its DB inside containers
 - [x] Implement Business Number provider
 - [x] Make Business Service running in a container
+- [ ] Fix build travis
 - [ ] Create Partner service
 - [ ] Make Partner Service running in a container
 - [ ] Add partner info (Name, Forename, BirthDate)
