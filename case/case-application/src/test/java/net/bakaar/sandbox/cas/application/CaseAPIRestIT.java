@@ -42,7 +42,7 @@ public class CaseAPIRestIT {
 
     @ClassRule
     public static GenericContainer redis =
-            new FixedHostPortGenericContainer("sandbox/businessnumber:BETA")
+            new FixedHostPortGenericContainer("bakaar/businessnumber:BETA")
                     .withFixedExposedPort(8081, 8080)
                     .waitingFor(Wait.forHttp("/business-number"));
 
