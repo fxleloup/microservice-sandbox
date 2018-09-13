@@ -19,6 +19,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <docker.image.prefix>bakaar</docker.image.prefix>
+        <docker.image.name>businessnumber</docker.image.name>
     </properties>
     <dependencies>
         <dependency>
@@ -60,18 +61,39 @@
                 <version>1.4.3</version>
                 <executions>
                     <execution>
-                        <id>default</id>
-                        <phase>post-integration-test</phase>
+                        <id>build</id>
+                        <phase>none</phase>
                         <goals>
                             <goal>build</goal>
                         </goals>
                     </execution>
+                    <execution>
+                        <id>latest</id>
+                        <phase>none</phase>
+                        <goals>
+                            <goal>tag</goal>
+                            <goal>push</goal>
+                        </goals>
+                        <configuration>
+                            <tag>latest</tag>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>version</id>
+                        <phase>none</phase>
+                        <goals>
+                            <goal>tag</goal>
+                            <goal>push</goal>
+                        </goals>
+                        <configuration>
+                            <tag>${project.version}</tag>
+                        </configuration>
+                    </execution>
                 </executions>
                 <configuration>
-                    <repository>${docker.image.prefix}/${project.artifactId}</repository>
-                    <tag>BETA</tag>
+                    <repository>${docker.image.prefix}/${docker.image.name}</repository>
                     <buildArgs>
-                        <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+                        <JAR_FILE>./target/${project.build.finalName}.jar</JAR_FILE>
                     </buildArgs>
                 </configuration>
             </plugin>

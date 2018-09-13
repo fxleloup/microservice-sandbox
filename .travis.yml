@@ -14,3 +14,4 @@ script:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
   - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
+  - mvn dockerfile:build@build dockerfile:tag@latest dockerfile:tag@version dockerfile:push@latest dockerfile:push@version
