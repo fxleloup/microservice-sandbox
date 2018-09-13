@@ -2,6 +2,7 @@ package net.bakaar.sandbox.cas.application;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import net.bakaar.sandbox.cas.domain.provider.BusinessIdProvider;
 import net.bakaar.sandbox.cas.infra.spring.controler.CaseDTO;
 import net.bakaar.sandbox.cas.infra.spring.repository.CaseEntity;
 import org.hamcrest.BaseMatcher;
@@ -11,13 +12,16 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import javax.persistence.EntityManager;
 import java.util.List;
+import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.BDDMockito.given;
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -36,9 +40,13 @@ public class CaseAPIRestIT {
     @Autowired
     private EntityManager entityManager;
 
+    @MockBean
+    private BusinessIdProvider businessIdProvider;
+
     @Test
     public void endpoint_should_return_case() throws Exception {
         // Given
+        given(businessIdProvider.generateId()).willReturn(UUID.randomUUID().toString());
         String pnummer = "P12345678";
         CaseDTO caseDTO = new CaseDTO()
                 .addPnummerInjured(pnummer);
