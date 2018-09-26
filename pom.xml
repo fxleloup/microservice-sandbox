@@ -17,5 +17,6 @@
         <module>event</module>
         <module>messaging</module>
         <module>case</module>
+        <module>person</module>
     </modules>
 </project>
