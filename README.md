@@ -19,11 +19,11 @@ Those diagrams are freely inspired from the C4 model from Simon Brown.
 ## Use Cases
 
 - Create a Partner in the dedicated system
-- Create a Case linked to a Partner, the Case should become a Business Number
+- Create a Case linked to a Partner, the Case should received a Business Number
 - When a Case is created, a Task should appear to remind me to treat the Case
 - Change the Business ID of a Partner (the change should cascade to the Claim domain)
 - Interrogate the Claim system and show a Case with all the information of the related partner
-- Once the Case closed, the related Task should closed too
+- Once the Case closed, the related Task should closed too (event)
 
 ### NFRs
 - Every call should be tracked with a CorrelationID
@@ -48,7 +48,7 @@ Those diagrams are freely inspired from the C4 model from Simon Brown.
 - [x] Create docker-compose file to run Case and its DB inside containers
 - [x] Implement Business Number provider
 - [x] Make Business Service running in a container
-- [ ] Fix build travis
+- [x] Fix build travis
 - [ ] Create Partner service
 - [ ] Make Partner Service running in a container
 - [ ] Add partner info (Name, Forename, BirthDate)
