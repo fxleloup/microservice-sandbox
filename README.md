@@ -50,14 +50,15 @@ Those diagrams are freely inspired from the C4 model from Simon Brown.
 - [x] Make Business Service running in a container
 - [x] Fix build travis
 - [ ] Create Partner service
+- [ ] Secure the creation of a partner behind a role and protect the endpoint
 - [ ] Make Partner Service running in a container
-- [ ] Add partner info (Name, Forename, BirthDate)
+- [x] Add partner info (Name, Forename, BirthDate)
 - [ ] Create the claim link service
 - [ ] Create polling service
 - [ ] Create a base module (commons?) gathering all the interfaces and base classes 
 - [ ] Add call context for all rest calls
 - [ ] Add Call context for all logging
-- [ ] Add a message broker (RabbitMQ)
+- [ ] Add a message broker (Kafka)
 - [ ] Put in place the calls tracking system (Jhipster console)
 - [ ] Finish messaging implementation (including Call Context)
 - [ ] Create the task service (link with messages)
