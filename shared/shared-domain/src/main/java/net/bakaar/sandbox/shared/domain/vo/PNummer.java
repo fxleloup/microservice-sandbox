@@ -20,6 +20,10 @@ public final class PNummer {
         return new PNummer(pnummer);
     }
 
+    public static PNummer of(long id) {
+        return new PNummer("P" + id);
+    }
+
     public String format() {
         return "P" + value;
     }

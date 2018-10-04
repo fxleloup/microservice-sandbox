@@ -64,4 +64,14 @@ public class PNummerTest {
         EqualsVerifier.forClass(PNummer.class)
                 .verify();
     }
+
+    @Test
+    public void of_should_convert_to_string() {
+        //Given
+        long id = 12345678L;
+        //When
+        PNummer created = PNummer.of(id);
+        //Then
+        assertThat(created.format()).isEqualTo("P12345678");
+    }
 }

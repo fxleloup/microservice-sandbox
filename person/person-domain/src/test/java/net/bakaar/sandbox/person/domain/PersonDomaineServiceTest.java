@@ -1,8 +1,8 @@
 package net.bakaar.sandbox.person.domain;
 
 import net.bakaar.sandbox.person.domain.entity.Partner;
-import net.bakaar.sandbox.person.domain.entity.vo.PartnerId;
 import net.bakaar.sandbox.person.domain.repository.BusinessNumberRepository;
+import net.bakaar.sandbox.shared.domain.vo.PNummer;
 import org.junit.Test;
 
 import java.time.LocalDate;
@@ -17,7 +17,7 @@ public class PersonDomaineServiceTest {
     public void createPartner_should_create_and_call_number_service() {
         //Given
         BusinessNumberRepository businessNumberRepository = mock(BusinessNumberRepository.class);
-        long id = 1234567890L;
+        long id = 12345678L;
         given(businessNumberRepository.featchPartnerNumber()).willReturn(id);
         PersonDomaineService service = new PersonDomaineService(businessNumberRepository);
         //When
@@ -25,6 +25,6 @@ public class PersonDomaineServiceTest {
         //Then
         verify(businessNumberRepository).featchPartnerNumber();
         assertThat(createdPartner).isNotNull();
-        assertThat(createdPartner.getId()).isEqualToComparingFieldByField(PartnerId.of(id));
+        assertThat(createdPartner.getId()).isEqualToComparingFieldByField(PNummer.of(id));
     }
 }

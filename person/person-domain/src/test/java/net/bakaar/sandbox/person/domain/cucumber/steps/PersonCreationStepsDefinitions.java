@@ -24,7 +24,7 @@ public class PersonCreationStepsDefinitions implements En {
 
     public PersonCreationStepsDefinitions() {
         When("^I create a partner with name \"?([^\"]*)\"? and forename \"?([^\"]*)\"? born the (\\d+)\\.(\\d+)\\.(\\d+)$", (String name, String forename, Integer day, Integer month, Integer year) -> {
-            given(businessNumberRepository.featchPartnerNumber()).willReturn(1234567890L);
+            given(businessNumberRepository.featchPartnerNumber()).willReturn(12345678L);
             LocalDate birthDate;
             if (day == 0 && month == 0 && year == 0) {
                 birthDate = null;
@@ -38,6 +38,7 @@ public class PersonCreationStepsDefinitions implements En {
             assertThat(createdPartner.getId()).isNotNull();
         });
         When("^I create a partner with the following data :$", (DataTable input) -> {
+            given(businessNumberRepository.featchPartnerNumber()).willReturn(12345678L);
             List<String> table = input.asList(String.class);
             createdPartner = service.createPartner(table.get(0), table.get(1), convertToDate(table.get(2)));
         });

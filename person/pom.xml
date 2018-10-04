@@ -19,6 +19,7 @@
     </modules>
     <properties>
         <cucumber.version>1.2.5</cucumber.version>
+        <shared.version>1.0.0-SNAPSHOT</shared.version>
     </properties>
     <build>
         <plugins>
