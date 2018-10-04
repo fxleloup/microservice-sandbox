@@ -27,7 +27,7 @@ Those diagrams are freely inspired from the C4 model from Simon Brown.
 
 ### NFRs
 - Every call should be tracked with a CorrelationID
-- Every sent event should resendable
+- Every sent event should be resendable
 - All system should be idempotent (multiple messages delivery)
 
 ## Techological show cases
@@ -50,6 +50,7 @@ Those diagrams are freely inspired from the C4 model from Simon Brown.
 - [x] Make Business Service running in a container
 - [x] Fix build travis
 - [ ] Create Partner service
+- [ ] Create a Person frontend with Angular, Jest tested and CDC test with pact
 - [ ] Secure the creation of a partner behind a role and protect the endpoint
 - [ ] Make Partner Service running in a container
 - [x] Add partner info (Name, Forename, BirthDate)
