@@ -10,5 +10,15 @@ Feature: Partner Creation
 
   Scenario: Creation with social security number
     When I create a partner with the following data :
-      |Do  |John    |16.12.1981|1234567890 |
+      | Do | John | 16.12.1981 | 1234567890 |
     Then I sould receive a new partner with an attributed id
+
+  Scenario Outline: Creation should not be authorized if something is missing
+    When I create a partner with name <name> and forename <forename> born the <day>.<month>.<year>
+    Then I should receive an error mentionning that the info <info> is missing
+    Examples:
+      | name | forename | day | month | year | info      |
+      |      | John     | 16  | 12    | 1981 | name      |
+      | Do   |          | 16  | 12    | 1981 | forename  |
+      | Do   | John     | 0   | 0     | 0    | birthDate |
+      | Do   | John     | 9   | 12    | 9999 | birthDate |

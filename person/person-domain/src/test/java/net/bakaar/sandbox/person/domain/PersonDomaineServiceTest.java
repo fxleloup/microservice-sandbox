@@ -9,8 +9,7 @@ import java.time.LocalDate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 public class PersonDomaineServiceTest {
 
@@ -22,7 +21,7 @@ public class PersonDomaineServiceTest {
         given(businessNumberRepository.featchPartnerNumber()).willReturn(id);
         PersonDomaineService service = new PersonDomaineService(businessNumberRepository);
         //When
-        Partner createdPartner =  service.createPartner("Einstein", "Albert", LocalDate.of(1879, 3, 14));
+        Partner createdPartner = spy(service.createPartner("Einstein", "Albert", LocalDate.of(1879, 3, 14)));
         //Then
         verify(businessNumberRepository).featchPartnerNumber();
         assertThat(createdPartner).isNotNull();

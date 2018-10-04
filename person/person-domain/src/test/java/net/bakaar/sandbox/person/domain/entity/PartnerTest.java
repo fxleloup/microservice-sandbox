@@ -45,6 +45,10 @@ public class PartnerTest {
                 {"Kubrick", "Stanley", null, "birthDate"},
                 {null, "Stanley", LocalDate.of(1928,7,26), "name"},
                 {"Kubrick", null, LocalDate.of(1928,7,26), "forename"},
+                {"", "Stanley", LocalDate.of(1928, 7, 26), "name"},
+                {"Kubrick", "", LocalDate.of(1928, 7, 26), "forename"},
+                {" ", "Stanley", LocalDate.of(1928, 7, 26), "name"},
+                {"Kubrick", " ", LocalDate.of(1928, 7, 26), "forename"},
         };
     }
 }
