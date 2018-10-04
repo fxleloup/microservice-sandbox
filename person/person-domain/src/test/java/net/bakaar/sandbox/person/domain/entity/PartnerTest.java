@@ -2,7 +2,7 @@ package net.bakaar.sandbox.person.domain.entity;
 
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
-import net.bakaar.sandbox.person.domain.vo.PartnerId;
+import net.bakaar.sandbox.person.domain.entity.vo.PartnerId;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 

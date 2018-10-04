@@ -1,8 +1,8 @@
 package net.bakaar.sandbox.person.domain;
 
 import net.bakaar.sandbox.person.domain.entity.Partner;
+import net.bakaar.sandbox.person.domain.entity.vo.PartnerId;
 import net.bakaar.sandbox.person.domain.repository.BusinessNumberRepository;
-import net.bakaar.sandbox.person.domain.vo.PartnerId;
 import org.junit.Test;
 
 import java.time.LocalDate;

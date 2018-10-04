@@ -1,4 +1,4 @@
-package net.bakaar.sandbox.person.domain.vo;
+package net.bakaar.sandbox.person.domain.entity.vo;
 
 import org.junit.Test;
 

@@ -2,7 +2,7 @@ package net.bakaar.sandbox.person.domain.entity;
 
 import lombok.Getter;
 import lombok.NonNull;
-import net.bakaar.sandbox.person.domain.vo.PartnerId;
+import net.bakaar.sandbox.person.domain.entity.vo.PartnerId;
 
 import java.time.LocalDate;
 
