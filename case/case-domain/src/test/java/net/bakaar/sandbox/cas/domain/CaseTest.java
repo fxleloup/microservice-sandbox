@@ -1,6 +1,6 @@
 package net.bakaar.sandbox.cas.domain;
 
-import net.bakaar.sandbox.cas.domain.vo.PNummer;
+import net.bakaar.sandbox.shared.domain.vo.PNummer;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

@@ -1,6 +1,7 @@
 package net.bakaar.sandbox.cas.domain;
 
-import net.bakaar.sandbox.cas.domain.vo.PNummer;
+
+import net.bakaar.sandbox.shared.domain.vo.PNummer;
 
 public class Case {
     private final PNummer injured;

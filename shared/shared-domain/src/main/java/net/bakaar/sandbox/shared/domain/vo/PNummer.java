@@ -1,4 +1,4 @@
-package net.bakaar.sandbox.cas.domain.vo;
+package net.bakaar.sandbox.shared.domain.vo;
 
 import java.util.regex.Pattern;
 

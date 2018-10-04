@@ -2,7 +2,7 @@ package net.bakaar.sandbox.cas.infra.spring.controler;
 
 import net.bakaar.sandbox.cas.domain.Case;
 import net.bakaar.sandbox.cas.domain.CaseService;
-import net.bakaar.sandbox.cas.domain.vo.PNummer;
+import net.bakaar.sandbox.shared.domain.vo.PNummer;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

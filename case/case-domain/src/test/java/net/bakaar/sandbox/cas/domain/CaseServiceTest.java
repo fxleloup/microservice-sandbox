@@ -3,8 +3,8 @@ package net.bakaar.sandbox.cas.domain;
 import net.bakaar.sandbox.cas.domain.event.CaseCreated;
 import net.bakaar.sandbox.cas.domain.provider.BusinessIdProvider;
 import net.bakaar.sandbox.cas.domain.repository.CaseRepository;
-import net.bakaar.sandbox.cas.domain.vo.PNummer;
 import net.bakaar.sandbox.event.common.DomainEventEmitter;
+import net.bakaar.sandbox.shared.domain.vo.PNummer;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 

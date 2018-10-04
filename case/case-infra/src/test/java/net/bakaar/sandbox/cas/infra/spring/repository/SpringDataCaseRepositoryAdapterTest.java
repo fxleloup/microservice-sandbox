@@ -1,7 +1,7 @@
 package net.bakaar.sandbox.cas.infra.spring.repository;
 
 import net.bakaar.sandbox.cas.domain.Case;
-import net.bakaar.sandbox.cas.domain.vo.PNummer;
+import net.bakaar.sandbox.shared.domain.vo.PNummer;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;

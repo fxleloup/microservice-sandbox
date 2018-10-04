@@ -1,10 +1,10 @@
-package net.bakaar.sandbox.cas.domain.vo;
+package net.bakaar.sandbox.shared.domain.vo;
 
 import nl.jqno.equalsverifier.EqualsVerifier;
+import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.catchThrowable;
 import static org.springframework.test.util.ReflectionTestUtils.getField;
 
 public class PNummerTest {
@@ -33,7 +33,7 @@ public class PNummerTest {
     public void of_should_throw_exception_arg_null() {
         //Given
         //When
-        Throwable thrown = catchThrowable(() -> PNummer.of(null));
+        Throwable thrown = Assertions.catchThrowable(() -> PNummer.of(null));
         //Then
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class);
         assertThat(thrown.getMessage()).contains("null");
@@ -43,7 +43,7 @@ public class PNummerTest {
     public void of_should_throw_exception_if_pattern_wrong() {
         //Given
         //When
-        Throwable thrown = catchThrowable(() -> PNummer.of("jhd31"));
+        Throwable thrown = Assertions.catchThrowable(() -> PNummer.of("jhd31"));
         //Then
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class);
         assertThat(thrown.getMessage()).contains("PNummer should follow the pattern P[0-9]{8}");

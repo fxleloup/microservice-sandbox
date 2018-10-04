@@ -18,5 +18,6 @@
         <module>messaging</module>
         <module>case</module>
         <module>person</module>
+        <module>shared</module>
     </modules>
 </project>
