@@ -19,6 +19,8 @@
     "^.*\\.(jpg|jpeg|png|ico)$": "<rootDir>/src/jest/assetsTransformer.js"
   },
   "collectCoverageFrom": [
-    "src/app/**/*.{ts}"
+    "src/app/**/*.{ts}",
+    "!**/src/app/**/index.ts",
+    "!**/src/app/**/*.module.ts"
   ]
 }

@@ -15,6 +15,7 @@
   "transformIgnorePatterns": [
     "node_modules/(?!(@ngrx))"
   ],
+  "testURL": "http://localhost:1234",
   "testMatch": [
     "**/+(*.)+(pact).+(ts)"
   ],

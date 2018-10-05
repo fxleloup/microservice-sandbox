@@ -49,10 +49,11 @@ Those diagrams are freely inspired from the C4 model from Simon Brown.
 - [x] Implement Business Number provider
 - [x] Make Business Service running in a container
 - [x] Fix build travis
-- [ ] Create Partner service
-- [ ] Create a Person frontend with Angular, Jest tested and CDC test with pact
+- [x] Create Partner service
+- [x] Create a Person frontend with Angular, Jest tested and CDC test with pact
+- [ ] Create screens for person : search, list and create and corresponding Rest API
 - [ ] Secure the creation of a partner behind a role and protect the endpoint
-- [ ] Make Partner Service running in a container
+- [ ] Make person Service running in a container
 - [x] Add partner info (Name, Forename, BirthDate)
 - [ ] Create the claim link service
 - [ ] Create polling service
