@@ -51,10 +51,13 @@ Those diagrams are freely inspired from the C4 model from Simon Brown.
 - [x] Fix build travis
 - [x] Create Partner service
 - [x] Create a Person frontend with Angular, Jest tested and CDC test with pact
+- [ ] Add frontend build to the maven buil of person
+- [ ] Add Sonar analysis of person-frontend tot the report on sonarcloud
 - [ ] Create screens for person : search, list and create and corresponding Rest API
 - [ ] Secure the creation of a partner behind a role and protect the endpoint
 - [ ] Make person Service running in a container
 - [x] Add partner info (Name, Forename, BirthDate)
+- [ ] Refactor Case architecture to the Person one
 - [ ] Create the claim link service
 - [ ] Create polling service
 - [ ] Create a base module (commons?) gathering all the interfaces and base classes 
