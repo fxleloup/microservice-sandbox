@@ -14,7 +14,7 @@ public class PersonDomaineService {
     }
 
     public Partner createPartner(String name, String forename, LocalDate birthDate) {
-        long id = businessNumberRepository.featchPartnerNumber();
+        long id = businessNumberRepository.fetchPartnerNumber();
         return Partner.of(id, name, forename, birthDate);
     }
 }

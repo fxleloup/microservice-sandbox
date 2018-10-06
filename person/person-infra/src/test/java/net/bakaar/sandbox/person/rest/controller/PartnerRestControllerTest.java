@@ -11,13 +11,13 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-public class PersonRestControllerTest {
+public class PartnerRestControllerTest {
 
     @Test
     public void create_should_call_application_service() {
         //Given
         PersonApplicationService applicationService = mock(PersonApplicationService.class);
-        PersonRestController controller = new PersonRestController(applicationService);
+        PartnerRestController controller = new PartnerRestController(applicationService);
         PartnerDTO partner = mock(PartnerDTO.class);
         PartnerDTO returnedPartner = mock(PartnerDTO.class);
         given(applicationService.createPartner(partner)).willReturn(returnedPartner);
@@ -25,7 +25,7 @@ public class PersonRestControllerTest {
         ResponseEntity<PartnerDTO> response = controller.create(partner);
         //Then
         verify(applicationService).createPartner(partner);
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
         assertThat(response.getBody()).isSameAs(returnedPartner);
     }
 }

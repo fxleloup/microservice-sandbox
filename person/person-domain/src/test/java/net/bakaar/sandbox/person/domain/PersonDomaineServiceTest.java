@@ -18,12 +18,12 @@ public class PersonDomaineServiceTest {
         //Given
         BusinessNumberRepository businessNumberRepository = mock(BusinessNumberRepository.class);
         long id = 12345678L;
-        given(businessNumberRepository.featchPartnerNumber()).willReturn(id);
+        given(businessNumberRepository.fetchPartnerNumber()).willReturn(id);
         PersonDomaineService service = new PersonDomaineService(businessNumberRepository);
         //When
         Partner createdPartner = spy(service.createPartner("Einstein", "Albert", LocalDate.of(1879, 3, 14)));
         //Then
-        verify(businessNumberRepository).featchPartnerNumber();
+        verify(businessNumberRepository).fetchPartnerNumber();
         assertThat(createdPartner).isNotNull();
         assertThat(createdPartner.getId()).isEqualToComparingFieldByField(PNummer.of(id));
     }
