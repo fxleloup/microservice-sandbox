@@ -9,4 +9,16 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>person-frontend</artifactId>
+  <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+      </resource>
+      <resource>
+        <directory>src/main/frontend-resources</directory>
+        <filtering>false</filtering>
+      </resource>
+    </resources>
+  </build>
 </project>

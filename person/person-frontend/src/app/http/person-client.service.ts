@@ -12,6 +12,6 @@ export class PersonClientService {
   }
 
   public createPartner(partner: Partner): Observable<Partner> {
-    return this.http.post<Partner>('/person/rest/api/v1/partners', partner)
+    return this.http.post<Partner>('/person/rest/api/v1/partners', partner);
   }
 }

@@ -4,8 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
-    "build:ci": "npm run test && npm run pact && ng build --prod",
+    "build": "ng lint && ng build",
+    "build:ci": "ng lint && npm run test && npm run pact && ng build --prod",
     "test": "jest --config=jest.conf.json --coverage",
     "pact": "jest --runInBand --config=jest.pact.json",
     "lint": "ng lint",

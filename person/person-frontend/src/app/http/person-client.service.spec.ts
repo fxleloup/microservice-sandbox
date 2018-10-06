@@ -8,7 +8,7 @@ describe('PersonClientService', () => {
 
   let httpMock: HttpTestingController;
   let client: PersonClientService;
-  let expectedPartner: Partner = {};
+  const expectedPartner: Partner = {};
 
 
   beforeEach(() => {
@@ -33,6 +33,7 @@ describe('PersonClientService', () => {
     client.createPartner({}).subscribe(
       (partner) => {
         expect(partner).toBe(expectedPartner);
+        done();
       },
       (error) => {
         done.fail(error);

@@ -21,6 +21,7 @@
   "collectCoverageFrom": [
     "src/app/**/*.{ts}",
     "!**/src/app/**/index.ts",
-    "!**/src/app/**/*.module.ts"
+    "!**/src/app/**/*.module.ts",
+    "!**/src/app/**/*.pact.ts"
   ]
 }
