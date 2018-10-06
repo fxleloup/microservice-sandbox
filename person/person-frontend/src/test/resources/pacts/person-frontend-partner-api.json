@@ -1,0 +1,31 @@
+{
+  "consumer": {
+    "name": "person-frontend"
+  },
+  "provider": {
+    "name": "partner-api"
+  },
+  "interactions": [
+    {
+      "description": "create partner",
+      "request": {
+        "method": "POST",
+        "path": "/person/rest/api/v1/partners",
+        "body": {
+        }
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+        },
+        "body": {
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}
