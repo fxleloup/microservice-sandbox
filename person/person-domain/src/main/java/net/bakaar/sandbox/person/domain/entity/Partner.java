@@ -15,6 +15,9 @@ public class Partner {
     private final LocalDate birthDate;
 
     public Partner(PNummer id, String name, String forename, LocalDate birthDate) {
+        validate(name, "name");
+        validate(forename, "forename");
+        validate(birthDate);
         this.id = id;
         this.forename = forename;
         this.name = name;
@@ -23,19 +26,17 @@ public class Partner {
 
 
     public static Partner of(long id, @NonNull String name, @NonNull String forename, @NonNull LocalDate birthDate) {
-        validate(name, "name");
-        validate(forename, "forename");
-        validate(birthDate);
+
         return new Partner(PNummer.of(id), name, forename, birthDate);
     }
 
-    private static void validate(LocalDate date) {
+    private void validate(LocalDate date) {
         if (LocalDate.now().isBefore(date)) {
             throw new IllegalArgumentException(String.format("The birthDate (%s) should not be in the future", date.toString()));
         }
     }
 
-    private static void validate(String input, String paramName) {
+    private void validate(String input, String paramName) {
         if (input.trim().isEmpty()) {
             throw new IllegalArgumentException(String.format("The parameter %s should not be empty", paramName));
         }

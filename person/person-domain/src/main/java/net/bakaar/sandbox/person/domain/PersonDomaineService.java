@@ -1,20 +1,19 @@
 package net.bakaar.sandbox.person.domain;
 
 import net.bakaar.sandbox.person.domain.entity.Partner;
-import net.bakaar.sandbox.person.domain.repository.BusinessNumberRepository;
+import net.bakaar.sandbox.person.domain.repository.PartnerStore;
 
 import java.time.LocalDate;
 
 public class PersonDomaineService {
 
-    private final BusinessNumberRepository businessNumberRepository;
+    private final PartnerStore store;
 
-    public PersonDomaineService(BusinessNumberRepository businessNumberRepository) {
-        this.businessNumberRepository = businessNumberRepository;
+    public PersonDomaineService(PartnerStore store) {
+        this.store = store;
     }
 
-    public Partner createPartner(String name, String forename, LocalDate birthDate) {
-        long id = businessNumberRepository.fetchPartnerNumber();
-        return Partner.of(id, name, forename, birthDate);
+    public Partner createPartner(long id, String name, String forename, LocalDate birthDate) {
+        return store.push(Partner.of(id, name, forename, birthDate));
     }
 }

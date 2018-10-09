@@ -6,12 +6,12 @@ Feature: Partner Creation
 
   Scenario: Creation without social security number
     When I create a partner with name "Do" and forename "John" born the 16.12.1981
-    Then I sould receive a new partner with an attributed id
+    Then I should have a new partner stored in the system
 
   Scenario: Creation with social security number
     When I create a partner with the following data :
       | Do | John | 16.12.1981 | 1234567890 |
-    Then I sould receive a new partner with an attributed id
+    Then I should have a new partner stored in the system
 
   Scenario Outline: Creation should not be authorized if something is missing
     When I create a partner with name <name> and forename <forename> born the <day>.<month>.<year>
