@@ -8,4 +8,9 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan(basePackageClasses = PartnerRestController.class)
 public class PersonRestConfiguration {
 
+//    @Bean
+//    public PersonApplicationService applicationService(PartnerStore partnerStore) {
+//        return new DefaultPersonApplicationService(new PersonDomaineService(partnerStore),);
+//    }
+
 }
