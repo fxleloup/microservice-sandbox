@@ -53,6 +53,7 @@ Those diagrams are freely inspired from the C4 model from Simon Brown.
 - [x] Create a Person frontend with Angular, Jest tested and CDC test with pact
 - [x] Add frontend build to the maven buil of person
 - [ ] Refactor person domain and remove businessid provider and put it inside the application service
+- [ ] Add an enpoint in BNS to return PNummer format id
 - [ ] Add Sonar analysis of person-frontend tot the report on sonarcloud
 - [ ] Create screens for person : search, list and create and corresponding Rest API
 - [ ] Secure the creation of a partner behind a role and protect the endpoint
