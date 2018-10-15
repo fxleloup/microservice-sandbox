@@ -1,6 +1,6 @@
 package net.bakaar.sandbox.person.rest.controller;
 
-import net.bakaar.sandbox.person.application.service.PersonApplicationService;
+import net.bakaar.sandbox.person.rest.service.PersonApplicationService;
 import net.bakaar.sandbox.person.rest.vo.PartnerDTO;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;

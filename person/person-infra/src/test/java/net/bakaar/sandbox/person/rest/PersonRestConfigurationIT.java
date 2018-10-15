@@ -1,8 +1,8 @@
 package net.bakaar.sandbox.person.rest;
 
 import net.bakaar.sandbox.person.application.external.BusinessNumberServiceProperties;
-import net.bakaar.sandbox.person.application.service.PersonApplicationService;
 import net.bakaar.sandbox.person.rest.controller.PartnerRestController;
+import net.bakaar.sandbox.person.rest.service.PersonApplicationService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

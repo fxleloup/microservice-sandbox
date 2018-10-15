@@ -3,6 +3,7 @@ package net.bakaar.sandbox.person.application.service;
 import net.bakaar.sandbox.person.application.external.BusinessNumberService;
 import net.bakaar.sandbox.person.application.mapper.PartnerDomainDtoMapper;
 import net.bakaar.sandbox.person.domain.PersonDomaineService;
+import net.bakaar.sandbox.person.rest.service.PersonApplicationService;
 import net.bakaar.sandbox.person.rest.vo.PartnerDTO;
 
 public class DefaultPersonApplicationService implements PersonApplicationService {

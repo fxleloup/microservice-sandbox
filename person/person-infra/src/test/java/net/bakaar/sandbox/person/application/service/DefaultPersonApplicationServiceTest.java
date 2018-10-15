@@ -4,6 +4,7 @@ import net.bakaar.sandbox.person.application.external.BusinessNumberService;
 import net.bakaar.sandbox.person.application.mapper.PartnerDomainDtoMapper;
 import net.bakaar.sandbox.person.domain.PersonDomaineService;
 import net.bakaar.sandbox.person.domain.entity.Partner;
+import net.bakaar.sandbox.person.rest.service.PersonApplicationService;
 import net.bakaar.sandbox.person.rest.vo.PartnerDTO;
 import org.junit.Test;
 

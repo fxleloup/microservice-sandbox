@@ -2,8 +2,8 @@ package net.bakaar.sandbox.person.rest.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import net.bakaar.sandbox.person.application.service.PersonApplicationService;
 import net.bakaar.sandbox.person.rest.PersonRestConfiguration;
+import net.bakaar.sandbox.person.rest.service.PersonApplicationService;
 import net.bakaar.sandbox.person.rest.vo.PartnerDTO;
 import org.junit.Test;
 import org.junit.runner.RunWith;

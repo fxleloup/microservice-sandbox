@@ -1,4 +1,4 @@
-package net.bakaar.sandbox.person.application.service;
+package net.bakaar.sandbox.person.rest.service;
 
 import net.bakaar.sandbox.person.rest.vo.PartnerDTO;
 
