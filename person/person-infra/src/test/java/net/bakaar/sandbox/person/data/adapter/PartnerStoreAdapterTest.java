@@ -19,12 +19,15 @@ public class PartnerStoreAdapterTest {
         //Given
         Partner input = mock(Partner.class);
         Partner returned = mock(Partner.class);
-        PartnerEntityDomainMapper mapper = mock(PartnerEntityDomainMapper.class);
         PersonEntity entity = mock(PersonEntity.class);
+
+        PartnerEntityDomainMapper mapper = mock(PartnerEntityDomainMapper.class);
         PersonRepository repository = mock(PersonRepository.class);
+
+        given(mapper.mapToEntity(input)).willReturn(entity);
         given(repository.save(any(PersonEntity.class))).willAnswer(invocation -> invocation.getArgument(0));
         given(mapper.mapToDomain(entity)).willReturn(returned);
-        given(mapper.mapToEntity(input)).willReturn(entity);
+
         PartnerStoreAdapter adapter = new PartnerStoreAdapter(repository, mapper);
         //When
         Partner partner = adapter.push(input);
