@@ -1,5 +1,5 @@
 .idea/**
-**/**.iml
+**.iml
 **/target/**
 /event/event.iml
 /messaging/messaging.iml
