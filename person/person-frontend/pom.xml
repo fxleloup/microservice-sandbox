@@ -24,7 +24,7 @@
   <dependencies>
     <dependency>
       <groupId>net.bakaar</groupId>
-      <artifactId>person-infra</artifactId>
+      <artifactId>person-infra-rest</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>

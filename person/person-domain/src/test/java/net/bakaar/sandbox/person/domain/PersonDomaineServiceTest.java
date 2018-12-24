@@ -2,6 +2,8 @@ package net.bakaar.sandbox.person.domain;
 
 import net.bakaar.sandbox.person.domain.entity.Partner;
 import net.bakaar.sandbox.person.domain.repository.PartnerStore;
+import net.bakaar.sandbox.person.domain.service.CreatePartnerUseCase;
+import net.bakaar.sandbox.person.domain.service.PersonDomaineService;
 import net.bakaar.sandbox.shared.domain.vo.PNummer;
 import org.junit.Test;
 
@@ -20,7 +22,7 @@ public class PersonDomaineServiceTest {
         //Given
         PartnerStore partnerStore = mock(PartnerStore.class);
         given(partnerStore.push(any(Partner.class))).willAnswer(invocationOnMock -> invocationOnMock.getArgument(0));
-        PersonDomaineService service = new PersonDomaineService(partnerStore);
+        CreatePartnerUseCase service = new PersonDomaineService(partnerStore);
         long id = 12345678L;
         //When
         Partner createdPartner = service.createPartner(id, "Einstein", "Albert", LocalDate.of(1879, 3, 14));

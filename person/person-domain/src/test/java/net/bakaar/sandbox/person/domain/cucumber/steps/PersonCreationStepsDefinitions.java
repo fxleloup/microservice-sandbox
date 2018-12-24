@@ -3,9 +3,10 @@ package net.bakaar.sandbox.person.domain.cucumber.steps;
 import cucumber.api.DataTable;
 import cucumber.api.java.Before;
 import cucumber.api.java8.En;
-import net.bakaar.sandbox.person.domain.PersonDomaineService;
 import net.bakaar.sandbox.person.domain.entity.Partner;
 import net.bakaar.sandbox.person.domain.repository.PartnerStore;
+import net.bakaar.sandbox.person.domain.service.CreatePartnerUseCase;
+import net.bakaar.sandbox.person.domain.service.PersonDomaineService;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -21,7 +22,7 @@ import static org.mockito.Mockito.verify;
 public class PersonCreationStepsDefinitions implements En {
 
     private final PartnerStore partnerStore = mock(PartnerStore.class);
-    private final PersonDomaineService service = new PersonDomaineService(partnerStore);
+    private final CreatePartnerUseCase service = new PersonDomaineService(partnerStore);
     private Partner createdPartner;
     private Throwable thrown;
 
