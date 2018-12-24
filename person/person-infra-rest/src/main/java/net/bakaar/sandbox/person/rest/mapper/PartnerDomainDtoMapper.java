@@ -5,6 +5,15 @@ import net.bakaar.sandbox.person.rest.dto.PartnerDTO;
 
 public class PartnerDomainDtoMapper {
     public PartnerDTO mapToDto(Partner partner) {
-        return null;
+        PartnerDTO dto = new PartnerDTO();
+        dto.setId(partner.getId().format());
+        dto.setName(partner.getName());
+        dto.setForename(partner.getForename());
+        dto.setBirthDate(partner.getBirthDate());
+        return dto;
+    }
+
+    public Partner mapToDomain(PartnerDTO dto) {
+        return Partner.of(dto.getId(), dto.getName(), dto.getForename(), dto.getBirthDate());
     }
 }

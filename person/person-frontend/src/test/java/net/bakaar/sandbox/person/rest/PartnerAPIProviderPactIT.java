@@ -2,35 +2,24 @@ package net.bakaar.sandbox.person.rest;
 
 import au.com.dius.pact.provider.junit.Provider;
 import au.com.dius.pact.provider.junit.loader.PactFolder;
-import au.com.dius.pact.provider.junit.target.HttpTarget;
 import au.com.dius.pact.provider.junit.target.Target;
 import au.com.dius.pact.provider.junit.target.TestTarget;
 import au.com.dius.pact.provider.spring.SpringRestPactRunner;
-import net.bakaar.sandbox.person.data.rest.BusinessNumberService;
-import org.junit.Before;
+import au.com.dius.pact.provider.spring.target.SpringBootHttpTarget;
+import net.bakaar.sandbox.person.PersonApplication;
+import net.bakaar.sandbox.person.rest.config.PactTestConfiguration;
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.ActiveProfiles;
-
-import static org.mockito.BDDMockito.given;
 
 @RunWith(SpringRestPactRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
-@ActiveProfiles("pact")
+@SpringBootTest(classes = {PactTestConfiguration.class, PersonApplication.class}, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Provider("partner-api")
 @PactFolder("pacts")
+@Ignore
 public class PartnerAPIProviderPactIT {
 
-  @MockBean
-  private BusinessNumberService numberService;
-
-  @Before
-  public void prepareMock() {
-    given(numberService.fetchPartnerNummer()).willReturn(30L);
-  }
-
   @TestTarget
-  public final Target target = new HttpTarget(8091);
+  public final Target target = new SpringBootHttpTarget();
 
 }

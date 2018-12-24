@@ -5,6 +5,8 @@ import net.bakaar.sandbox.person.domain.service.CreatePartnerUseCase;
 import net.bakaar.sandbox.person.rest.dto.PartnerDTO;
 import net.bakaar.sandbox.person.rest.mapper.PartnerDomainDtoMapper;
 
+import javax.transaction.Transactional;
+
 public class PersonRestService {
     private final CreatePartnerUseCase createPartnerUseCase;
     private final BusinessNumberService businessNumberService;
@@ -16,6 +18,7 @@ public class PersonRestService {
         this.mapper = mapper;
     }
 
+    @Transactional
     public PartnerDTO createPartner(PartnerDTO partner) {
         long id = businessNumberService.fetchPartnerNummer();
         return mapper.mapToDto(

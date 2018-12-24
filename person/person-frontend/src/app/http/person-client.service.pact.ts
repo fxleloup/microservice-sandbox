@@ -3,6 +3,7 @@ import {PersonClientService} from './person-client.service';
 import {Pact} from '@pact-foundation/pact';
 import * as path from 'path';
 import {HttpClientModule} from '@angular/common/http';
+import {term} from '@pact-foundation/pact/dsl/matchers';
 
 describe('Person API', () => {
   beforeEach(() => {
@@ -48,11 +49,21 @@ describe('Person API', () => {
       withRequest: {
         method: 'POST',
         path: '/person/rest/api/v1/partners',
-        body: {}
+        body: {
+          name: 'Einstein',
+          forename: 'Albert'
+        }
       },
       willRespondWith: {
         status: 201,
-        body: {}
+        body: {
+          id: term({
+            generate: 'P87654321',
+            matcher: 'P[0-9]{8}'
+          }),
+          name: 'Einstein',
+          forename: 'Albert'
+        }
       }
     }).then(
       () => {
@@ -64,7 +75,9 @@ describe('Person API', () => {
 
   it('should answer that the partner is created', (done) => {
     const client: PersonClientService = TestBed.get(PersonClientService);
-    client.createPartner({})
+    client.createPartner({
+      name: 'Einstein', forename: 'Albert'
+    })
       .subscribe(
         () => {
           done();

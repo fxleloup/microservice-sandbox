@@ -12,6 +12,8 @@
         "method": "POST",
         "path": "/person/rest/api/v1/partners",
         "body": {
+          "name": "Einstein",
+          "forename": "Albert"
         }
       },
       "response": {
@@ -19,6 +21,15 @@
         "headers": {
         },
         "body": {
+          "id": "P87654321",
+          "name": "Einstein",
+          "forename": "Albert"
+        },
+        "matchingRules": {
+          "$.body.id": {
+            "match": "regex",
+            "regex": "P[0-9]{8}"
+          }
         }
       }
     }

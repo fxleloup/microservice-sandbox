@@ -20,5 +20,4 @@ Feature: Partner Creation
       | name | forename | day | month | year | info      |
       |      | John     | 16  | 12    | 1981 | name      |
       | Do   |          | 16  | 12    | 1981 | forename  |
-      | Do   | John     | 0   | 0     | 0    | birthDate |
       | Do   | John     | 9   | 12    | 9999 | birthDate |

@@ -25,13 +25,18 @@ public class Partner {
     }
 
 
-    public static Partner of(long id, @NonNull String name, @NonNull String forename, @NonNull LocalDate birthDate) {
+    public static Partner of(long id, @NonNull String name, @NonNull String forename, LocalDate birthDate) {
+
+        return new Partner(PNummer.of(id), name, forename, birthDate);
+    }
+
+    public static Partner of(String id, @NonNull String name, @NonNull String forename, LocalDate birthDate) {
 
         return new Partner(PNummer.of(id), name, forename, birthDate);
     }
 
     private void validate(LocalDate date) {
-        if (LocalDate.now().isBefore(date)) {
+        if (date != null && LocalDate.now().isBefore(date)) {
             throw new IllegalArgumentException(String.format("The birthDate (%s) should not be in the future", date.toString()));
         }
     }
