@@ -1,10 +1,4 @@
 .idea/**
 **.iml
 **/target/**
-/event/event.iml
-/messaging/messaging.iml
-/case/case-infra/case-infra.iml
-/case/case.iml
-/case/case-domain/case-domain.iml
-/business-number/business-number.iml
 /.teamcity/MicroserviceSandbox_dsl.iml
