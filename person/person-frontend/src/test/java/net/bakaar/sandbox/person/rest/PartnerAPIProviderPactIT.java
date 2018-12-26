@@ -8,7 +8,6 @@ import au.com.dius.pact.provider.spring.SpringRestPactRunner;
 import au.com.dius.pact.provider.spring.target.SpringBootHttpTarget;
 import net.bakaar.sandbox.person.PersonApplication;
 import net.bakaar.sandbox.person.rest.config.PactTestConfiguration;
-import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -16,7 +15,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest(classes = {PactTestConfiguration.class, PersonApplication.class}, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Provider("partner-api")
 @PactFolder("pacts")
-@Ignore
 public class PartnerAPIProviderPactIT {
 
   @TestTarget

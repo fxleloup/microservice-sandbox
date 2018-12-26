@@ -1,8 +1,10 @@
 package net.bakaar.sandbox.shared.domain.vo;
 
+
 import java.util.regex.Pattern;
 
 public final class PNummer {
+
     private final int value;
 
     private PNummer(String pnummer) {
@@ -26,6 +28,10 @@ public final class PNummer {
 
     public String format() {
         return "P" + value;
+    }
+
+    public int getValue() {
+        return value;
     }
 
     @Override
