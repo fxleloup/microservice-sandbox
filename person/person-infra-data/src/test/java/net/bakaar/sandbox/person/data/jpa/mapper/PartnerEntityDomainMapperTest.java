@@ -28,14 +28,14 @@ public class PartnerEntityDomainMapperTest {
         assertThat(entity.getId()).isNull();
         assertThat(entity.getName()).isEqualTo(name);
         assertThat(entity.getForename()).isEqualTo(forename);
-        assertThat(entity.getPnummer()).isEqualTo(id);
+        assertThat(entity.getPNumber()).isEqualTo(id);
     }
 
     @Test
     public void mapToDomain_should_map_correctly() {
         //Given
         PersonEntity entity = new PersonEntity();
-        entity.setPnummer(id);
+        entity.setPNumber(id);
         entity.setName(name);
         entity.setForename(forename);
         entity.setBirthDate(birthDate);

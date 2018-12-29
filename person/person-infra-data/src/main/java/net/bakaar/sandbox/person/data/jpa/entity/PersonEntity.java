@@ -19,7 +19,7 @@ public class PersonEntity {
 
     private String forename;
 
-    private long pnummer;
+    private long pNumber;
 
     @Column(name = "birth_date")
     private LocalDate birthDate;

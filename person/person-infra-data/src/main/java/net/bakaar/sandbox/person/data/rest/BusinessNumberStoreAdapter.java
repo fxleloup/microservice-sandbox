@@ -1,13 +1,13 @@
 package net.bakaar.sandbox.person.data.rest;
 
-import net.bakaar.sandbox.person.domain.repository.BusinessNumberRepository;
+import net.bakaar.sandbox.person.domain.store.BusinessNumberStore;
 import org.springframework.web.client.RestTemplate;
 
-public class BusinessNumberRepositoryAdapter implements BusinessNumberRepository {
+public class BusinessNumberStoreAdapter implements BusinessNumberStore {
     private final BusinessNumberServiceProperties properties;
     private final RestTemplate restTemplate;
 
-    public BusinessNumberRepositoryAdapter(BusinessNumberServiceProperties properties, RestTemplate restTemplate) {
+    public BusinessNumberStoreAdapter(BusinessNumberServiceProperties properties, RestTemplate restTemplate) {
         this.properties = properties;
         this.restTemplate = restTemplate;
     }

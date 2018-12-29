@@ -1,21 +1,32 @@
 package net.bakaar.sandbox.person.data.jpa.adapter;
 
+import net.bakaar.sandbox.person.data.jpa.mapper.PartnerEntityDTOMapper;
 import net.bakaar.sandbox.person.data.jpa.mapper.PartnerEntityDomainMapper;
 import net.bakaar.sandbox.person.data.jpa.repository.PersonRepository;
 import net.bakaar.sandbox.person.domain.entity.Partner;
-import net.bakaar.sandbox.person.domain.repository.PartnerStore;
+import net.bakaar.sandbox.person.domain.store.PartnerStore;
+import net.bakaar.sandbox.person.rest.dto.PartnerDTO;
+import net.bakaar.sandbox.person.rest.repository.PartnerReadStore;
+import net.bakaar.sandbox.shared.domain.vo.PNumber;
 
-public class PartnerStoreAdapter implements PartnerStore {
+public class PartnerStoreAdapter implements PartnerStore, PartnerReadStore {
     private final PersonRepository repository;
-    private final PartnerEntityDomainMapper mapper;
+    private final PartnerEntityDomainMapper entityDomainMapper;
+    private PartnerEntityDTOMapper entityDTOMapper;
 
-    public PartnerStoreAdapter(PersonRepository repository, PartnerEntityDomainMapper mapper) {
+    public PartnerStoreAdapter(PersonRepository repository, PartnerEntityDomainMapper entityDomainMapper, PartnerEntityDTOMapper entityDTOMapper) {
         this.repository = repository;
-        this.mapper = mapper;
+        this.entityDomainMapper = entityDomainMapper;
+        this.entityDTOMapper = entityDTOMapper;
     }
 
     @Override
     public Partner push(Partner toStore) {
-        return mapper.mapToDomain(repository.save(mapper.mapToEntity(toStore)));
+        return entityDomainMapper.mapToDomain(repository.save(entityDomainMapper.mapToEntity(toStore)));
+    }
+
+    @Override
+    public PartnerDTO fetchPartnerById(PNumber pNumber) {
+        return entityDTOMapper.mapToDto(repository.findByPNumber(pNumber.getValue()));
     }
 }

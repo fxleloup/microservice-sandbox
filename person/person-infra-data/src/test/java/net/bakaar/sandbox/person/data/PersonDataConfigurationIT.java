@@ -2,8 +2,9 @@ package net.bakaar.sandbox.person.data;
 
 import net.bakaar.sandbox.person.data.jpa.repository.PersonRepository;
 import net.bakaar.sandbox.person.data.rest.BusinessNumberServiceProperties;
-import net.bakaar.sandbox.person.domain.repository.BusinessNumberRepository;
-import net.bakaar.sandbox.person.domain.repository.PartnerStore;
+import net.bakaar.sandbox.person.domain.store.BusinessNumberStore;
+import net.bakaar.sandbox.person.domain.store.PartnerStore;
+import net.bakaar.sandbox.person.rest.repository.PartnerReadStore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class PersonDataConfigurationIT {
 
     @Autowired
-    private BusinessNumberRepository businessNumberRepository;
+    private BusinessNumberStore businessNumberStore;
 
     @Autowired
     private BusinessNumberServiceProperties properties;
@@ -33,17 +34,16 @@ public class PersonDataConfigurationIT {
     private PartnerStore partnerStore;
 
     @Autowired
+    private PartnerReadStore partnerReadStore;
+
+    @Autowired
     private PersonRepository personRepository;
 
     @Test
-    public void rest_beans_should_be_in_context() {
-        assertThat(businessNumberRepository).isNotNull();
-        assertThat(properties).isNotNull();
-    }
-
-    @Test
-    public void jpa_beans_should_be_in_context() {
-        assertThat(partnerStore).isNotNull();
+    public void context_should_load() {
+        assertThat(partnerStore).isNotNull().isSameAs(partnerReadStore);
         assertThat(personRepository).isNotNull();
+        assertThat(properties).isNotNull();
+        assertThat(businessNumberStore).isNotNull();
     }
 }

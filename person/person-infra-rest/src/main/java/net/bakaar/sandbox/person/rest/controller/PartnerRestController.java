@@ -2,11 +2,10 @@ package net.bakaar.sandbox.person.rest.controller;
 
 import net.bakaar.sandbox.person.rest.dto.PartnerDTO;
 import net.bakaar.sandbox.person.rest.service.PersonRestService;
+import net.bakaar.sandbox.shared.domain.vo.PNumber;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 
@@ -25,9 +24,9 @@ public class PartnerRestController {
     }
 
 
-//    @GetMapping("/{partnerId}")
-//    @ResponseStatus(HttpStatus.OK)
-//    public PartnerDTO readAPArtner(@PathVariable String partnerId) {
-//
-//    }
+    @GetMapping("/{partnerId}")
+    @ResponseStatus(HttpStatus.OK)
+    public PartnerDTO readAPartner(@PathVariable String partnerId) {
+        return service.fetchPartnerById(PNumber.of(partnerId));
+    }
 }

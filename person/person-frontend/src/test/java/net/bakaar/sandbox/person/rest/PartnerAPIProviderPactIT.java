@@ -31,7 +31,7 @@ public class PartnerAPIProviderPactIT {
   public void createAPartner() {
 
     PersonEntity entity = new PersonEntity();
-    entity.setPnummer(12345678L);
+    entity.setPNumber(12345678L);
     entity.setBirthDate(null);
     entity.setName("Einstein");
     entity.setForename("Albert");

@@ -3,15 +3,21 @@ package net.bakaar.sandbox.person.rest.service;
 import net.bakaar.sandbox.person.domain.service.CreatePartnerUseCase;
 import net.bakaar.sandbox.person.rest.dto.PartnerDTO;
 import net.bakaar.sandbox.person.rest.mapper.PartnerDomainDtoMapper;
+import net.bakaar.sandbox.person.rest.repository.PartnerReadStore;
+import net.bakaar.sandbox.shared.domain.vo.PNumber;
 
 import javax.transaction.Transactional;
 
 public class PersonRestService {
     private final CreatePartnerUseCase createPartnerUseCase;
+    private final PartnerReadStore readRepository;
     private final PartnerDomainDtoMapper mapper;
 
-    public PersonRestService(CreatePartnerUseCase createPartnerUseCase, PartnerDomainDtoMapper mapper) {
+    public PersonRestService(CreatePartnerUseCase createPartnerUseCase,
+                             PartnerReadStore readRepository,
+                             PartnerDomainDtoMapper mapper) {
         this.createPartnerUseCase = createPartnerUseCase;
+        this.readRepository = readRepository;
         this.mapper = mapper;
     }
 
@@ -20,5 +26,11 @@ public class PersonRestService {
         return mapper.mapToDto(
                 createPartnerUseCase.createPartner(partner.getName(), partner.getForename(), partner.getBirthDate())
         );
+    }
+
+    // TODO put readOnly here for non blocking transaction
+    @Transactional
+    public PartnerDTO fetchPartnerById(PNumber pNumber) {
+        return readRepository.fetchPartnerById(pNumber);
     }
 }

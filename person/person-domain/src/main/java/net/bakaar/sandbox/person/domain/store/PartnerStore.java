@@ -1,4 +1,4 @@
-package net.bakaar.sandbox.person.domain.repository;
+package net.bakaar.sandbox.person.domain.store;
 
 import net.bakaar.sandbox.person.domain.entity.Partner;
 

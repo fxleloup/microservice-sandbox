@@ -1,9 +1,12 @@
 package net.bakaar.sandbox.person.data.jpa.adapter;
 
 import net.bakaar.sandbox.person.data.jpa.entity.PersonEntity;
+import net.bakaar.sandbox.person.data.jpa.mapper.PartnerEntityDTOMapper;
 import net.bakaar.sandbox.person.data.jpa.mapper.PartnerEntityDomainMapper;
 import net.bakaar.sandbox.person.data.jpa.repository.PersonRepository;
 import net.bakaar.sandbox.person.domain.entity.Partner;
+import net.bakaar.sandbox.person.rest.dto.PartnerDTO;
+import net.bakaar.sandbox.shared.domain.vo.PNumber;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -14,27 +17,44 @@ import static org.mockito.Mockito.verify;
 
 public class PartnerStoreAdapterTest {
 
+    private final PartnerEntityDomainMapper entityDomainMapper = mock(PartnerEntityDomainMapper.class);
+    private final PartnerEntityDTOMapper entityDTOMapper = mock(PartnerEntityDTOMapper.class);
+    private final PersonRepository repository = mock(PersonRepository.class);
+    private final PartnerStoreAdapter adapter = new PartnerStoreAdapter(repository, entityDomainMapper, entityDTOMapper);
+    private final PersonEntity mockedEntity = mock(PersonEntity.class);
+
     @Test
     public void push_should_store_partner_in_db() {
         //Given
         Partner input = mock(Partner.class);
         Partner returned = mock(Partner.class);
-        PersonEntity entity = mock(PersonEntity.class);
-
-        PartnerEntityDomainMapper mapper = mock(PartnerEntityDomainMapper.class);
-        PersonRepository repository = mock(PersonRepository.class);
-
-        given(mapper.mapToEntity(input)).willReturn(entity);
+        given(entityDomainMapper.mapToEntity(input)).willReturn(mockedEntity);
         given(repository.save(any(PersonEntity.class))).willAnswer(invocation -> invocation.getArgument(0));
-        given(mapper.mapToDomain(entity)).willReturn(returned);
-
-        PartnerStoreAdapter adapter = new PartnerStoreAdapter(repository, mapper);
+        given(entityDomainMapper.mapToDomain(mockedEntity)).willReturn(returned);
         //When
         Partner partner = adapter.push(input);
         //Then
-        verify(mapper).mapToEntity(input);
-        verify(repository).save(entity);
-        verify(mapper).mapToDomain(entity);
-        assertThat(partner).isSameAs(returned);
+        verify(entityDomainMapper).mapToEntity(input);
+        verify(repository).save(mockedEntity);
+        verify(entityDomainMapper).mapToDomain(mockedEntity);
+        assertThat(partner).isNotNull().isSameAs(returned);
+    }
+
+    @Test
+    public void fetchPartnerById_should_read_partner_from_db() {
+        //Given
+        long id = 12345678L;
+        PNumber pNumber = PNumber.of(id);
+        given(repository.findByPNumber(id)).willReturn(mockedEntity);
+        PartnerDTO returnedDto = mock(PartnerDTO.class);
+        given(entityDTOMapper.mapToDto(mockedEntity)).willReturn(returnedDto);
+        //When
+        PartnerDTO dto = adapter.fetchPartnerById(pNumber);
+        //Then
+        assertThat(dto).isNotNull().isSameAs(returnedDto);
+        verify(repository).findByPNumber(id);
+        verify(entityDTOMapper).mapToDto(mockedEntity);
+
+
     }
 }

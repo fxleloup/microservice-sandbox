@@ -1,8 +1,8 @@
 package net.bakaar.sandbox.person.domain.service;
 
 import net.bakaar.sandbox.person.domain.entity.Partner;
-import net.bakaar.sandbox.person.domain.repository.BusinessNumberRepository;
-import net.bakaar.sandbox.person.domain.repository.PartnerStore;
+import net.bakaar.sandbox.person.domain.store.BusinessNumberStore;
+import net.bakaar.sandbox.person.domain.store.PartnerStore;
 import net.bakaar.sandbox.shared.domain.vo.PNumber;
 import org.junit.Test;
 import org.mockito.ArgumentMatchers;
@@ -22,15 +22,15 @@ public class PersonDomaineServiceTest {
         PartnerStore partnerStore = mock(PartnerStore.class);
         given(partnerStore.push(ArgumentMatchers.any(Partner.class))).willAnswer(invocationOnMock -> invocationOnMock.getArgument(0));
         long id = 12345678L;
-        BusinessNumberRepository businessNumberRepository = mock(BusinessNumberRepository.class);
-        given(businessNumberRepository.createPartnerNumber()).willReturn(id);
-        CreatePartnerUseCase service = new PersonDomaineService(partnerStore, businessNumberRepository);
+        BusinessNumberStore businessNumberStore = mock(BusinessNumberStore.class);
+        given(businessNumberStore.createPartnerNumber()).willReturn(id);
+        CreatePartnerUseCase service = new PersonDomaineService(partnerStore, businessNumberStore);
         //When
         Partner createdPartner = service.createPartner("Einstein", "Albert", LocalDate.of(1879, 3, 14));
         //Then
         assertThat(createdPartner).isNotNull();
         assertThat(createdPartner.getId()).isEqualToComparingFieldByField(PNumber.of(id));
         verify(partnerStore).push(ArgumentMatchers.any(Partner.class));
-        verify(businessNumberRepository).createPartnerNumber();
+        verify(businessNumberStore).createPartnerNumber();
     }
 }

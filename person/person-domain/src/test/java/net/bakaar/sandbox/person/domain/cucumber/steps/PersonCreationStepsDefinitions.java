@@ -4,10 +4,10 @@ import cucumber.api.DataTable;
 import cucumber.api.java.Before;
 import cucumber.api.java8.En;
 import net.bakaar.sandbox.person.domain.entity.Partner;
-import net.bakaar.sandbox.person.domain.repository.BusinessNumberRepository;
-import net.bakaar.sandbox.person.domain.repository.PartnerStore;
 import net.bakaar.sandbox.person.domain.service.CreatePartnerUseCase;
 import net.bakaar.sandbox.person.domain.service.PersonDomaineService;
+import net.bakaar.sandbox.person.domain.store.BusinessNumberStore;
+import net.bakaar.sandbox.person.domain.store.PartnerStore;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -23,8 +23,8 @@ import static org.mockito.Mockito.verify;
 public class PersonCreationStepsDefinitions implements En {
 
     private final PartnerStore partnerStore = mock(PartnerStore.class);
-    private final BusinessNumberRepository businessNumberRepository = mock(BusinessNumberRepository.class);
-    private final CreatePartnerUseCase service = new PersonDomaineService(partnerStore, businessNumberRepository);
+    private final BusinessNumberStore businessNumberStore = mock(BusinessNumberStore.class);
+    private final CreatePartnerUseCase service = new PersonDomaineService(partnerStore, businessNumberStore);
     private Partner createdPartner;
     private Throwable thrown;
 
@@ -54,7 +54,7 @@ public class PersonCreationStepsDefinitions implements En {
     @Before
     public void initializeMock() {
         given(partnerStore.push(any(Partner.class))).willAnswer(invocationOnMock -> invocationOnMock.getArgument(0));
-        given(businessNumberRepository.createPartnerNumber()).willReturn(12345678L);
+        given(businessNumberStore.createPartnerNumber()).willReturn(12345678L);
     }
 
     private LocalDate convertToDate(String toConvert) {
