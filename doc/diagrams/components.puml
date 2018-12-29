@@ -27,6 +27,6 @@ node "Claim" as main {
     c --> lp : saga
     lp <- ls : poll
     c -u-> bns : call&retry
-    c -> ps : gentle degradation
+    c -> ps : update after message
 
 @enduml

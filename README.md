@@ -51,10 +51,13 @@ Those diagrams are freely inspired from the C4 model from Simon Brown.
 - [x] Fix build travis
 - [x] Create Partner service
 - [x] Create a Person frontend with Angular, Jest tested and CDC test with pact
-- [x] Add frontend build to the maven buil of person
-- [ ] Refactor person domain and remove businessid provider and put it inside the application service
-- [ ] Add an enpoint in BNS to return PNummer format id
-- [ ] Add Sonar analysis of person-frontend tot the report on sonarcloud
+- [x] Add frontend build to the maven build of person
+- [ ] Add error to Rest API test and have a standard to propagate this error
+- [ ] Add pact test in infra-data-rest for BusinessNumber endpoint
+- [ ] Add an endpoint in BNS to return PNumber format id
+- [ ] Add birth date in person api signature
+- [ ] Add partner info to Case microservice and enable update threw messaging
+- [ ] Add Sonar analysis of person-frontend typescript the report on SonarCloud
 - [ ] Create screens for person : search, list and create and corresponding Rest API
 - [ ] Secure the creation of a partner behind a role and protect the endpoint
 - [ ] Make person Service running in a container
@@ -77,6 +80,7 @@ Those diagrams are freely inspired from the C4 model from Simon Brown.
 * Service discovery with Spring Cloud Eureka
 * Call tracking with :
   * Zipkin
+  * Istio
   * Jhipster console
 * Security with Spring Security
   * JWT
