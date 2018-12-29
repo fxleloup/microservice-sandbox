@@ -5,7 +5,7 @@ import * as path from 'path';
 import {HttpClientModule} from '@angular/common/http';
 import {term} from '@pact-foundation/pact/dsl/matchers';
 
-describe('Person API', () => {
+describe('Partner API', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -78,6 +78,42 @@ describe('Person API', () => {
     client.createPartner({
       name: 'Einstein', forename: 'Albert'
     })
+      .subscribe(
+        (partner) => {
+          expect(partner.id).toBeTruthy();
+          done();
+        },
+        (error) => done.fail(error)
+      );
+  });
+
+  beforeAll((done) => {
+    provider.addInteraction({
+      state: 'Exist a Partner',
+      uponReceiving: 'read partner',
+      withRequest: {
+        method: 'GET',
+        path: '/person/rest/api/v1/partners/P12345678'
+      },
+      willRespondWith: {
+        status: 200,
+        body: {
+          id: 'P12345678',
+          name: 'Einstein',
+          forename: 'Albert'
+        }
+      }
+    }).then(
+      () => {
+        done();
+      },
+      error => done.fail(error)
+    );
+  });
+
+  it('should read the corresponding partner', (done) => {
+    const client: PersonClientService = TestBed.get(PersonClientService);
+    client.readPartner('P12345678')
       .subscribe(
         () => {
           done();

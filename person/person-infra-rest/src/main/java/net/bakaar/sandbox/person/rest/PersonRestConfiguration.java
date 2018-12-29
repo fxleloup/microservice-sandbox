@@ -1,6 +1,5 @@
 package net.bakaar.sandbox.person.rest;
 
-import net.bakaar.sandbox.person.data.rest.BusinessNumberService;
 import net.bakaar.sandbox.person.domain.service.CreatePartnerUseCase;
 import net.bakaar.sandbox.person.rest.controller.PartnerRestController;
 import net.bakaar.sandbox.person.rest.mapper.PartnerDomainDtoMapper;
@@ -14,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 public class PersonRestConfiguration {
 
     @Bean
-    public PersonRestService restService(CreatePartnerUseCase partnerUseCase, BusinessNumberService numberService) {
-        return new PersonRestService(partnerUseCase, numberService, new PartnerDomainDtoMapper());
+    public PersonRestService restService(CreatePartnerUseCase partnerUseCase) {
+        return new PersonRestService(partnerUseCase, new PartnerDomainDtoMapper());
     }
 }

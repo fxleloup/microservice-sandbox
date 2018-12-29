@@ -1,8 +1,8 @@
 package net.bakaar.sandbox.person.data;
 
 import net.bakaar.sandbox.person.data.jpa.repository.PersonRepository;
-import net.bakaar.sandbox.person.data.rest.BusinessNumberService;
 import net.bakaar.sandbox.person.data.rest.BusinessNumberServiceProperties;
+import net.bakaar.sandbox.person.domain.repository.BusinessNumberRepository;
 import net.bakaar.sandbox.person.domain.repository.PartnerStore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,7 +21,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class PersonDataConfigurationIT {
 
     @Autowired
-    private BusinessNumberService businessNumberService;
+    private BusinessNumberRepository businessNumberRepository;
 
     @Autowired
     private BusinessNumberServiceProperties properties;
@@ -37,7 +37,7 @@ public class PersonDataConfigurationIT {
 
     @Test
     public void rest_beans_should_be_in_context() {
-        assertThat(businessNumberService).isNotNull();
+        assertThat(businessNumberRepository).isNotNull();
         assertThat(properties).isNotNull();
     }
 

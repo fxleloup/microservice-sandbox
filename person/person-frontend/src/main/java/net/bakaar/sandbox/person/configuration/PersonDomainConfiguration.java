@@ -11,7 +11,7 @@ public class PersonDomainConfiguration {
 
   @Bean
   public CreatePartnerUseCase createPartnerUseCase(PartnerStore store) {
-    return new PersonDomaineService(store);
+    return new PersonDomaineService(store, businessNumberRepository);
   }
 
 

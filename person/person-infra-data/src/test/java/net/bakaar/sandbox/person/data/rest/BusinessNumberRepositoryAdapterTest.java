@@ -8,7 +8,7 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-public class BusinessNumberRestClientTest {
+public class BusinessNumberRepositoryAdapterTest {
 
     @Test
     public void fetch_should_call_rest_endpoint() {
@@ -19,9 +19,9 @@ public class BusinessNumberRestClientTest {
         given(restTemplate.getForObject(url, Long.class)).willReturn(result);
         BusinessNumberServiceProperties properties = mock(BusinessNumberServiceProperties.class);
         given(properties.getUrl()).willReturn(url);
-        BusinessNumberRestClient client = new BusinessNumberRestClient(properties, restTemplate);
+        BusinessNumberRepositoryAdapter client = new BusinessNumberRepositoryAdapter(properties, restTemplate);
         //When
-        long number = client.fetchPartnerNummer();
+        long number = client.createPartnerNumber();
         //Then
         verify(restTemplate).getForObject(url, Long.class);
         verify(properties).getUrl();

@@ -1,6 +1,6 @@
 package net.bakaar.sandbox.person.rest;
 
-import net.bakaar.sandbox.person.data.rest.BusinessNumberService;
+import net.bakaar.sandbox.person.domain.repository.BusinessNumberRepository;
 import net.bakaar.sandbox.person.domain.service.CreatePartnerUseCase;
 import net.bakaar.sandbox.person.rest.controller.PartnerRestController;
 import net.bakaar.sandbox.person.rest.service.PersonRestService;
@@ -24,7 +24,7 @@ public class PersonRestConfigurationIT {
     private PersonRestService service;
 
     @MockBean
-    private BusinessNumberService businessNumberService;
+    private BusinessNumberRepository businessNumberRepository;
 
     @MockBean
     private CreatePartnerUseCase partnerUseCase;

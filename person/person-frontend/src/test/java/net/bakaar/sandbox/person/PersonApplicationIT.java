@@ -1,6 +1,6 @@
 package net.bakaar.sandbox.person;
 
-import net.bakaar.sandbox.person.data.rest.BusinessNumberService;
+import net.bakaar.sandbox.person.domain.repository.BusinessNumberRepository;
 import net.bakaar.sandbox.person.domain.service.CreatePartnerUseCase;
 import net.bakaar.sandbox.person.rest.controller.PartnerRestController;
 import org.junit.Test;
@@ -19,7 +19,7 @@ public class PersonApplicationIT {
   @Autowired
   private PartnerRestController restController;
   @Autowired
-  private BusinessNumberService numberService;
+  private BusinessNumberRepository numberService;
   @Autowired
   private CreatePartnerUseCase domaineService;
   @Autowired

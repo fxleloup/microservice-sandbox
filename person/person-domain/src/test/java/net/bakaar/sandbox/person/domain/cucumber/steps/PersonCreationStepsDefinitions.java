@@ -4,6 +4,7 @@ import cucumber.api.DataTable;
 import cucumber.api.java.Before;
 import cucumber.api.java8.En;
 import net.bakaar.sandbox.person.domain.entity.Partner;
+import net.bakaar.sandbox.person.domain.repository.BusinessNumberRepository;
 import net.bakaar.sandbox.person.domain.repository.PartnerStore;
 import net.bakaar.sandbox.person.domain.service.CreatePartnerUseCase;
 import net.bakaar.sandbox.person.domain.service.PersonDomaineService;
@@ -22,7 +23,8 @@ import static org.mockito.Mockito.verify;
 public class PersonCreationStepsDefinitions implements En {
 
     private final PartnerStore partnerStore = mock(PartnerStore.class);
-    private final CreatePartnerUseCase service = new PersonDomaineService(partnerStore);
+    private final BusinessNumberRepository businessNumberRepository = mock(BusinessNumberRepository.class);
+    private final CreatePartnerUseCase service = new PersonDomaineService(partnerStore, businessNumberRepository);
     private Partner createdPartner;
     private Throwable thrown;
 
@@ -34,11 +36,11 @@ public class PersonCreationStepsDefinitions implements En {
             } else {
                 birthDate = LocalDate.of(year, month, day);
             }
-            thrown = catchThrowable(() -> createdPartner = service.createPartner(12345678L, name, forename, birthDate));
+            thrown = catchThrowable(() -> createdPartner = service.createPartner(name, forename, birthDate));
         });
         When("^I create a partner with the following data :$", (DataTable input) -> {
             List<String> table = input.asList(String.class);
-            createdPartner = service.createPartner(12345678L, table.get(0), table.get(1), convertToDate(table.get(2)));
+            createdPartner = service.createPartner(table.get(0), table.get(1), convertToDate(table.get(2)));
         });
         Then("^I should receive an error mentionning that the info ([^\"]*) is missing$", (String fieldName) -> {
             assertThat(thrown).isNotNull();
@@ -52,6 +54,7 @@ public class PersonCreationStepsDefinitions implements En {
     @Before
     public void initializeMock() {
         given(partnerStore.push(any(Partner.class))).willAnswer(invocationOnMock -> invocationOnMock.getArgument(0));
+        given(businessNumberRepository.createPartnerNumber()).willReturn(12345678L);
     }
 
     private LocalDate convertToDate(String toConvert) {

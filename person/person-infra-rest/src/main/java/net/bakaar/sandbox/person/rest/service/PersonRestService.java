@@ -1,6 +1,5 @@
 package net.bakaar.sandbox.person.rest.service;
 
-import net.bakaar.sandbox.person.data.rest.BusinessNumberService;
 import net.bakaar.sandbox.person.domain.service.CreatePartnerUseCase;
 import net.bakaar.sandbox.person.rest.dto.PartnerDTO;
 import net.bakaar.sandbox.person.rest.mapper.PartnerDomainDtoMapper;
@@ -9,20 +8,17 @@ import javax.transaction.Transactional;
 
 public class PersonRestService {
     private final CreatePartnerUseCase createPartnerUseCase;
-    private final BusinessNumberService businessNumberService;
     private final PartnerDomainDtoMapper mapper;
 
-    public PersonRestService(CreatePartnerUseCase createPartnerUseCase, BusinessNumberService businessNumberService, PartnerDomainDtoMapper mapper) {
+    public PersonRestService(CreatePartnerUseCase createPartnerUseCase, PartnerDomainDtoMapper mapper) {
         this.createPartnerUseCase = createPartnerUseCase;
-        this.businessNumberService = businessNumberService;
         this.mapper = mapper;
     }
 
     @Transactional
     public PartnerDTO createPartner(PartnerDTO partner) {
-        long id = businessNumberService.fetchPartnerNummer();
         return mapper.mapToDto(
-                createPartnerUseCase.createPartner(id, partner.getName(), partner.getForename(), partner.getBirthDate())
+                createPartnerUseCase.createPartner(partner.getName(), partner.getForename(), partner.getBirthDate())
         );
     }
 }

@@ -32,6 +32,24 @@
           }
         }
       }
+    },
+    {
+      "description": "read partner",
+      "providerState": "Exist a Partner",
+      "request": {
+        "method": "GET",
+        "path": "/person/rest/api/v1/partners/P12345678"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+        },
+        "body": {
+          "id": "P12345678",
+          "name": "Einstein",
+          "forename": "Albert"
+        }
+      }
     }
   ],
   "metadata": {
