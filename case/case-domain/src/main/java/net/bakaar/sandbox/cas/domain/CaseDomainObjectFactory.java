@@ -1,7 +1,7 @@
 package net.bakaar.sandbox.cas.domain;
 
 import net.bakaar.sandbox.cas.domain.provider.BusinessIdProvider;
-import net.bakaar.sandbox.shared.domain.vo.PNummer;
+import net.bakaar.sandbox.shared.domain.vo.PNumber;
 
 public class CaseDomainObjectFactory {
 
@@ -14,6 +14,6 @@ public class CaseDomainObjectFactory {
     public Case createCase(String pnummer) {
         return Case.builder()
                 .withBusinnessId(businessIdProvider.generateId())
-                .withInjured(PNummer.of(pnummer));
+                .withInjured(PNumber.of(pnummer));
     }
 }

@@ -1,7 +1,7 @@
 package net.bakaar.sandbox.cas.infra.spring.repository;
 
 import net.bakaar.sandbox.cas.domain.Case;
-import net.bakaar.sandbox.shared.domain.vo.PNummer;
+import net.bakaar.sandbox.shared.domain.vo.PNumber;
 import org.junit.Test;
 
 import java.util.UUID;
@@ -15,7 +15,7 @@ public class CaseEntityTest {
         //Given
         String pnummer = "P12345678";
         String id = UUID.randomUUID().toString();
-        Case aCase = Case.builder().withBusinnessId(id).withInjured(PNummer.of(pnummer));
+        Case aCase = Case.builder().withBusinnessId(id).withInjured(PNumber.of(pnummer));
         //When
         CaseEntity entity = CaseEntity.fromCase(aCase);
         //Then
@@ -32,7 +32,7 @@ public class CaseEntityTest {
         //When
         Case aCase = caseEntity.toCase();
         //Then
-        assertThat(aCase.getInjured()).isEqualTo(PNummer.of(pnummer));
+        assertThat(aCase.getInjured()).isEqualTo(PNumber.of(pnummer));
         assertThat(aCase.getId()).isEqualTo(id);
     }
 }

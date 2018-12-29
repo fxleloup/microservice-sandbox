@@ -13,7 +13,7 @@ public class CaseDTOTest {
     @Test
     public void addPNummerInjured_should_set_pnummer_in_injured() {
         //Given
-        String pnummer = "PNummer";
+        String pnummer = "PNumber";
         //When
         dto.addPnummerInjured(pnummer);
         //Then

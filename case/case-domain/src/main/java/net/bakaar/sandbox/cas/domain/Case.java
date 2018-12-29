@@ -1,18 +1,18 @@
 package net.bakaar.sandbox.cas.domain;
 
 
-import net.bakaar.sandbox.shared.domain.vo.PNummer;
+import net.bakaar.sandbox.shared.domain.vo.PNumber;
 
 public class Case {
-    private final PNummer injured;
+    private final PNumber injured;
     private final String id;
 
-    private Case(String id, PNummer injured) {
+    private Case(String id, PNumber injured) {
         this.injured = injured;
         this.id = id;
     }
 
-    public PNummer getInjured() {
+    public PNumber getInjured() {
         return injured;
     }
 
@@ -25,7 +25,7 @@ public class Case {
     }
 
     public interface InjuredBuilder {
-        Case withInjured(PNummer injured);
+        Case withInjured(PNumber injured);
     }
 
     public interface BusinessIdBuilder {

@@ -7,14 +7,14 @@ import org.junit.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.util.ReflectionTestUtils.getField;
 
-public class PNummerTest {
+public class PNumberTest {
 
     @Test
     public void of_should_create_a_new_PNummer() {
         //Given
         String pnummer = "P12345678";
         //When
-        PNummer created = PNummer.of(pnummer);
+        PNumber created = PNumber.of(pnummer);
         //Then
         assertThat(created).isNotNull();
     }
@@ -24,7 +24,7 @@ public class PNummerTest {
         //Given
         String pnummer = "P12345678";
         //When
-        PNummer created = PNummer.of(pnummer);
+        PNumber created = PNumber.of(pnummer);
         //Then
         assertThat((Integer) getField(created, "value")).isEqualTo(12345678);
     }
@@ -33,7 +33,7 @@ public class PNummerTest {
     public void of_should_throw_exception_arg_null() {
         //Given
         //When
-        Throwable thrown = Assertions.catchThrowable(() -> PNummer.of(null));
+        Throwable thrown = Assertions.catchThrowable(() -> PNumber.of(null));
         //Then
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class);
         assertThat(thrown.getMessage()).contains("null");
@@ -43,25 +43,25 @@ public class PNummerTest {
     public void of_should_throw_exception_if_pattern_wrong() {
         //Given
         //When
-        Throwable thrown = Assertions.catchThrowable(() -> PNummer.of("jhd31"));
+        Throwable thrown = Assertions.catchThrowable(() -> PNumber.of("jhd31"));
         //Then
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class);
-        assertThat(thrown.getMessage()).contains("PNummer should follow the pattern P[0-9]{8}");
+        assertThat(thrown.getMessage()).contains("PNumber should follow the pattern P[0-9]{8}");
     }
 
     @Test
     public void format_should_return_in_good_pattern() {
         //Given
-        PNummer pNummer = PNummer.of("P12345678");
+        PNumber pNumber = PNumber.of("P12345678");
         //When
-        String formated = pNummer.format();
+        String formated = pNumber.format();
         //Then
         assertThat(formated).matches("P[0-9]{8}");
     }
 
     @Test
     public void equalsContract() {
-        EqualsVerifier.forClass(PNummer.class)
+        EqualsVerifier.forClass(PNumber.class)
                 .verify();
     }
 
@@ -70,7 +70,7 @@ public class PNummerTest {
         //Given
         long id = 12345678L;
         //When
-        PNummer created = PNummer.of(id);
+        PNumber created = PNumber.of(id);
         //Then
         assertThat(created.format()).isEqualTo("P12345678");
     }

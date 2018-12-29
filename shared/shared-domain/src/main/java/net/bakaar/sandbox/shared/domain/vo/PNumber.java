@@ -3,27 +3,27 @@ package net.bakaar.sandbox.shared.domain.vo;
 
 import java.util.regex.Pattern;
 
-public final class PNummer {
+public final class PNumber {
 
     private final int value;
 
-    private PNummer(String pnummer) {
+    private PNumber(String pnummer) {
         if (pnummer == null) {
-            throw new IllegalArgumentException("PNummer should not be null");
+            throw new IllegalArgumentException("PNumber should not be null");
         }
         Pattern pattern = Pattern.compile("P[0-9]{8}");
         if (!pattern.matcher(pnummer).matches()) {
-            throw new IllegalArgumentException("PNummer should follow the pattern P[0-9]{8}");
+            throw new IllegalArgumentException("PNumber should follow the pattern P[0-9]{8}");
         }
         this.value = Integer.parseInt(pnummer.substring(1));
     }
 
-    public static PNummer of(String pnummer) {
-        return new PNummer(pnummer);
+    public static PNumber of(String pnummer) {
+        return new PNumber(pnummer);
     }
 
-    public static PNummer of(long id) {
-        return new PNummer("P" + id);
+    public static PNumber of(long id) {
+        return new PNumber("P" + id);
     }
 
     public String format() {
@@ -39,9 +39,9 @@ public final class PNummer {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        PNummer pNummer = (PNummer) o;
+        PNumber pNumber = (PNumber) o;
 
-        return value == pNummer.value;
+        return value == pNumber.value;
     }
 
     @Override

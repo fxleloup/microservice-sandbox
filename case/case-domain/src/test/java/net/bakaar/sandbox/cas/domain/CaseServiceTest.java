@@ -4,7 +4,7 @@ import net.bakaar.sandbox.cas.domain.event.CaseCreated;
 import net.bakaar.sandbox.cas.domain.provider.BusinessIdProvider;
 import net.bakaar.sandbox.cas.domain.repository.CaseRepository;
 import net.bakaar.sandbox.event.common.DomainEventEmitter;
-import net.bakaar.sandbox.shared.domain.vo.PNummer;
+import net.bakaar.sandbox.shared.domain.vo.PNumber;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 
@@ -34,7 +34,7 @@ public class CaseServiceTest {
         Case aCase = service.createCase(pnummer);
         // Then
         assertThat(aCase).isNotNull();
-        assertThat(aCase.getInjured()).isEqualTo(PNummer.of(pnummer));
+        assertThat(aCase.getInjured()).isEqualTo(PNumber.of(pnummer));
         verify(repository).save(aCase);
     }
 

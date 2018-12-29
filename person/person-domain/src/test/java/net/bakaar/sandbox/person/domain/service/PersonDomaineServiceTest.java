@@ -3,7 +3,7 @@ package net.bakaar.sandbox.person.domain.service;
 import net.bakaar.sandbox.person.domain.entity.Partner;
 import net.bakaar.sandbox.person.domain.repository.BusinessNumberRepository;
 import net.bakaar.sandbox.person.domain.repository.PartnerStore;
-import net.bakaar.sandbox.shared.domain.vo.PNummer;
+import net.bakaar.sandbox.shared.domain.vo.PNumber;
 import org.junit.Test;
 import org.mockito.ArgumentMatchers;
 
@@ -29,7 +29,7 @@ public class PersonDomaineServiceTest {
         Partner createdPartner = service.createPartner("Einstein", "Albert", LocalDate.of(1879, 3, 14));
         //Then
         assertThat(createdPartner).isNotNull();
-        assertThat(createdPartner.getId()).isEqualToComparingFieldByField(PNummer.of(id));
+        assertThat(createdPartner.getId()).isEqualToComparingFieldByField(PNumber.of(id));
         verify(partnerStore).push(ArgumentMatchers.any(Partner.class));
         verify(businessNumberRepository).createPartnerNumber();
     }

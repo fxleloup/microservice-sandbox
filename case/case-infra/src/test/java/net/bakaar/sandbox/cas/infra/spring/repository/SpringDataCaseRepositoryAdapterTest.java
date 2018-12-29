@@ -1,7 +1,7 @@
 package net.bakaar.sandbox.cas.infra.spring.repository;
 
 import net.bakaar.sandbox.cas.domain.Case;
-import net.bakaar.sandbox.shared.domain.vo.PNummer;
+import net.bakaar.sandbox.shared.domain.vo.PNumber;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
@@ -29,7 +29,7 @@ public class SpringDataCaseRepositoryAdapterTest {
         //Given
         String pnummer = "P12345678";
         String id = UUID.randomUUID().toString();
-        Case aCase = Case.builder().withBusinnessId(id).withInjured(PNummer.of(pnummer));
+        Case aCase = Case.builder().withBusinnessId(id).withInjured(PNumber.of(pnummer));
         given(springDataCaseRepository.save(any(CaseEntity.class))).willAnswer(invocation -> invocation.getArgument(0));
         //When
         Case returnedCase = springDataCaseRepositoryAdapter.save(aCase);

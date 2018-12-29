@@ -1,7 +1,7 @@
 package net.bakaar.sandbox.cas.domain;
 
 import net.bakaar.sandbox.cas.domain.provider.BusinessIdProvider;
-import net.bakaar.sandbox.shared.domain.vo.PNummer;
+import net.bakaar.sandbox.shared.domain.vo.PNumber;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -34,6 +34,6 @@ public class CaseDomainObjectFactoryTest {
         verify(businessIdProvider).generateId();
         assertThat(aCase).isNotNull();
         assertThat(aCase.getId()).isEqualTo(id);
-        assertThat(aCase.getInjured()).isEqualTo(PNummer.of(pnummer));
+        assertThat(aCase.getInjured()).isEqualTo(PNumber.of(pnummer));
     }
 }

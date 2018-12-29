@@ -2,7 +2,7 @@ package net.bakaar.sandbox.cas.infra.spring.controler;
 
 import net.bakaar.sandbox.cas.domain.Case;
 import net.bakaar.sandbox.cas.domain.CaseService;
-import net.bakaar.sandbox.shared.domain.vo.PNummer;
+import net.bakaar.sandbox.shared.domain.vo.PNumber;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +30,7 @@ public class CaseResourceControlerTest {
                 .addBirhtDateInjured(birthDate);
         given(service.createCase(pnummer)).willReturn(Case.builder()
                 .withBusinnessId(UUID.randomUUID().toString())
-                .withInjured(PNummer.of(pnummer)));
+                .withInjured(PNumber.of(pnummer)));
         //When
         ResponseEntity<CaseDTO> responseEntity = controler.addNewCase(caseDTO);
         //Then

@@ -2,19 +2,19 @@ package net.bakaar.sandbox.person.domain.entity;
 
 import lombok.Getter;
 import lombok.NonNull;
-import net.bakaar.sandbox.shared.domain.vo.PNummer;
+import net.bakaar.sandbox.shared.domain.vo.PNumber;
 
 import java.time.LocalDate;
 
 @Getter
 public class Partner {
 
-    private final PNummer id;
+    private final PNumber id;
     private final String forename;
     private final String name;
     private final LocalDate birthDate;
 
-    public Partner(PNummer id, String name, String forename, LocalDate birthDate) {
+    public Partner(PNumber id, String name, String forename, LocalDate birthDate) {
         validate(name, "name");
         validate(forename, "forename");
         validate(birthDate);
@@ -27,12 +27,12 @@ public class Partner {
 
     public static Partner of(long id, @NonNull String name, @NonNull String forename, LocalDate birthDate) {
 
-        return new Partner(PNummer.of(id), name, forename, birthDate);
+        return new Partner(PNumber.of(id), name, forename, birthDate);
     }
 
     public static Partner of(String id, @NonNull String name, @NonNull String forename, LocalDate birthDate) {
 
-        return new Partner(PNummer.of(id), name, forename, birthDate);
+        return new Partner(PNumber.of(id), name, forename, birthDate);
     }
 
     private void validate(LocalDate date) {

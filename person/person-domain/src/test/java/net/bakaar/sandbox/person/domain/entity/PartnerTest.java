@@ -2,7 +2,7 @@ package net.bakaar.sandbox.person.domain.entity;
 
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
-import net.bakaar.sandbox.shared.domain.vo.PNummer;
+import net.bakaar.sandbox.shared.domain.vo.PNumber;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -23,7 +23,7 @@ public class PartnerTest {
         //When
         Partner createdPartner = Partner.of(12345678, name, forename, birthDate);
         //Then
-        assertThat(createdPartner.getId()).isEqualToComparingFieldByField(PNummer.of(12345678));
+        assertThat(createdPartner.getId()).isEqualToComparingFieldByField(PNumber.of(12345678));
         assertThat(createdPartner.getName()).isEqualTo(name);
         assertThat(createdPartner.getForename()).isEqualTo(forename);
         assertThat(createdPartner.getBirthDate()).isEqualTo(birthDate);
@@ -38,7 +38,7 @@ public class PartnerTest {
         //When
         Partner createdPartner = Partner.of("P12345678", name, forename, birthDate);
         //Then
-        assertThat(createdPartner.getId()).isEqualToComparingFieldByField(PNummer.of(12345678));
+        assertThat(createdPartner.getId()).isEqualToComparingFieldByField(PNumber.of(12345678));
         assertThat(createdPartner.getName()).isEqualTo(name);
         assertThat(createdPartner.getForename()).isEqualTo(forename);
         assertThat(createdPartner.getBirthDate()).isEqualTo(birthDate);

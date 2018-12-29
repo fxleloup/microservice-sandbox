@@ -1,7 +1,7 @@
 package net.bakaar.sandbox.cas.infra.spring.repository;
 
 import net.bakaar.sandbox.cas.domain.Case;
-import net.bakaar.sandbox.shared.domain.vo.PNummer;
+import net.bakaar.sandbox.shared.domain.vo.PNumber;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -44,7 +44,7 @@ public class CaseEntity {
     public Case toCase() {
         return Case.builder()
                 .withBusinnessId(this.businessId)
-                .withInjured(PNummer.of(this.getPnummer()));
+                .withInjured(PNumber.of(this.getPnummer()));
     }
 
     public Long getId() {

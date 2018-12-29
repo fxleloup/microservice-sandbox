@@ -2,7 +2,7 @@ package net.bakaar.sandbox.person.data.jpa.mapper;
 
 import net.bakaar.sandbox.person.data.jpa.entity.PersonEntity;
 import net.bakaar.sandbox.person.domain.entity.Partner;
-import net.bakaar.sandbox.shared.domain.vo.PNummer;
+import net.bakaar.sandbox.shared.domain.vo.PNumber;
 import org.junit.Test;
 
 import java.time.LocalDate;
@@ -44,7 +44,7 @@ public class PartnerEntityDomainMapperTest {
         Partner domain = mapper.mapToDomain(entity);
         //Then
         assertThat(domain).isNotNull();
-        assertThat(domain.getId()).isEqualToComparingFieldByField(PNummer.of(id));
+        assertThat(domain.getId()).isEqualToComparingFieldByField(PNumber.of(id));
         assertThat(domain.getName()).isEqualTo(name);
         assertThat(domain.getForename()).isEqualTo(forename);
         assertThat(domain.getBirthDate()).isSameAs(birthDate);
