@@ -12,6 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class PartnerEntityDomainMapperTest {
 
     private final long id = 12345678;
+    private final PNumber pNumber = PNumber.of(id);
     private final String name = "Name";
     private final String forename = "Forename";
     private final LocalDate birthDate = LocalDate.now();
@@ -20,7 +21,7 @@ public class PartnerEntityDomainMapperTest {
     @Test
     public void mapToEntity_should_map_correctly() {
         //Given
-        Partner partner = Partner.of(id, name, forename, birthDate);
+        Partner partner = Partner.of(pNumber, name, forename, birthDate);
         //When
         PersonEntity entity = mapper.mapToEntity(partner);
         //Then
@@ -44,7 +45,7 @@ public class PartnerEntityDomainMapperTest {
         Partner domain = mapper.mapToDomain(entity);
         //Then
         assertThat(domain).isNotNull();
-        assertThat(domain.getId()).isEqualToComparingFieldByField(PNumber.of(id));
+        assertThat(domain.getId()).isEqualTo(pNumber);
         assertThat(domain.getName()).isEqualTo(name);
         assertThat(domain.getForename()).isEqualTo(forename);
         assertThat(domain.getBirthDate()).isSameAs(birthDate);

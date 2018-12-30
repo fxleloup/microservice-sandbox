@@ -8,6 +8,7 @@ import net.bakaar.sandbox.person.domain.service.CreatePartnerUseCase;
 import net.bakaar.sandbox.person.domain.service.PersonDomaineService;
 import net.bakaar.sandbox.person.domain.store.BusinessNumberStore;
 import net.bakaar.sandbox.person.domain.store.PartnerStore;
+import net.bakaar.sandbox.shared.domain.vo.PNumber;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -54,7 +55,7 @@ public class PersonCreationStepsDefinitions implements En {
     @Before
     public void initializeMock() {
         given(partnerStore.push(any(Partner.class))).willAnswer(invocationOnMock -> invocationOnMock.getArgument(0));
-        given(businessNumberStore.createPartnerNumber()).willReturn(12345678L);
+        given(businessNumberStore.createPartnerNumber()).willReturn(PNumber.of(12345678L));
     }
 
     private LocalDate convertToDate(String toConvert) {

@@ -2,10 +2,11 @@ package net.bakaar.sandbox.person.data.jpa.mapper;
 
 import net.bakaar.sandbox.person.data.jpa.entity.PersonEntity;
 import net.bakaar.sandbox.person.domain.entity.Partner;
+import net.bakaar.sandbox.shared.domain.vo.PNumber;
 
 public class PartnerEntityDomainMapper {
     public Partner mapToDomain(PersonEntity entity) {
-        return Partner.of(entity.getPNumber(), entity.getName(), entity.getForename(), entity.getBirthDate());
+        return Partner.of(PNumber.of(entity.getPNumber()), entity.getName(), entity.getForename(), entity.getBirthDate());
     }
 
     public PersonEntity mapToEntity(Partner partner) {

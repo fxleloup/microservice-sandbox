@@ -12,8 +12,4 @@ public class PartnerDomainDtoMapper {
         dto.setBirthDate(partner.getBirthDate());
         return dto;
     }
-
-    public Partner mapToDomain(PartnerDTO dto) {
-        return Partner.of(dto.getId(), dto.getName(), dto.getForename(), dto.getBirthDate());
-    }
 }

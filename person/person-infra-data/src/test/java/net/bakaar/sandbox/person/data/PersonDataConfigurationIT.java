@@ -27,9 +27,6 @@ public class PersonDataConfigurationIT {
     @Autowired
     private BusinessNumberServiceProperties properties;
 
-    @MockBean
-    private RestTemplate restTemplate;
-
     @Autowired
     private PartnerStore partnerStore;
 
@@ -38,6 +35,9 @@ public class PersonDataConfigurationIT {
 
     @Autowired
     private PersonRepository personRepository;
+
+    @MockBean
+    private RestTemplate restTemplate;
 
     @Test
     public void context_should_load() {

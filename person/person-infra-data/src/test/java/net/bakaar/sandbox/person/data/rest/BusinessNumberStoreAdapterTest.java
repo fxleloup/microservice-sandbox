@@ -1,5 +1,6 @@
 package net.bakaar.sandbox.person.data.rest;
 
+import net.bakaar.sandbox.shared.domain.vo.PNumber;
 import org.junit.Test;
 import org.springframework.web.client.RestTemplate;
 
@@ -14,17 +15,18 @@ public class BusinessNumberStoreAdapterTest {
     public void fetch_should_call_rest_endpoint() {
         //Given
         long result = 98765432L;
-        String url = "Http://TestUrl.net";
+        String baseUrl = "Http://TestUrl.net";
+        String completeUrl = baseUrl + "/rest/api/v1/business-number?type=partner";
         RestTemplate restTemplate = mock(RestTemplate.class);
-        given(restTemplate.getForObject(url, Long.class)).willReturn(result);
+        given(restTemplate.getForObject(completeUrl, Long.class)).willReturn(result);
         BusinessNumberServiceProperties properties = mock(BusinessNumberServiceProperties.class);
-        given(properties.getUrl()).willReturn(url);
+        given(properties.getUrl()).willReturn(baseUrl);
         BusinessNumberStoreAdapter client = new BusinessNumberStoreAdapter(properties, restTemplate);
         //When
-        long number = client.createPartnerNumber();
+        PNumber number = client.createPartnerNumber();
         //Then
-        verify(restTemplate).getForObject(url, Long.class);
+        verify(restTemplate).getForObject(completeUrl, Long.class);
         verify(properties).getUrl();
-        assertThat(number).isEqualTo(result);
+        assertThat(number.getValue()).isEqualTo(result);
     }
 }

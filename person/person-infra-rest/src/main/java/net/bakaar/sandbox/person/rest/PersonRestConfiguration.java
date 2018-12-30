@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 public class PersonRestConfiguration {
 
     @Bean
-    public PersonRestService restService(CreatePartnerUseCase partnerUseCase, PartnerReadStore readRepository) {
-        return new PersonRestService(partnerUseCase, readRepository, new PartnerDomainDtoMapper());
+    public PersonRestService restService(CreatePartnerUseCase partnerUseCase, PartnerReadStore partnerReadStore) {
+        return new PersonRestService(partnerUseCase, partnerReadStore, new PartnerDomainDtoMapper());
     }
 }

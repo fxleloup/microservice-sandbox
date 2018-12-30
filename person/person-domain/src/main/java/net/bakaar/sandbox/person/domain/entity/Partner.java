@@ -14,7 +14,7 @@ public class Partner {
     private final String name;
     private final LocalDate birthDate;
 
-    public Partner(PNumber id, String name, String forename, LocalDate birthDate) {
+    private Partner(PNumber id, String name, String forename, LocalDate birthDate) {
         validate(name, "name");
         validate(forename, "forename");
         validate(birthDate);
@@ -24,15 +24,8 @@ public class Partner {
         this.birthDate = birthDate;
     }
 
-
-    public static Partner of(long id, @NonNull String name, @NonNull String forename, LocalDate birthDate) {
-
-        return new Partner(PNumber.of(id), name, forename, birthDate);
-    }
-
-    public static Partner of(String id, @NonNull String name, @NonNull String forename, LocalDate birthDate) {
-
-        return new Partner(PNumber.of(id), name, forename, birthDate);
+    public static Partner of(@NonNull PNumber id, @NonNull String name, @NonNull String forename, LocalDate birthDate) {
+        return new Partner(id, name, forename, birthDate);
     }
 
     private void validate(LocalDate date) {

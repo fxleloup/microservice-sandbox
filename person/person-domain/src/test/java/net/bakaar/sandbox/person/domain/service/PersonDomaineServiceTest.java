@@ -21,15 +21,15 @@ public class PersonDomaineServiceTest {
         //Given
         PartnerStore partnerStore = mock(PartnerStore.class);
         given(partnerStore.push(ArgumentMatchers.any(Partner.class))).willAnswer(invocationOnMock -> invocationOnMock.getArgument(0));
-        long id = 12345678L;
         BusinessNumberStore businessNumberStore = mock(BusinessNumberStore.class);
-        given(businessNumberStore.createPartnerNumber()).willReturn(id);
+        PNumber pNumber = PNumber.of(12345678L);
+        given(businessNumberStore.createPartnerNumber()).willReturn(pNumber);
         CreatePartnerUseCase service = new PersonDomaineService(partnerStore, businessNumberStore);
         //When
         Partner createdPartner = service.createPartner("Einstein", "Albert", LocalDate.of(1879, 3, 14));
         //Then
         assertThat(createdPartner).isNotNull();
-        assertThat(createdPartner.getId()).isEqualToComparingFieldByField(PNumber.of(id));
+        assertThat(createdPartner.getId()).isSameAs(pNumber);
         verify(partnerStore).push(ArgumentMatchers.any(Partner.class));
         verify(businessNumberStore).createPartnerNumber();
     }
