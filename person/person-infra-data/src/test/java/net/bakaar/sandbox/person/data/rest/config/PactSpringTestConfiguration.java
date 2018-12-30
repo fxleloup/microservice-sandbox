@@ -1,8 +1,8 @@
 package net.bakaar.sandbox.person.data.rest.config;
 
+import net.bakaar.sandbox.person.data.rest.BusinessNumberRepositoryAdapter;
 import net.bakaar.sandbox.person.data.rest.BusinessNumberServiceProperties;
-import net.bakaar.sandbox.person.data.rest.BusinessNumberStoreAdapter;
-import net.bakaar.sandbox.person.domain.store.BusinessNumberStore;
+import net.bakaar.sandbox.person.domain.repository.BusinessNumberRepository;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
@@ -18,10 +18,9 @@ public class PactSpringTestConfiguration {
     }
 
     @Bean
-    public BusinessNumberStore businessNumberService(RestTemplate restTemplate) {
+    public BusinessNumberRepository businessNumberService(RestTemplate restTemplate) {
         BusinessNumberServiceProperties properties = new BusinessNumberServiceProperties();
         properties.setUrl(TEST_URL);
-        return new BusinessNumberStoreAdapter(properties, restTemplate);
+        return new BusinessNumberRepositoryAdapter(properties, restTemplate);
     }
-
 }

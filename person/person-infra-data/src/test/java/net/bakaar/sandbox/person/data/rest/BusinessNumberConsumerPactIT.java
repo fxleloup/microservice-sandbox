@@ -7,7 +7,7 @@ import au.com.dius.pact.consumer.dsl.PactDslRootValue;
 import au.com.dius.pact.consumer.dsl.PactDslWithProvider;
 import au.com.dius.pact.model.RequestResponsePact;
 import net.bakaar.sandbox.person.data.rest.config.PactSpringTestConfiguration;
-import net.bakaar.sandbox.person.domain.store.BusinessNumberStore;
+import net.bakaar.sandbox.person.domain.repository.BusinessNumberRepository;
 import net.bakaar.sandbox.shared.domain.vo.PNumber;
 import org.junit.Rule;
 import org.junit.Test;
@@ -29,7 +29,7 @@ public class BusinessNumberConsumerPactIT {
     @Rule
     public PactProviderRuleMk2 mockProvider = new PactProviderRuleMk2("businessNumber-provider", "localhost", 8090, this);
     @Autowired
-    private BusinessNumberStore store;
+    private BusinessNumberRepository store;
 
     @Pact(consumer = "person-consumer")
     public RequestResponsePact createPactForPartnerBusinessNumber(PactDslWithProvider builder) {
@@ -38,8 +38,7 @@ public class BusinessNumberConsumerPactIT {
 
         return builder
                 .uponReceiving("Ask For Partner Business Number")
-                .path("/bns/rest/api/v1/business-number")
-                .query("type=partner")
+                .path("/bns/rest/api/v1/business-number/partner-id")
                 .method("GET")
                 .willRespondWith()
                 .status(200)

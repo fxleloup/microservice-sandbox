@@ -1,6 +1,6 @@
 package net.bakaar.sandbox.person.rest.config;
 
-import net.bakaar.sandbox.person.domain.store.BusinessNumberStore;
+import net.bakaar.sandbox.person.domain.repository.BusinessNumberRepository;
 import net.bakaar.sandbox.shared.domain.vo.PNumber;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -11,7 +11,7 @@ public class PactTestConfiguration {
 
   @Bean
   @Primary
-  public BusinessNumberStore testNumberService() {
+  public BusinessNumberRepository testNumberService() {
     return () -> PNumber.of(10987654L);
   }
 }

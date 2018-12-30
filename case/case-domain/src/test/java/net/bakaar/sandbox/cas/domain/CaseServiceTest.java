@@ -1,7 +1,8 @@
 package net.bakaar.sandbox.cas.domain;
 
+import net.bakaar.sandbox.cas.domain.entity.Case;
 import net.bakaar.sandbox.cas.domain.event.CaseCreated;
-import net.bakaar.sandbox.cas.domain.provider.BusinessIdProvider;
+import net.bakaar.sandbox.cas.domain.repository.BusinessIdRepository;
 import net.bakaar.sandbox.cas.domain.repository.CaseRepository;
 import net.bakaar.sandbox.event.common.DomainEventEmitter;
 import net.bakaar.sandbox.shared.domain.vo.PNumber;
@@ -20,16 +21,15 @@ public class CaseServiceTest {
 
     private DomainEventEmitter emitter = mock(DomainEventEmitter.class);
     private CaseRepository repository = mock(CaseRepository.class);
-    private BusinessIdProvider businessIdProvider = mock(BusinessIdProvider.class);
-    private CaseDomainObjectFactory factory = new CaseDomainObjectFactory(businessIdProvider);
-    private CaseService service = new CaseService(emitter, repository, factory);
+    private BusinessIdRepository businessIdRepository = mock(BusinessIdRepository.class);
+    private CaseService service = new CaseService(emitter, repository, businessIdRepository);
 
     @Test
     public void createCase_should_return_a_case() {
         // Given
         String pnummer = "P12345678";
         given(repository.save(any(Case.class))).willAnswer(invocationOnMock -> invocationOnMock.getArgument(0));
-        given(businessIdProvider.generateId()).willReturn(UUID.randomUUID().toString());
+        given(businessIdRepository.generateId()).willReturn(UUID.randomUUID().toString());
         // When
         Case aCase = service.createCase(pnummer);
         // Then
@@ -43,7 +43,7 @@ public class CaseServiceTest {
         // Given
         String pnummer = "P12345678";
         given(repository.save(any(Case.class))).willAnswer(invocationOnMock -> invocationOnMock.getArgument(0));
-        given(businessIdProvider.generateId()).willReturn(UUID.randomUUID().toString());
+        given(businessIdRepository.generateId()).willReturn(UUID.randomUUID().toString());
         // When
         Case aCase = service.createCase(pnummer);
         // Then
@@ -51,7 +51,7 @@ public class CaseServiceTest {
         verify(emitter).emit(captor.capture());
         CaseCreated eventEmitted = captor.getValue();
         assertThat(eventEmitted.getId()).isEqualTo(aCase.getId());
-        assertThat(eventEmitted.getPnummer()).isEqualTo(aCase.getInjured());
+        assertThat(eventEmitted.getPNumber()).isEqualTo(aCase.getInjured());
 
     }
 }

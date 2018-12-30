@@ -1,5 +1,6 @@
 package net.bakaar.sandbox.cas.domain;
 
+import net.bakaar.sandbox.cas.domain.entity.Case;
 import net.bakaar.sandbox.shared.domain.vo.PNumber;
 import org.junit.Test;
 

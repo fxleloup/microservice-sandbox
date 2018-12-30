@@ -1,9 +1,9 @@
 package net.bakaar.sandbox.person.data;
 
-import net.bakaar.sandbox.person.data.jpa.repository.PersonRepository;
+import net.bakaar.sandbox.person.data.jpa.repository.PersonJpaRepository;
 import net.bakaar.sandbox.person.data.rest.BusinessNumberServiceProperties;
-import net.bakaar.sandbox.person.domain.store.BusinessNumberStore;
-import net.bakaar.sandbox.person.domain.store.PartnerStore;
+import net.bakaar.sandbox.person.domain.repository.BusinessNumberRepository;
+import net.bakaar.sandbox.person.domain.repository.PartnerRepository;
 import net.bakaar.sandbox.person.rest.repository.PartnerReadStore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,28 +22,28 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class PersonDataConfigurationIT {
 
     @Autowired
-    private BusinessNumberStore businessNumberStore;
+    private BusinessNumberRepository businessNumberRepository;
 
     @Autowired
     private BusinessNumberServiceProperties properties;
 
     @Autowired
-    private PartnerStore partnerStore;
+    private PartnerRepository partnerRepository;
 
     @Autowired
     private PartnerReadStore partnerReadStore;
 
     @Autowired
-    private PersonRepository personRepository;
+    private PersonJpaRepository personJpaRepository;
 
     @MockBean
     private RestTemplate restTemplate;
 
     @Test
     public void context_should_load() {
-        assertThat(partnerStore).isNotNull().isSameAs(partnerReadStore);
-        assertThat(personRepository).isNotNull();
+        assertThat(partnerRepository).isNotNull().isSameAs(partnerReadStore);
+        assertThat(personJpaRepository).isNotNull();
         assertThat(properties).isNotNull();
-        assertThat(businessNumberStore).isNotNull();
+        assertThat(businessNumberRepository).isNotNull();
     }
 }

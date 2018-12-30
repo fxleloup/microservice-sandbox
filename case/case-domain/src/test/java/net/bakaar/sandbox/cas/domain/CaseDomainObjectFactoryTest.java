@@ -1,6 +1,7 @@
 package net.bakaar.sandbox.cas.domain;
 
-import net.bakaar.sandbox.cas.domain.provider.BusinessIdProvider;
+import net.bakaar.sandbox.cas.domain.entity.Case;
+import net.bakaar.sandbox.cas.domain.repository.BusinessIdRepository;
 import net.bakaar.sandbox.shared.domain.vo.PNumber;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,7 +19,7 @@ import static org.mockito.Mockito.verify;
 public class CaseDomainObjectFactoryTest {
 
     @Mock
-    private BusinessIdProvider businessIdProvider;
+    private BusinessIdRepository businessIdRepository;
     @InjectMocks
     private CaseDomainObjectFactory factory;
 
@@ -27,11 +28,11 @@ public class CaseDomainObjectFactoryTest {
         //Given
         String pnummer = "P12345678";
         String id = UUID.randomUUID().toString();
-        given(businessIdProvider.generateId()).willReturn(id);
+        given(businessIdRepository.generateId()).willReturn(id);
         //When
         Case aCase = factory.createCase(pnummer);
         //Then
-        verify(businessIdProvider).generateId();
+        verify(businessIdRepository).generateId();
         assertThat(aCase).isNotNull();
         assertThat(aCase.getId()).isEqualTo(id);
         assertThat(aCase.getInjured()).isEqualTo(PNumber.of(pnummer));

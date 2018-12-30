@@ -1,25 +1,25 @@
 package net.bakaar.sandbox.person.domain.service;
 
 import net.bakaar.sandbox.person.domain.entity.Partner;
-import net.bakaar.sandbox.person.domain.store.BusinessNumberStore;
-import net.bakaar.sandbox.person.domain.store.PartnerStore;
+import net.bakaar.sandbox.person.domain.repository.BusinessNumberRepository;
+import net.bakaar.sandbox.person.domain.repository.PartnerRepository;
 import net.bakaar.sandbox.shared.domain.vo.PNumber;
 
 import java.time.LocalDate;
 
 public class PersonDomaineService implements CreatePartnerUseCase {
 
-    private final PartnerStore store;
-    private final BusinessNumberStore businessNumberStore;
+    private final PartnerRepository store;
+    private final BusinessNumberRepository businessNumberRepository;
 
-    public PersonDomaineService(PartnerStore store, BusinessNumberStore businessNumberStore) {
+    public PersonDomaineService(PartnerRepository store, BusinessNumberRepository businessNumberRepository) {
         this.store = store;
-        this.businessNumberStore = businessNumberStore;
+        this.businessNumberRepository = businessNumberRepository;
     }
 
     @Override
     public Partner createPartner(String name, String forename, LocalDate birthDate) {
-        PNumber id = businessNumberStore.createPartnerNumber();
+        PNumber id = businessNumberRepository.createPartnerNumber();
         return store.push(Partner.of(id, name, forename, birthDate));
     }
 }

@@ -1,9 +1,9 @@
 package net.bakaar.sandbox.person.configuration;
 
+import net.bakaar.sandbox.person.domain.repository.BusinessNumberRepository;
+import net.bakaar.sandbox.person.domain.repository.PartnerRepository;
 import net.bakaar.sandbox.person.domain.service.CreatePartnerUseCase;
 import net.bakaar.sandbox.person.domain.service.PersonDomaineService;
-import net.bakaar.sandbox.person.domain.store.BusinessNumberStore;
-import net.bakaar.sandbox.person.domain.store.PartnerStore;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -11,8 +11,8 @@ import org.springframework.context.annotation.Configuration;
 public class PersonDomainConfiguration {
 
   @Bean
-  public CreatePartnerUseCase createPartnerUseCase(PartnerStore store, BusinessNumberStore businessNumberStore) {
-    return new PersonDomaineService(store, businessNumberStore);
+  public CreatePartnerUseCase createPartnerUseCase(PartnerRepository store, BusinessNumberRepository businessNumberRepository) {
+    return new PersonDomaineService(store, businessNumberRepository);
   }
 
 

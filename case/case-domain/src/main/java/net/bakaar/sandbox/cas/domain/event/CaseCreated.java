@@ -5,18 +5,18 @@ import net.bakaar.sandbox.shared.domain.vo.PNumber;
 
 public class CaseCreated implements DomainEvent {
     private final String id;
-    private final PNumber pnummer;
+    private final PNumber pNumber;
 
-    public CaseCreated(String id, PNumber pnummer) {
+    public CaseCreated(String id, PNumber pNumber) {
         this.id = id;
-        this.pnummer = pnummer;
+        this.pNumber = pNumber;
     }
 
     public String getId() {
         return id;
     }
 
-    public PNumber getPnummer() {
-        return pnummer;
+    public PNumber getPNumber() {
+        return pNumber;
     }
 }

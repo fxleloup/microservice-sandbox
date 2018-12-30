@@ -16,7 +16,12 @@
     <dependencies>
         <dependency>
             <groupId>net.bakaar</groupId>
-            <artifactId>case-infra</artifactId>
+            <artifactId>case-infra-data</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.bakaar</groupId>
+            <artifactId>case-infra-rest</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

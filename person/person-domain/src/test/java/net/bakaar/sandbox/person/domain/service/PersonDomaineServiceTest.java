@@ -1,8 +1,8 @@
 package net.bakaar.sandbox.person.domain.service;
 
 import net.bakaar.sandbox.person.domain.entity.Partner;
-import net.bakaar.sandbox.person.domain.store.BusinessNumberStore;
-import net.bakaar.sandbox.person.domain.store.PartnerStore;
+import net.bakaar.sandbox.person.domain.repository.BusinessNumberRepository;
+import net.bakaar.sandbox.person.domain.repository.PartnerRepository;
 import net.bakaar.sandbox.shared.domain.vo.PNumber;
 import org.junit.Test;
 import org.mockito.ArgumentMatchers;
@@ -19,18 +19,18 @@ public class PersonDomaineServiceTest {
     @Test
     public void createPartner_should_create_and_call_number_service() {
         //Given
-        PartnerStore partnerStore = mock(PartnerStore.class);
-        given(partnerStore.push(ArgumentMatchers.any(Partner.class))).willAnswer(invocationOnMock -> invocationOnMock.getArgument(0));
-        BusinessNumberStore businessNumberStore = mock(BusinessNumberStore.class);
+        PartnerRepository partnerRepository = mock(PartnerRepository.class);
+        given(partnerRepository.push(ArgumentMatchers.any(Partner.class))).willAnswer(invocationOnMock -> invocationOnMock.getArgument(0));
+        BusinessNumberRepository businessNumberRepository = mock(BusinessNumberRepository.class);
         PNumber pNumber = PNumber.of(12345678L);
-        given(businessNumberStore.createPartnerNumber()).willReturn(pNumber);
-        CreatePartnerUseCase service = new PersonDomaineService(partnerStore, businessNumberStore);
+        given(businessNumberRepository.createPartnerNumber()).willReturn(pNumber);
+        CreatePartnerUseCase service = new PersonDomaineService(partnerRepository, businessNumberRepository);
         //When
         Partner createdPartner = service.createPartner("Einstein", "Albert", LocalDate.of(1879, 3, 14));
         //Then
         assertThat(createdPartner).isNotNull();
         assertThat(createdPartner.getId()).isSameAs(pNumber);
-        verify(partnerStore).push(ArgumentMatchers.any(Partner.class));
-        verify(businessNumberStore).createPartnerNumber();
+        verify(partnerRepository).push(ArgumentMatchers.any(Partner.class));
+        verify(businessNumberRepository).createPartnerNumber();
     }
 }

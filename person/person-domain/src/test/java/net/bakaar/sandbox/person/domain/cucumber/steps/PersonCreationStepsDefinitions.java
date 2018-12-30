@@ -4,10 +4,10 @@ import cucumber.api.DataTable;
 import cucumber.api.java.Before;
 import cucumber.api.java8.En;
 import net.bakaar.sandbox.person.domain.entity.Partner;
+import net.bakaar.sandbox.person.domain.repository.BusinessNumberRepository;
+import net.bakaar.sandbox.person.domain.repository.PartnerRepository;
 import net.bakaar.sandbox.person.domain.service.CreatePartnerUseCase;
 import net.bakaar.sandbox.person.domain.service.PersonDomaineService;
-import net.bakaar.sandbox.person.domain.store.BusinessNumberStore;
-import net.bakaar.sandbox.person.domain.store.PartnerStore;
 import net.bakaar.sandbox.shared.domain.vo.PNumber;
 
 import java.time.LocalDate;
@@ -23,9 +23,9 @@ import static org.mockito.Mockito.verify;
 
 public class PersonCreationStepsDefinitions implements En {
 
-    private final PartnerStore partnerStore = mock(PartnerStore.class);
-    private final BusinessNumberStore businessNumberStore = mock(BusinessNumberStore.class);
-    private final CreatePartnerUseCase service = new PersonDomaineService(partnerStore, businessNumberStore);
+    private final PartnerRepository partnerRepository = mock(PartnerRepository.class);
+    private final BusinessNumberRepository businessNumberRepository = mock(BusinessNumberRepository.class);
+    private final CreatePartnerUseCase service = new PersonDomaineService(partnerRepository, businessNumberRepository);
     private Partner createdPartner;
     private Throwable thrown;
 
@@ -48,14 +48,14 @@ public class PersonCreationStepsDefinitions implements En {
             assertThat(thrown.getMessage()).containsIgnoringCase(fieldName);
         });
         Then("^I should have a new partner stored in the system$", () -> {
-            verify(partnerStore).push(createdPartner);
+            verify(partnerRepository).push(createdPartner);
         });
     }
 
     @Before
     public void initializeMock() {
-        given(partnerStore.push(any(Partner.class))).willAnswer(invocationOnMock -> invocationOnMock.getArgument(0));
-        given(businessNumberStore.createPartnerNumber()).willReturn(PNumber.of(12345678L));
+        given(partnerRepository.push(any(Partner.class))).willAnswer(invocationOnMock -> invocationOnMock.getArgument(0));
+        given(businessNumberRepository.createPartnerNumber()).willReturn(PNumber.of(12345678L));
     }
 
     private LocalDate convertToDate(String toConvert) {

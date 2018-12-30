@@ -9,7 +9,7 @@ import au.com.dius.pact.provider.spring.SpringRestPactRunner;
 import au.com.dius.pact.provider.spring.target.SpringBootHttpTarget;
 import net.bakaar.sandbox.person.PersonApplication;
 import net.bakaar.sandbox.person.data.jpa.entity.PersonEntity;
-import net.bakaar.sandbox.person.data.jpa.repository.PersonRepository;
+import net.bakaar.sandbox.person.data.jpa.repository.PersonJpaRepository;
 import net.bakaar.sandbox.person.rest.config.PactTestConfiguration;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class PartnerAPIProviderPactIT {
 
   @Autowired
-  private PersonRepository repository;
+  private PersonJpaRepository repository;
 
   @TestTarget
   public final Target target = new SpringBootHttpTarget();

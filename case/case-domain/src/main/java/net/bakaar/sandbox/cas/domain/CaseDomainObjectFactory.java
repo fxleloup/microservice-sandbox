@@ -1,19 +1,20 @@
 package net.bakaar.sandbox.cas.domain;
 
-import net.bakaar.sandbox.cas.domain.provider.BusinessIdProvider;
+import net.bakaar.sandbox.cas.domain.entity.Case;
+import net.bakaar.sandbox.cas.domain.repository.BusinessIdRepository;
 import net.bakaar.sandbox.shared.domain.vo.PNumber;
 
-public class CaseDomainObjectFactory {
+class CaseDomainObjectFactory {
 
-    private final BusinessIdProvider businessIdProvider;
+    private final BusinessIdRepository businessIdRepository;
 
-    public CaseDomainObjectFactory(BusinessIdProvider businessIdProvider) {
-        this.businessIdProvider = businessIdProvider;
+    CaseDomainObjectFactory(BusinessIdRepository businessIdRepository) {
+        this.businessIdRepository = businessIdRepository;
     }
 
-    public Case createCase(String pnummer) {
+    Case createCase(String pnummer) {
         return Case.builder()
-                .withBusinnessId(businessIdProvider.generateId())
+                .withBusinnessId(businessIdRepository.generateId())
                 .withInjured(PNumber.of(pnummer));
     }
 }
