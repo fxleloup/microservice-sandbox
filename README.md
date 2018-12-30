@@ -53,10 +53,10 @@ Those diagrams are freely inspired from the C4 model from Simon Brown.
 - [x] Create a Person frontend with Angular, Jest tested and CDC test with pact
 - [x] Add frontend build to the maven build of person
 - [ ] Make all the docker image deploy to DockerHub
-- [ ] Refactor all the docker compose yaml files to use Dockrhub images
+- [ ] Refactor all the docker compose yaml files to use Dockerhub images
 - [ ] Add error to Rest API test and have a standard to propagate this error
 - [x] Add pact test in infra-data-rest for BusinessNumber endpoint
-- [ ] Add an endpoint in BNS to return PNumber format id
+- [x] Add an endpoint in BNS to return PNumber format id
 - [ ] Add birth date in person api signature
 - [ ] Add partner info to Case microservice and enable update threw messaging
 - [ ] Add Sonar analysis of person-frontend typescript the report on SonarCloud
@@ -64,7 +64,7 @@ Those diagrams are freely inspired from the C4 model from Simon Brown.
 - [ ] Secure the creation of a partner behind a role and protect the endpoint
 - [ ] Make person Service running in a container
 - [x] Add partner info (Name, Forename, BirthDate)
-- [ ] Refactor Case architecture to the Person one
+- [x] Refactor Case architecture to the Person one
 - [ ] Create the claim link service
 - [ ] Create polling service
 - [ ] Create a base module (commons?) gathering all the interfaces and base classes 
