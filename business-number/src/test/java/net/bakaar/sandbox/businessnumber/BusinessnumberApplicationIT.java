@@ -1,4 +1,4 @@
-package net.bakaar.businessnumber;
+package net.bakaar.sandbox.businessnumber;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

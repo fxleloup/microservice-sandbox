@@ -1,4 +1,4 @@
-package net.bakaar.businessnumber.endpoint;
+package net.bakaar.sandbox.businessnumber.endpoint;
 
 import au.com.dius.pact.provider.junit.Provider;
 import au.com.dius.pact.provider.junit.loader.PactFolder;
