@@ -5,8 +5,6 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import net.bakaar.sandbox.cas.data.rest.BusinessIdRepositoryAdapter;
 import net.bakaar.sandbox.cas.data.rest.BusinessIdServiceProperties;
 import net.bakaar.sandbox.cas.domain.repository.BusinessIdRepository;
-import net.bakaar.sandbox.event.common.DomainEventEmitter;
-import net.bakaar.sandbox.event.inmemory.InMemoryDomainEventEmitter;
 import org.junit.Test;
 import org.springframework.web.client.RestTemplate;
 
@@ -28,15 +26,6 @@ public class CaseDataConfigurationTest {
         //Then
         assertThat(mapper).isNotNull();
         assertThat((Set<Object>) getField(mapper, "_registeredModuleTypes")).contains(new JavaTimeModule().getTypeId());
-    }
-
-
-    @Test
-    public void domainEventEmitter_should_configure_emitter() {
-        //When
-        DomainEventEmitter emitter = configuration.domainEventEmitter();
-        //Then
-        assertThat(emitter).isInstanceOf(InMemoryDomainEventEmitter.class);
     }
 
     @Test

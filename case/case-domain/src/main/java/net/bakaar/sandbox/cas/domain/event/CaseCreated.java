@@ -1,9 +1,9 @@
 package net.bakaar.sandbox.cas.domain.event;
 
-import net.bakaar.sandbox.event.common.DomainEvent;
+import net.bakaar.sandbox.event.domain.Event;
 import net.bakaar.sandbox.shared.domain.vo.PNumber;
 
-public class CaseCreated implements DomainEvent {
+public class CaseCreated implements Event {
     private final String id;
     private final PNumber pNumber;
 

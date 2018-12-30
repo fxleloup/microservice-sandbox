@@ -6,7 +6,7 @@ import net.bakaar.sandbox.cas.domain.entity.Case;
 import net.bakaar.sandbox.cas.domain.event.CaseCreated;
 import net.bakaar.sandbox.cas.domain.repository.BusinessIdRepository;
 import net.bakaar.sandbox.cas.domain.repository.CaseRepository;
-import net.bakaar.sandbox.event.common.DomainEventEmitter;
+import net.bakaar.sandbox.event.domain.EventStore;
 import org.mockito.ArgumentCaptor;
 
 import java.util.UUID;
@@ -20,7 +20,7 @@ import static org.mockito.Mockito.verify;
 
 public class CaseStepDefintion implements En {
 
-    private DomainEventEmitter publisher = mock(DomainEventEmitter.class);
+    private EventStore publisher = mock(EventStore.class);
     private CaseRepository repository = mock(CaseRepository.class);
     private BusinessIdRepository businessIdRepository = mock(BusinessIdRepository.class);
     private CaseService service = new CaseService(publisher, repository, businessIdRepository);
@@ -34,7 +34,7 @@ public class CaseStepDefintion implements En {
             given(businessIdRepository.generateId()).willReturn(UUID.randomUUID().toString());
             Throwable throwable = catchThrowable(() -> aCase = this.service.createCase(pnummer));
             verify(repository).save(any(Case.class));
-            verify(publisher).emit(eventArgumentCaptor.capture());
+            verify(publisher).store(eventArgumentCaptor.capture());
             assertThat(throwable).isNull();
         });
 

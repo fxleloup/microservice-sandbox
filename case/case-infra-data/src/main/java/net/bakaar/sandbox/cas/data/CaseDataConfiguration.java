@@ -8,8 +8,6 @@ import net.bakaar.sandbox.cas.data.jpa.SpringDataCaseRepository;
 import net.bakaar.sandbox.cas.data.rest.BusinessIdRepositoryAdapter;
 import net.bakaar.sandbox.cas.data.rest.BusinessIdServiceProperties;
 import net.bakaar.sandbox.cas.domain.repository.BusinessIdRepository;
-import net.bakaar.sandbox.event.common.DomainEventEmitter;
-import net.bakaar.sandbox.event.inmemory.InMemoryDomainEventEmitter;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -29,11 +27,6 @@ public class CaseDataConfiguration {
         mapper.registerModule(new JavaTimeModule());
         mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
         return mapper;
-    }
-
-    @Bean
-    public DomainEventEmitter domainEventEmitter() {
-        return new InMemoryDomainEventEmitter();
     }
 
     @Bean
