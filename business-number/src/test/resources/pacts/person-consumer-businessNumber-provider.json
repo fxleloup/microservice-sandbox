@@ -1,0 +1,50 @@
+{
+  "provider": {
+    "name": "businessNumber-provider"
+  },
+  "consumer": {
+    "name": "person-consumer"
+  },
+  "interactions": [
+    {
+      "description": "Ask For Partner Business Number",
+      "request": {
+        "method": "GET",
+        "path": "/bns/rest/api/v1/business-number",
+        "query": {
+          "type": [
+            "partner"
+          ]
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": 54637289,
+        "matchingRules": {
+          "body": {
+            "$": {
+              "matchers": [
+                {
+                  "match": "regex",
+                  "regex": "[0-9]{8}"
+                }
+              ],
+              "combine": "AND"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pact-specification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "3.5.17"
+    }
+  }
+}

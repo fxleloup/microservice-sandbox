@@ -24,7 +24,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = {PactSpringTestConfiguration.class})
-public class BusinessNumberClientPactIT {
+public class BusinessNumberConsumerPactIT {
 
     @Rule
     public PactProviderRuleMk2 mockProvider = new PactProviderRuleMk2("businessNumber-provider", "localhost", 8090, this);
