@@ -1,0 +1,123 @@
+{
+  "info": {
+    "_postman_id": "7816e2f8-d488-4af6-a34d-e1aec669aaa3",
+    "name": "Micro Service Sandbox",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Case",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"injured\" : {\n\t\t\"pnummer\":\"P12345678\"\n\t}\n}"
+        },
+        "url": {
+          "raw": "http://localhost:9080/case/rest/api/v1/cases",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "9080",
+          "path": [
+            "case",
+            "rest",
+            "api",
+            "v1",
+            "cases"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Partner Id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {},
+        "url": {
+          "raw": "http://localhost:8080/bns/rest/api/v1/business-number/partner-id",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "bns",
+            "rest",
+            "api",
+            "v1",
+            "business-number",
+            "partner-id"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Case Id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {},
+        "url": {
+          "raw": "http://localhost:8080/bns/rest/api/v1/business-number/case-id",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "bns",
+            "rest",
+            "api",
+            "v1",
+            "business-number",
+            "case-id"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Partner",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"name\": \"Cury\",\n\t\"forename\": \"Marie\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:9081/person/rest/api/v1/partners",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "9081",
+          "path": [
+            "person",
+            "rest",
+            "api",
+            "v1",
+            "partners"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
