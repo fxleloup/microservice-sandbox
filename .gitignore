@@ -1,4 +1,6 @@
 .idea/**
+!.idea/runConfigurations
+!.idea/runConfigurations/*.xml
 **.iml
 **/target/**
 /.teamcity/MicroserviceSandbox_dsl.iml

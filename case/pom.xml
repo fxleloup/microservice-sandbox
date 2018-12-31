@@ -50,7 +50,8 @@
                     <timestampedReports>false</timestampedReports>
                     <targetModules>
                         <param>case-domain</param>
-                        <param>case-infra</param>
+                        <param>case-infra-rest</param>
+                        <param>case-infra-data</param>
                         <param>case-application</param>
                     </targetModules>
                 </configuration>

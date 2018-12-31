@@ -54,6 +54,7 @@ Those diagrams are freely inspired from the C4 model from Simon Brown.
 - [x] Add frontend build to the maven build of person
 - [ ] Make all the docker image deploy to DockerHub
 - [ ] Refactor all the docker compose yaml files to use Dockerhub images
+- [ ] Update Spring-Boot version for all project
 - [ ] Add error to Rest API test and have a standard to propagate this error
 - [x] Add pact test in infra-data-rest for BusinessNumber endpoint
 - [x] Add an endpoint in BNS to return PNumber format id
