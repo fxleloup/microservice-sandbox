@@ -53,7 +53,7 @@ public class CaseAPIRestIT {
         CaseDTO caseDTO = new CaseDTO()
                 .addPnummerInjured(pnummer);
         mockMvc
-                .perform(post("/cases")
+                .perform(post("/rest/api/v1/cases")
                         .accept(APPLICATION_JSON_UTF8)
                         .contentType(APPLICATION_JSON_UTF8)
                         .content(asJsonString(caseDTO))
