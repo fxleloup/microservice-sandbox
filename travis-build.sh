@@ -15,6 +15,6 @@ if [[ $TRAVIS_PULL_REQUEST == "false" ]] && [[ $TRAVIS_BRANCH == "master" ]]; th
     cd ../case/case-application/
     mvn dockerfile:build@build dockerfile:tag@latest dockerfile:tag@version dockerfile:push@latest dockerfile:push@version
 
-    cd ../person/person-frontend/
+    cd ../../person/person-frontend/
     mvn dockerfile:build@build dockerfile:tag@latest dockerfile:tag@version dockerfile:push@latest dockerfile:push@version
 fi
