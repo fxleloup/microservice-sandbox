@@ -118,6 +118,39 @@
         }
       },
       "response": []
+    },
+    {
+      "name": "Fetch Partner By Id",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"name\": \"Cury\",\n\t\"forename\": \"Marie\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:9081/person/rest/api/v1/partners/P36664297",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "9081",
+          "path": [
+            "person",
+            "rest",
+            "api",
+            "v1",
+            "partners",
+            "P36664297"
+          ]
+        }
+      },
+      "response": []
     }
   ]
 }
