@@ -87,11 +87,8 @@ Those diagrams are freely inspired from the C4 model from Simon Brown.
   * Jhipster console
 * Security with Spring Security
   * JWT
-* Distributed Configuration
-  * Spring-Cloud-Config
 * Use Kubernetes to deploy all the components
   * Use Secret in Kubernetes
-  * Use Secret in Spring-Cloud-Config
   * Use Helm ?
 * Use Flyway and Liquibase to migrate database
 * Use different types of database
