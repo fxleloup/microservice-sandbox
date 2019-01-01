@@ -12,8 +12,13 @@
     <dependencies>
         <dependency>
             <groupId>net.bakaar</groupId>
-            <artifactId>event-commons</artifactId>
+            <artifactId>event-domain</artifactId>
             <version>${event.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.bakaar</groupId>
+            <artifactId>shared-domain</artifactId>
+            <version>${shared.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>

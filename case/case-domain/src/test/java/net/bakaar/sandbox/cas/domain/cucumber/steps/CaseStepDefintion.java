@@ -1,13 +1,12 @@
 package net.bakaar.sandbox.cas.domain.cucumber.steps;
 
 import cucumber.api.java8.En;
-import net.bakaar.sandbox.cas.domain.Case;
-import net.bakaar.sandbox.cas.domain.CaseDomainObjectFactory;
 import net.bakaar.sandbox.cas.domain.CaseService;
+import net.bakaar.sandbox.cas.domain.entity.Case;
 import net.bakaar.sandbox.cas.domain.event.CaseCreated;
-import net.bakaar.sandbox.cas.domain.provider.BusinessIdProvider;
+import net.bakaar.sandbox.cas.domain.repository.BusinessIdRepository;
 import net.bakaar.sandbox.cas.domain.repository.CaseRepository;
-import net.bakaar.sandbox.event.common.DomainEventEmitter;
+import net.bakaar.sandbox.event.domain.EventStore;
 import org.mockito.ArgumentCaptor;
 
 import java.util.UUID;
@@ -21,10 +20,10 @@ import static org.mockito.Mockito.verify;
 
 public class CaseStepDefintion implements En {
 
-    private DomainEventEmitter publisher = mock(DomainEventEmitter.class);
+    private EventStore publisher = mock(EventStore.class);
     private CaseRepository repository = mock(CaseRepository.class);
-    private BusinessIdProvider businessIdProvider = mock(BusinessIdProvider.class);
-    private CaseService service = new CaseService(publisher, repository, new CaseDomainObjectFactory(businessIdProvider));
+    private BusinessIdRepository businessIdRepository = mock(BusinessIdRepository.class);
+    private CaseService service = new CaseService(publisher, repository, businessIdRepository);
     private ArgumentCaptor<CaseCreated> eventArgumentCaptor = ArgumentCaptor.forClass(CaseCreated.class);
     private Case aCase;
 
@@ -32,17 +31,17 @@ public class CaseStepDefintion implements En {
 
         When("^we create a case with a Partner number (.+)$", (String pnummer) -> {
             given(repository.save(any(Case.class))).willAnswer(invocation -> invocation.getArgument(0));
-            given(businessIdProvider.generateId()).willReturn(UUID.randomUUID().toString());
+            given(businessIdRepository.generateId()).willReturn(UUID.randomUUID().toString());
             Throwable throwable = catchThrowable(() -> aCase = this.service.createCase(pnummer));
             verify(repository).save(any(Case.class));
-            verify(publisher).emit(eventArgumentCaptor.capture());
+            verify(publisher).store(eventArgumentCaptor.capture());
             assertThat(throwable).isNull();
         });
 
         Then("^an Event mentioning the new case is emitted$", () -> {
             CaseCreated event = eventArgumentCaptor.getValue();
             assertThat(event.getId()).isEqualTo(aCase.getId());
-            assertThat(event.getPnummer()).isEqualTo(aCase.getInjured());
+            assertThat(event.getPNumber()).isEqualTo(aCase.getInjured());
         });
 
         Then("^this Case should have an id$", () -> {

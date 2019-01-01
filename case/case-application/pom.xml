@@ -16,8 +16,18 @@
     <dependencies>
         <dependency>
             <groupId>net.bakaar</groupId>
-            <artifactId>case-infra</artifactId>
+            <artifactId>case-infra-data</artifactId>
             <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.bakaar</groupId>
+            <artifactId>case-infra-rest</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.bakaar</groupId>
+            <artifactId>event-infra-inmemory</artifactId>
+            <version>${event.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

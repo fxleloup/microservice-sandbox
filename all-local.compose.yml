@@ -1,0 +1,63 @@
+version: '3'
+services:
+  business-number-service:
+    container_name: "businessnumber"
+    build:
+      context: ./business-number
+      args:
+        JAR_FILE: target/businessnumber.jar
+    image: bakaar/businessnumber:local
+    ports:
+      - 8080:8080
+  case-db:
+    container_name: "case-db"
+    image: postgres:9.6.8-alpine
+    environment:
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_USER: case_user
+    ports:
+      - "5432:5432"
+  case-service:
+    container_name: "case-service"
+    build:
+      context: ./case/case-application
+      args:
+        JAR_FILE: target/case-application.jar
+    image: bakaar/case:local
+    ports:
+      - "9080:8080"
+    environment:
+      case.db.url: jdbc:postgresql://db:5432/case_user
+      case.db.user: case_user
+      case.db.pass: 123456
+      case.db.driver: org.postgresql.Driver
+      businessnumber.url: http://bn:8080/bns
+    links:
+      - case-db:db
+      - business-number-service:bn
+  person-db:
+    container_name: "person-db"
+    image: postgres:9.6.8-alpine
+    environment:
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_USER: person_user
+    ports:
+      - "5433:5432"
+  person-service:
+    container_name: "person-service"
+    build:
+      context: ./person/person-frontend
+      args:
+        JAR_FILE: target/person-frontend.jar
+    image: bakaar/person:local
+    ports:
+      - "9081:8080"
+    environment:
+      person.db.url: jdbc:postgresql://db:5432/person_user
+      person.db.user: person_user
+      person.db.pass: 123456
+      person.db.driver: org.postgresql.Driver
+      businessnumber.url: http://bn:8080/bns
+    links:
+      - person-db:db
+      - business-number-service:bn

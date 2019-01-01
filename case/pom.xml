@@ -14,12 +14,14 @@
     <packaging>pom</packaging>
     <modules>
         <module>case-domain</module>
-        <module>case-infra</module>
+        <module>case-infra-data</module>
         <module>case-application</module>
+        <module>case-infra-rest</module>
     </modules>
     <properties>
         <cucumber.version>1.2.5</cucumber.version>
         <event.version>1.0.0-SNAPSHOT</event.version>
+        <shared.version>1.0.0-SNAPSHOT</shared.version>
         <messaging.version>1.0.0-SNAPSHOT</messaging.version>
     </properties>
     <build>
@@ -48,7 +50,8 @@
                     <timestampedReports>false</timestampedReports>
                     <targetModules>
                         <param>case-domain</param>
-                        <param>case-infra</param>
+                        <param>case-infra-rest</param>
+                        <param>case-infra-data</param>
                         <param>case-application</param>
                     </targetModules>
                 </configuration>
@@ -89,6 +92,11 @@
             <groupId>info.cukes</groupId>
             <artifactId>cucumber-junit</artifactId>
             <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
