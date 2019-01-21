@@ -26,7 +26,7 @@ public class PNumberTest {
         //When
         PNumber created = PNumber.of(pnummer);
         //Then
-        assertThat((Integer) getField(created, "value")).isEqualTo(12345678);
+        assertThat(created.getValue()).isEqualTo(12345678);
     }
 
     @Test

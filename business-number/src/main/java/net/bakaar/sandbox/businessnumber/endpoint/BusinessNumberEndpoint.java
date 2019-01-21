@@ -19,11 +19,11 @@ class BusinessNumberEndpoint {
 
     @GetMapping("/partner-id")
     public ResponseEntity<Long> createPartnerId() {
-        Random r = new Random();
+        Random randomNumberGenerator = new Random();
         // Don't do that at home...
         int highest = 99999999;
         int lowest = 10000000;
-        int generatedId = r.nextInt(highest - lowest) + lowest;
+        int generatedId = randomNumberGenerator.nextInt(highest - lowest) + lowest;
         return ResponseEntity.ok((long) generatedId);
     }
 }
